@@ -1,12 +1,13 @@
 <!--Location-->
 <div id="location-view"
      data-role="view"
+     data-layout="drawer-layout"
+     data-stretch="true"
      data-title="Location"
      data-init="app.locationService.initLocation"
      data-show="app.locationService.show"
      data-hide="app.locationService.hide"
-     data-model="app.locationService.viewModel"
-     data-stretch="true">
+     data-model="app.locationService.viewModel">
     
     <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>    
 </div>
