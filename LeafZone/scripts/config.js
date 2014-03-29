@@ -8,15 +8,18 @@
         },        
         facebook: {
             appId: "",
-            redirectUri: ""
+            redirectUri: "https://www.facebook.com/connect/login_success.html",
+            endpoint: "https://www.facebook.com/dialog/oauth"
         },        
         google: {
             clientId:"",
-            redirectUri: ""
+            redirectUri: "http://localhost",
+            scope: "https://www.googleapis.com/auth/userinfo.profile",
+            endpoint: "https://accounts.google.com/o/oauth2/auth"
         },        
         liveId: {
             clientId:"",
-            redirectUri: ""       
+            redirectUri: "https://login.live.com/oauth20_desktop.srf"       
         }      
     };    
 })(window);
