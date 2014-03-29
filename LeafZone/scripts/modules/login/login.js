@@ -39,13 +39,13 @@
                 facebookConfig = {
                     name: "Facebook",
                     loginMethodName: "loginWithFacebook",
-                    response_type: "token",
-                    access_type: "online",
+                    responseType: "token",
+                    accessType: "online",
                     scope: "email",
                     display: "touch",
                     endpoint: app.config.facebook.endpoint,
-                    client_id: app.config.facebook.appId,
-                    redirect_uri: app.config.facebook.redirectUri
+                    clientId: app.config.facebook.appId,
+                    redirectUri: app.config.facebook.redirectUri
                 };
             
             facebookLoginProvider = new app.IdentityProvider(facebookConfig);           
@@ -64,11 +64,11 @@
                 googleConfig = {
                     name: "Google",
                     loginMethodName: "loginWithGoogle",
-                    response_type: "token",
-                    access_type: "online",
+                    responseType: "token",
+                    accessType: "online",
                     display: "touch",
-                    client_id: app.config.google.clientId,
-                    redirect_uri: app.config.google.redirectUri,
+                    clientId: app.config.google.clientId,
+                    redirectUri: app.config.google.redirectUri,
                     scope: app.config.google.scope,
                     endpoint: app.config.google.endpoint
                 };
@@ -90,11 +90,11 @@
                     name: "LiveID",
                     loginMethodName: "loginWithLiveID",
                     endpoint: "https://login.live.com/oauth20_authorize.srf",
-                    response_type: "token",
-                    client_id: appSettings.liveId.clientId,
-                    redirect_uri: appSettings.liveId.redirectUri,
+                    responseType: "token",
+                    clientId: app.config.liveId.clientId,
+                    redirectUri: app.config.liveId.redirectUri,
                     scope: "wl.basic",
-                    access_type: "online",
+                    accessType: "online",
                     display: "touch"
                 };
             
@@ -118,15 +118,17 @@
         },
         
         _onStartLogin: function (provider) {
-            
+            kendo.mobile.application.showLoading();
         },
         
         _onLogInSuccess: function (provider) {
+            kendo.mobile.application.hideLoading();
             navigator.notification.alert("success",
                                          function () { }, "Login success", "OK");
         },
         
-        _onLogInError: function () {
+        _onLogInError: function (e) {
+            kendo.mobile.application.hideLoading();
             navigator.notification.alert("error",
                                          function () { }, "Login failed", "OK");
         }
