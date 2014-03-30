@@ -1,11 +1,7 @@
 body {
 	font-family: "Open Sans", sans-serif;
 }
-p {
-    font-size: 0.9em;
-    color: #888;
-    margin: 0;
-}
+
 /* kendo override styles */
 .km-ios7 .km-view .km-navbar,
 .km-ios7 .km-view .km-content {
@@ -18,6 +14,17 @@ p {
     color: #274c65;
 }
 
+.km-ios7 .km-view .km-content p {
+    font-size: 0.9em;
+    color: #888;
+    margin: 0;
+    text-align: left;
+}
+.km-ios7 .km-view .km-content a {
+    font-size: 0.9em;
+    color: #81c342;
+    text-decoration: underline;
+}
 .km-ios7 .km-view .km-content .km-button {
     color: #fff;
     -webkit-border-radius: 2em;
@@ -25,35 +32,41 @@ p {
     padding: 0.6em 2em;
     background-color: #81c342;
     font-size: 1em;
+    text-decoration: none;
 }
 .km-ios7 .km-view .km-content .km-button.km-state-hover { background-color: #90d151; }
 .km-ios7 .km-view .km-content .km-button.km-state-active { background-color: #6aa92d; }
 .km-ios7 .km-view .km-content .km-button.km-state-disabled { background-color: #81c342; }
 
-.km-ios7 .km-view .km-content .km-button.bnt-alternate { background-color: #274c65; }
+.km-ios7 .km-view .km-content .km-button.btn-alternate { background-color: #274c65; }
 .km-ios7 .km-view .km-content .km-button.btn-alternate.km-state-hover { background-color: #416984; }
 .km-ios7 .km-view .km-content .km-button.btn-alternate.km-state-active { background-color: #1b3a50; }
 .km-ios7 .km-view .km-content .km-button.btn-alternate.km-state-disabled { background-color: #93a5b2; }
 
-.km-ios7 .km-view .km-content .km-button.bnt-wide {
+.km-ios7 .km-view .km-content .km-button.btn-wide {
     padding: 0.6em 3em;
 }
 
 .km-ios7 .km-view .km-content input[type="text"],
+.km-ios7 .km-view .km-content input[type="email"],
 .km-ios7 .km-view .km-content input[type="password"] {
     background-color: #f7f7f7;
     border: 2px solid #dadada;
     -webkit-border-radius: 2em;
     border-radius: 2em;
     display: block;
-    width: 100%;
     font-size: 0.9em;
+    color: #666;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-background-clip: border-box;
     background-clip: border-box;
     padding: 0.8em 1.2em;
-    margin: 0 0 2.2em 0;
+    -webkit-appearance: none;
 }
 .km-ios7 .km-view .km-content input[type="text"]:focus,
+.km-ios7 .km-view .km-content input[type="email"]:focus,
 .km-ios7 .km-view .km-content input[type="password"]:focus {
     border-color: #81c342;
 }
@@ -62,21 +75,21 @@ p {
 .img-small-logo {
     width: 101px;
     height: 28px;
-    background-image: url(../styles/images/logo.png);
+    background: url(../styles/images/logo.png) center no-repeat;
     display: inline-block;
     vertical-align: middle;
 }
 .img-large-logo {
     width: 174px;
     height: 48px;
-    background-image: url(../styles/images/logo-large.png);
+    background: url(../styles/images/logo-large.png) center no-repeat;
     margin: 1.6em auto 0 auto;
 }
 .img-leaf {
     width: 210px;
     height: 219px;
-    background-image: url(../styles/images/leaf.png);
-    margin: 3em auto;
+    background: url(../styles/images/leaf.png) center no-repeat;
+    margin: 6em auto;
 }
 
 /* home view styles */
@@ -92,18 +105,30 @@ p {
 }
 
 /* login view styles */
+.login-form {
+    padding: 1.4em 1em;
+    text-align: center;
+}
+.login-form > input[type="text"],
+.login-form > input[type="email"],
+.login-form > input[type="password"],
+.login-form > .km-button,
+.login-form > p {
+    margin-bottom: 1.9em;
+}
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+@media only screen and (-webkit-min-device-pixel-ratio : 2), 
+    only screen and (min-device-pixel-ratio : 2) {
     .img-small-logo {
-        background-size: 101px 28px;
 		background-image: url("../styles/images/logo@2x.png);
+		background-size: 100%;
     }
     .img-large-logo {
-		background-size: 174px 48px;
 		background-image: url("../styles/images/logo-large@2x.png);
+		background-size: 100%;
     }
     .img-leaf {
-		background-size: 210px 219px;
         background-image: url("../styles/images/leaf@2x.png);
+		background-size: 100%;
     }
 }

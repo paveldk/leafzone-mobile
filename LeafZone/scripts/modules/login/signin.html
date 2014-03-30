@@ -12,17 +12,17 @@
 		</div>
 	</div>
     
-    <div>
-		<form data-bind="events: { keyup: checkEnter }">
-            <input type="text" data-bind="value: username" placeholder="User Name"/>
-            <input type="password" data-bind="value: password" placeholder="Password"/>
-            <input data-role="button" class="btn-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
-        </form>
-
-        <div class="buttonArea">
-			<input type="submit" data-role="button" data-bind="click: onLoginFacebook, invisible: isLoggedIn" />
+    <form class="login-form" data-bind="events: { keyup: checkEnter }">
+		<input type="text" data-bind="value: username" placeholder="User Name"/>
+		<input type="password" data-bind="value: password" placeholder="Password"/>
+		<input data-role="button" class="btn-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
+	</form>     
+    
+    <div data-role="footer">
+        <div data-role="navbar">
+            <input type="submit" data-role="button" data-bind="click: onLoginFacebook, invisible: isLoggedIn" />
 			<input type="submit" data-role="button" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />
 			<input type="submit" data-role="button" data-bind="click: onLoginLiveId, invisible: isLoggedIn" />
 		</div>
-    </div>        
+	</div>
 </div>
