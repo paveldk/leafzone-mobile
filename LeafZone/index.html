@@ -23,35 +23,33 @@
         
     </head>
     <body>
-        <!--Home-->
         <div id="home-view"
              data-role="view"
              data-layout="default"
-             data-stretch="true"
              data-title="Home">
             
-            <div>
-                <div class="img-large-logo"></div>
-            	<div class="img-leaf"></div>
+            <div class="img-large-logo"></div>
+            <div class="img-leaf"></div>
+            <div class="button-wrapper">
+				<a data-role="button" data-align="right" href="scripts/modules/login/signup.html">Sign Up</a>
+				<a data-role="button" class="btn-alternate" data-align="right" href="scripts/modules/login/signin.html">Sign In</a> 
             </div>
-            
         </div>         
         
         <!--Layout-->
         <div data-role="layout" data-id="drawer-layout">
             <div data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                </div>
-            </div>
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+				</div>
+			</div>
         </div>
 
         <!--Drawer-->
-        <div data-role="drawer" data-views="['home-view', 'login-view', 'location-view']">
+        <div id="drawer" data-role="drawer" data-views="['location-view']">
              <ul data-role="listview">
-				<li><a href="#/" data-icon="home">Home</a></li>
-				<li><a href="scripts/modules/login/login.html" data-icon="contacts">Login</a></li>
-				<li><a href="scripts/modules/location/location.html" data-icon="search">Location</a></li> 
+				<li><a href="#/">Home</a></li>
+				<li><a href="scripts/modules/location/location.html">Location</a></li> 
             </ul>
         </div>
     </body>
