@@ -24,16 +24,19 @@
     </head>
     <body>
         <div id="home-view"
+             class="home-view"
              data-role="view"
-             data-layout="default"
-             data-title="Home">
+             data-layout="default">
             
-            <div class="img-large-logo"></div>
+			<div class="img-large-logo"></div>
             <div class="img-leaf"></div>
-            <div class="button-wrapper">
-				<a data-role="button" data-align="right" href="scripts/modules/login/signup.html">Sign Up</a>
-				<a data-role="button" class="btn-alternate" data-align="right" href="scripts/modules/login/signin.html">Sign In</a> 
-            </div>
+            
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a class="lz-button" data-role="button" data-align="left" href="scripts/modules/login/signup.html">Sign Up</a>
+					<a class="lz-button lz-button-alternate" data-role="button" data-align="right" href="scripts/modules/login/signin.html">Sign In</a>
+                </div>                 
+			</div>
         </div>         
         
         <!--Layout-->
