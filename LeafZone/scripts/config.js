@@ -3,7 +3,8 @@
     
     app.config = {        
         everlive: {
-            apiKey: "woLBIbIHeu9aWBrb",
+            //The original api key is woLBIbIHeu9aWBrb, but changed temporarily, becase of acount limitations
+            apiKey: "ltG65jxbc26oEeod",
             scheme: "http"
         },        
         //TODO: create a new id
@@ -23,6 +24,10 @@
         liveId: {
             clientId: "000000004C10D1AF",
             redirectUri: "https://login.live.com/oauth20_desktop.srf"       
-        }      
+        },
+        views: {
+            home: "#",
+            login: ""
+        }
     };    
 })(window);

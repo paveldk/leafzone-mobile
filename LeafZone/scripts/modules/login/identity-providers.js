@@ -21,7 +21,6 @@
                 + "&display=" + that.config.display
                 + "&access_type=" + that.config.accessType
                 + "&scope=" + that.config.scope;
-			
 
 			//CALL IN APP BROWSER WITH THE LINK
 			that.referenceWindow = window.open(authorize_url, "_blank", "location=no");
