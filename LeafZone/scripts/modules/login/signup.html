@@ -1,0 +1,24 @@
+<div id="signup-view"
+     data-role="view"
+     data-layout="default"
+     data-model="app.loginService.signUpViewModel">
+    
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left"></a>
+			<div class="img-small-logo"></div>
+		</div>
+	</div>
+    
+    <form class="lz-form" data-bind="events: { keyup: checkEnter }">
+		<input type="text" data-bind="value: fullname" placeholder="Full Name"/>
+		<input type="email" data-bind="value: email" placeholder="Email"/>
+		<input type="text" data-bind="value: username" placeholder="Username"/>
+		<input type="password" data-bind="value: password" placeholder="Password"/>
+		<input type="password" data-bind="value: repassword" placeholder="Retype Password"/>
+        <input data-role="button" class="lz-button lz-button-large" type="submit" data-bind="click: onSignUp" value="Sign Up"/>
+		<p>
+			By tapping "Sign Up" above, you are agreeing to the <a>Terms of Service</a> and <a>Privacy Policy</a>.
+		</p>
+	</form> 
+</div>

@@ -3,6 +3,8 @@
     <head>
         <title>Leaf Zone</title>
         <meta charset="utf-8" />
+        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
         <link href="lib/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
         
@@ -13,45 +15,45 @@
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
         
         <script src="scripts/config.js"></script>
+        <script src="scripts/common.js"></script>
+        <script src="scripts/modules/login/identity-providers.js"></script>
         <script src="scripts/modules/login/login.js"></script>
         <script src="scripts/modules/location/location.js"></script>
         <script src="scripts/app.js"></script>
         
     </head>
     <body>
-        <!--Home-->
-        <div id="tabstrip-home"
+        <div id="home-view"
+             class="home-view"
              data-role="view"
-             data-title="Home">
+             data-layout="default">
             
-            <div class="view-content">
-                <h1>Welcome!</h1>
-                <a id="skin-change" data-role="button" data-click="app.changeSkin">Flat</a>
-                <p>
-                    This is the awesome Leaf Zone application.
-                </p>
-                <div class="img"></div>
-            </div>
+			<div class="img-large-logo"></div>
+            <div class="img-leaf"></div>
+            
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a class="lz-button" data-role="button" data-align="left" href="scripts/modules/login/signup.html">Sign Up</a>
+					<a class="lz-button lz-button-alternate" data-role="button" data-align="right" href="scripts/modules/login/signin.html">Sign In</a>
+                </div>                 
+			</div>
         </div>         
         
         <!--Layout-->
-        <div data-role="layout" data-id="tabstrip-layout">
-            
-            <!--Header-->
+        <div data-role="layout" data-id="drawer-layout">
             <div data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                </div>
-            </div>
-            
-            <!--Footer-->
-            <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#/" data-icon="home">Home</a>
-                    <a href="scripts/modules/login/login.html" data-icon="contacts">Login</a>
-                    <a href="scripts/modules/location/location.html" data-icon="search">Location</a>
-                </div>
-            </div>
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+				</div>
+			</div>
+        </div>
+
+        <!--Drawer-->
+        <div id="drawer" data-role="drawer" data-views="['location-view']">
+             <ul data-role="listview">
+				<li><a href="#/">Home</a></li>
+				<li><a href="scripts/modules/location/location.html">Location</a></li> 
+            </ul>
         </div>
     </body>
 </html>
