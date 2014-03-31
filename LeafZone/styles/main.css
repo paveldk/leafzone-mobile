@@ -54,7 +54,7 @@ body {
 }
 .km-ios7 .km-view .km-button.lz-button.lz-button-social.google {
     width: 25px;
-    height: 25px;
+    height: 27px;
     background-image: -webkit-image-set(url('../styles/images/icon-google.png') 1x, url('../styles/images/icon-google@2x.png') 2x);
 }
 .km-ios7 .km-view .km-button.lz-button.lz-button-social.twitter {

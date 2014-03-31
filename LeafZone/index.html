@@ -26,7 +26,7 @@
         <div id="home-view"
              class="home-view"
              data-role="view"
-             data-layout="default">
+             data-layout="drawer-layout">
             
 			<div class="img-large-logo"></div>
             <div class="img-leaf"></div>
@@ -49,9 +49,10 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['location-view']">
+        <div id="drawer" data-role="drawer" data-views="['home-view', 'leafs-view', 'location-view']">
              <ul data-role="listview">
 				<li><a href="#/">Home</a></li>
+          		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
 				<li><a href="scripts/modules/location/location.html">Location</a></li> 
             </ul>
         </div>
