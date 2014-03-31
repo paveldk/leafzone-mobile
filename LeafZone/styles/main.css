@@ -10,6 +10,9 @@ body {
 .km-ios7 .km-view .km-content {
     background-color: #fff;
 }
+.km-ios7 .km-touch-scrollbar {
+	background-color: #81c342;
+}
 
 /* tint color */
 .km-ios7 .k-list,
@@ -24,9 +27,12 @@ body {
 .km-ios7 .km-view .km-content h3,
 .km-ios7 .km-view .km-content h4,
 .km-ios7 .km-view .km-content h5,
-.km-ios7 .km-view .km-content h6,
-.km-ios7 .km-view .km-content p {
+.km-ios7 .km-view .km-content h6 {
     margin: 0;
+}
+.km-ios7 .km-view .km-content p {
+    margin-left: 0;
+    margin-right: 0;
 }
 .km-ios7 .km-view .km-content h1 { font-size: 1.3em; }
 .km-ios7 .km-view .km-content h2 { font-size: 1.2em; }
@@ -35,8 +41,7 @@ body {
 .km-ios7 .km-view .km-content h5 { font-size: 0.95em; }
 .km-ios7 .km-view .km-content h6 { font-size: 0.9em; }
 .km-ios7 .km-view .km-content p {
-    font-size: 0.95em;
-    color: #888;
+    font-size: 0.85em;
 }
 .km-ios7 .km-view .km-content a {
     font-size: 0.95em;
@@ -129,8 +134,7 @@ body {
     border-image: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    font-size: 0.95em;
-    padding: 1em 1.4em;
+    padding: 0.8em 1.2em;
 }
 .km-ios7 .km-view .km-content .km-list > li > a {
     text-decoration: none;
@@ -147,6 +151,7 @@ body {
 .km-ios7 .km-view .km-content .lz-form > p {
     margin-bottom: 1.9em;
     text-align: left;
+    color: #888;
 }
 
 /* image styles */
@@ -155,7 +160,8 @@ body {
     height: 28px;
     background-image: -webkit-image-set(url('../styles/images/logo.png') 1x, url('../styles/images/logo@2x.png') 2x);
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
+	margin-top: 0.45em;
 }
 .img-large-logo {
     width: 174px;
@@ -198,7 +204,7 @@ body {
 
 /* leafs view styles */
 .leaf-item-wrapper {
-    padding: 0.8em 0 0.8em 6.3em;
+    padding: 0.8em 0 0.8em 5.5em;
     position: relative;
 }
 .leaf-item-wrapper > .leaf-item-image {
@@ -220,23 +226,54 @@ body {
 	border-width: 0 32px 32px 0;
 	border-color: transparent #81c342 transparent transparent;
     position: absolute;
-    top: -1em;
-    right: -1.4em;
+    top: -0.8em;
+    right: -1.2em;
     color: #fff;
 }
 .leaf-item-wrapper > .leaf-item-badge:before {
     font-family: FontAwesome;
-    font-size: 0.95em;
+    font-size: 0.8em;
     content:"\f005";
 	display: inline-block;
-    margin-left: 16px;
+    position: relative;
+    top: -2px;
+	left: 17px;
 }
-
-.leaf-item-wrapper > h2 {
+.leaf-item-wrapper > h3 {
     font-weight: bold;
     color: #555;
 }
 .leaf-item-wrapper > p {
     color: #555;
     margin-top: 0.6em;
+    margin-bottom: 0;
+}
+
+.leafs-view .km-footer .km-navbar .km-leftitem {
+    left: 0;
+    width: 50%;
+}
+.leafs-view .km-footer .km-navbar .km-rightitem {
+    right: 0;
+    width: 50%;
+}
+.leafs-view .km-footer .km-navbar .km-leftitem .km-button,
+.leafs-view .km-footer .km-navbar .km-rightitem .km-button {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    margin: 0;
+    position: static;
+    text-align: center;
+    font-size: 0.95em;
+    font-weight: bold;
+}
+.leafs-view .km-footer .km-navbar .km-leftitem .km-button .km-text,
+.leafs-view .km-footer .km-navbar .km-rightitem .km-button .km-text {
+    vertical-align: middle;
+}
+.leafs-view .km-footer .km-navbar .km-leftitem .km-button {
+    background-color: #fff;
+    color: #555;
 }
