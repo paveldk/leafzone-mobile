@@ -1,4 +1,5 @@
 <div id="leafs-view"
+     class="leafs-view"
      data-role="view"
      data-layout="drawer-layout">
     
@@ -8,25 +9,30 @@
 		</div>
 	</div>
     
-    <ul class="lz-listview"
-        data-role="listview"
+    <ul data-role="listview"
 		data-template="leaf-template">
         <li>
-            <div>
-            	<h1>Indian Been Tree</h1>
-                <span>Catalpa bignonioides</span>
+            <div class="leaf-item-wrapper">
+                <div class="leaf-item-image"></div>
+            	<h2>Indian Bean Tree</h2>
+                <p>Catalpa bignonioides</p>
+                <div class="leaf-item-badge"></div>
         	</div>
         </li>
         <li>
-            <div>
-            	<h1>Indian Been Tree</h1>
-                <span>Catalpa bignonioides</span>
+            <div class="leaf-item-wrapper">
+                <div class="leaf-item-image"></div>
+            	<h2>Indian Bean Tree</h2>
+                <p>Catalpa bignonioides</p>
+                <div class="leaf-item-badge"></div>
         	</div>
         </li>
         <li>
-            <div>
-            	<h1>Indian Been Tree</h1>
-                <span>Catalpa bignonioides</span>
+            <div class="leaf-item-wrapper">
+                <div class="leaf-item-image"></div>
+            	<h2>Indian Bean Tree</h2>
+                <p>Catalpa bignonioides</p>
+                <div class="leaf-item-badge"></div>
         	</div>
         </li>
     </ul>
@@ -39,8 +45,11 @@
 	</div>
     
     <script id="leaf-template" type="text/x-kendo-tmpl">
-        <div>
-            <h1>vlad</h1>
-        </div>
+         <div class="leaf-item-wrapper">
+         	<div class="leaf-item-image"></div>
+			<h2>Indian Bean Tree</h2>
+			<p>Catalpa bignonioides</p>
+            <div class="leaf-item-badge"></div>
+		</div>
     </script>
 </div>
