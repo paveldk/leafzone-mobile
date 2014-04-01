@@ -6,58 +6,103 @@
     LeafsViewModel = kendo.data.ObservableObject.extend({
         allPlantsDataSource: null,
         userPlantsDataSource: null,
-        
-        init: function (){
+        myPlantsSelected: true,
+		myLeafsButtonClass: "",
+		allLeafsButtonClass: "",
+		consts: {
+			SELECTED_BUTTON_CLASS: "lz-button lz-button-footer checked",
+			UNSELECTED_BUTTON_CLASS: "lz-button lz-button-footer"
+		},
+		
+        init: function () {
             var that = this;
-            
-            that.allPlantsDataSource = new kendo.data.DataSource();
-            that.userPlantsDataSource = new kendo.data.DataSource();
+		    
+			that.myPlantsSelected = true;
+			that.myLeafsButtonClass = that.consts.SELECTED_BUTTON_CLASS;
+			that.allLeafsButtonClass = that.consts.UNSELECTED_BUTTON_CLASS;
+			
+            that.allPlantsDataSource = new kendo.data.DataSource({
+				type: "everlive",
+			    transport: {
+			        typeName: "Plants"
+			    },
+			    schema: {
+			        model: { 
+						id: Everlive.idField ,
+						fields: {
+							name: {
+								field: "Name",
+								defaultValue: ""
+							},
+							details: {
+								field: "BotanicalName",
+								defaultValue: ""
+							},
+							imageId: {
+								field: "MainImage",
+								defaultValue: ""
+							}			               
+						},
+						imageUrl: function() {
+							return app.everlive.Files.getDownloadUrl(this.get("imageId"));
+                        }
+					}
+			    },
+			    serverPaging: true,			    
+			    pageSize: 5
+            });	
+			
+			
+            that.userPlantsDataSource = new kendo.data.DataSource({
+				type: "everlive",
+			    transport: {
+			        typeName: "UserPlants"
+			    },
+			    schema: {
+			        model: { 
+						id: Everlive.idField ,
+						fields: {
+							name: {
+								field: "DiscoveredPlant",
+								defaultValue: ""
+							},
+							details: {
+								field: "DiscoveredDisease",
+								defaultValue: ""
+							},
+							imageId: {
+								field: "Image",
+								defaultValue: ""
+							}			               
+						},
+						imageUrl: function() {
+							return app.everlive.Files.getDownloadUrl(this.get("imageId"));
+                        }
+					}
+			    },
+				//filter: { field: "Owner", operator: "eq", value: app.currentUser.Id },
+			    serverPaging: true,			    
+			    pageSize: 5
+            });	
+			            
             kendo.data.ObservableObject.fn.init.apply(that, that);
         },
-        
-        setData: function(allPlantsData, userPlantsData) {
-            var that = this;
-            
-            that.get("allPlantsDataSource").data(allPlantsData);
-            that.get("userPlantsDataSource").data(userPlantsData);
-        }        
+		
+		onMyLeafsClick: function() {
+			this.set("myPlantsSelected", true);			
+		},
+		
+		onAllLeafsClick: function() {
+			this.set("myPlantsSelected", false);			
+		}
     });
     
     LeafsService = kendo.Class.extend({
         viewModel: null,
         
-        init: function () {
-            var that = this;
-            
-            that.viewModel = new LeafsViewModel();            
-            that.initModule = $.proxy(that.initData, that);
-        },
-        
-        getUserPlants: function() {
-            return app.everlive.Users.currentUser()
-            .then(function(userWrap){
-                var data = app.everlive.data("UserPlants"),
-                    filter = new Everlive.Query();
-                
-                filter.where().eq("Owner", userWrap.result.Id);            
-                return data.get(filter)            
-            });
-        },
-        
-        getAllPlants: function () {                  
-            return app.everlive.data("Plants").get();            
-        },
-        
-        initData: function() {
-            var that = this;
-            
-            RSVP.all([that.getAllPlants(), that.getUserPlants()])
-            .then($.proxy(that.setData, that));
-        },
-        
-        setData: function (data) {
-            this.viewModel.setData(data[0].result, data[1].result);
-        }
+        init: function () {                     
+			this.viewModel = new LeafsViewModel();      
+        }		
     });
     
     app.leafsService = new LeafsService();    
