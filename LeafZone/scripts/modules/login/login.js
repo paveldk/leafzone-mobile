@@ -31,12 +31,15 @@
 
 		_onSuccess: function (provider) {
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafs);
+			app.everlive.Users.currentUser()
+			.then(function(data) {
+				app.currentUser = data.result;
+				app.common.navigateToView(app.config.views.leafs);
+            });
 		},
 
 		_onError: function (provider) {
-			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafs);
+			app.common.hideLoading();			
 		}
 	});
 
@@ -60,7 +63,7 @@
 			}
 
 			that._onStart(that.consts.PROVIDER_DEFAULT);
-
+			
 			return app.everlive.Users.login(username, password)
 			.then($.proxy(that._onSuccess, that, that.consts.PROVIDER_DEFAULT))
 			.then(null, $.proxy(that._onError, that, that.consts.PROVIDER_DEFAULT));

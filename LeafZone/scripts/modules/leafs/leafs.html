@@ -1,6 +1,8 @@
 <div id="leafs-view"
      class="leafs-view"
      data-role="view"
+	 data-init="app.leafsService.initModule"
+	 data-model="app.leafsService.viewModel"
      data-layout="drawer-layout">
     
 	<div data-role="header">
@@ -12,60 +14,10 @@
 	</div>
     
     <ul data-role="listview"
+		data-pull-to-refresh="true"
+		data-bind="source: allPlantsDataSource"
 		data-template="leaf-template">
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-        	</div>
-        </li>
-        <li>
-            <div class="leaf-item-wrapper">
-                <div class="leaf-item-image"></div>
-            	<h3>Indian Bean Tree</h3>
-                <p>Catalpa bignonioides</p>
-                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
-        	</div>
-        </li>
+       
     </ul>
     
 	<div class="lz-footer" data-role="footer">
@@ -79,7 +31,7 @@
     <script id="leaf-template" type="text/x-kendo-tmpl">
          <div class="leaf-item-wrapper">
          	<div class="leaf-item-image"></div>
-			<h3>Indian Bean Tree</h3>
+			<h3>#: Name #</h3>
 			<p>Catalpa bignonioides</p>
             <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
 		</div>
