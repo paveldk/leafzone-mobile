@@ -31,12 +31,12 @@
 
 		_onSuccess: function (provider) {
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.home);
+			app.common.navigateToView(app.config.views.leafs);
 		},
 
 		_onError: function (provider) {
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.home);
+			app.common.navigateToView(app.config.views.leafs);
 		}
 	});
 

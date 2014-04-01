@@ -1,71 +1,64 @@
 (function (global) {
-    var LoginBase,
-        SignInViewModel,
-        SignUpViewModel,
+    var LeafsViewModel,
+        LeafsService,
         app = global.app = global.app || {};
     
-    LoginBase = kendo.data.ObservableObject.extend({
-        inint: function(){
-            return app.appReadyPromise
-            .then( function(){
-                return app.everlive.Users.login("svt", "svt");
-            })
-            .then( function(){
-                return app.everlive.Users.currentUser();
-            })
+    LeafsViewModel = kendo.data.ObservableObject.extend({
+        allPlantsDataSource: null,
+        userPlantsDataSource: null,
+        
+        init: function (){
+            var that = this;
             
-            .then(function(user){
-                var data = app.everlive.data("UserPlants");       
-                data.create({ 'Owner' : user.result.Id, 'CreatedBy' : user.result.Id },
-                            function(data){
-                                
-                            },
-                            function(error){
-                                
-                            });
+            that.allPlantsDataSource = new kendo.data.DataSource();
+            that.userPlantsDataSource = new kendo.data.DataSource();
+            kendo.data.ObservableObject.fn.init.apply(that, that);
+        },
+        
+        setData: function(allPlantsData, userPlantsData) {
+            var that = this;
+            
+            that.get("allPlantsDataSource").data(allPlantsData);
+            that.get("userPlantsDataSource").data(userPlantsData);
+        }        
+    });
+    
+    LeafsService = kendo.Class.extend({
+        viewModel: null,
+        
+        init: function () {
+            var that = this;
+            
+            that.viewModel = new LeafsViewModel();            
+            that.initModule = $.proxy(that.initData, that);
+        },
+        
+        getUserPlants: function() {
+            return app.everlive.Users.currentUser()
+            .then(function(userWrap){
+                var data = app.everlive.data("UserPlants"),
+                    filter = new Everlive.Query();
                 
-                data.get()
-                .then(
-                    function(data){
-                        
-                    },            
-                    function(error){
-                        
-                    });
+                filter.where().eq("Owner", userWrap.result.Id);            
+                return data.get(filter)            
             });
+        },
+        
+        getAllPlants: function () {                  
+            return app.everlive.data("Plants").get();            
+        },
+        
+        initData: function() {
+            var that = this;
             
+            RSVP.all([that.getAllPlants(), that.getUserPlants()])
+            .then($.proxy(that.setData, that));
+        },
+        
+        setData: function (data) {
+            this.viewModel.setData(data[0].result, data[1].result);
         }
-        
     });
     
-    return app.appReadyPromise
-    .then( function(){
-        debugger;
-        return app.everlive.Users.login("svt", "svt");
-    })
-    .then( function(){
-        return app.everlive.Users.currentUser();
-    })    
-    .then(function(user){
-        var data = app.everlive.data("UserPlants");  
-        var filter = new Everlive.Query();
-        filter.where().eq('Owner', user.result.Id);
-        
-        data.get(filter)
-        .then(
-            function(data){
-                
-            },
-            function(error){
-                
-            });    
-    });
-    
-    
-    
-    
-    app.leafsService = {
-        
-    };
-    
+    app.leafsService = new LeafsService();    
 })(window);
