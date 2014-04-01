@@ -29,12 +29,16 @@
         <div id="home-view"
              class="home-view"
              data-role="view"
-             data-layout="drawer-layout">
+             data-layout="default"
+             data-stretch="true">
             
-			<div class="img-large-logo"></div>
+            <div data-role="header">
+                <div class="img-large-logo"></div>
+            </div>
+            
             <div class="img-leaf"></div>
-            
-            <div data-role="footer">
+
+            <div class="lz-footer-transparent" data-role="footer">
                 <div data-role="navbar">
                     <a class="lz-button" data-role="button" data-align="left" href="scripts/modules/login/signup.html">Sign Up</a>
 					<a class="lz-button lz-button-alternate" data-role="button" data-align="right" href="scripts/modules/login/signin.html">Sign In</a>
@@ -52,7 +56,7 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['home-view', 'leafs-view', 'location-view']">
+        <div id="drawer" data-role="drawer" data-views="['leafs-view', 'location-view']">
              <ul data-role="listview">
 				<li><a href="#/">Home</a></li>
           		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
