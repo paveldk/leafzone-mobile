@@ -151,13 +151,13 @@ body {
 	box-shadow: 0px -1px 2px 0px #dadada;
 }
 .km-view .km-button.lz-button.lz-button-circle.circle-left-position { 
-    left: 0.5em;
+    left: 0.6em;
     right: initial;
     margin-left: 0;
 }
 .km-view .km-button.lz-button.lz-button-circle.circle-right-position {
     left: initial;
-    right: 0.5em;
+    right: 0.6em;
     margin-left: 0;
 }
 
@@ -386,8 +386,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 45px;
-    height: 45px;
+    width: 3em;
+    height: 3em;
     background: #fff;
     border: 5px solid #274c65;
     -webkit-border-radius: 50%;
@@ -397,4 +397,49 @@ body {
 .leaf-details-container .leaf-damage > span {
     font-size: 1.45em;
     color: #274c65;
+    margin: 0 auto;
+	display: block;
+    vertical-align: middle;
+    height: 100%;
+    margin-top: 0.25em;
+}
+.leaf-details-container .leaf-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 3.5em;
+}
+.leaf-details-container .leaf-info > div {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+    padding-left: 0.7em;
+}
+.leaf-details-container .leaf-info > div > span {
+    width: 1.5em;
+    height: 1.5em;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #dadada;
+    background: #fff;
+    display: inline-block;
+    text-align: center;
+}
+.leaf-details-container .leaf-info > div > span > .fa {
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+.leaf-details-container .leaf-info > div > h6 {
+    font-size: 0.85em;
+    color: #a2a2a2;
+    width: 90px;
+    display: inline-block;
+    text-align: left;
+    margin-left: 15px;
+}
+.leaf-details-container .leaf-info > div > h5 {
+    color: #555;
+    display: inline-block;
+    text-align: left;
 }
