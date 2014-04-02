@@ -394,14 +394,20 @@ body {
     border-radius: 50%;
     text-align: center;
 }
+.leaf-details-container .leaf-damage:after {
+    content: "%";
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #274c65;
+    position: relative;
+    left: 1.65em;
+    top: -0.75em;
+}
 .leaf-details-container .leaf-damage > span {
     font-size: 1.45em;
     color: #274c65;
-    margin: 0 auto;
+    margin: 0.15em auto;
 	display: block;
-    vertical-align: middle;
-    height: 100%;
-    margin-top: 0.25em;
 }
 .leaf-details-container .leaf-info {
     position: absolute;
@@ -417,8 +423,8 @@ body {
     padding-left: 0.7em;
 }
 .leaf-details-container .leaf-info > div > span {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.6em;
+    height: 1.6em;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     border: 2px solid #dadada;
@@ -426,9 +432,8 @@ body {
     display: inline-block;
     text-align: center;
 }
-.leaf-details-container .leaf-info > div > span > .fa {
-    font-size: 0.8em;
-    vertical-align: middle;
+.leaf-details-container .leaf-info > div > span > .fa:before {
+    font-size: 0.85em;
 }
 .leaf-details-container .leaf-info > div > h6 {
     font-size: 0.85em;
