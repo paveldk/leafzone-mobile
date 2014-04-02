@@ -2,6 +2,7 @@
      class="leaf-details-view"
      data-role="view"
      data-layout="drawer-layout"
+     data-stretch="true"
 	 data-model="app.leafsService.viewModel">
     
 	<div data-role="header">
@@ -12,9 +13,20 @@
         <div class="img-small-logo"></div>
 	</div>
     
+    <div class="leaf-image-container"></div>
+    <div class="leaf-details-container">
+        <div>
+            <h2>Indian Bean Tree</h2>
+            <h6>Catalpa bignonioides</h6>
+            <div class="leaf-damage">
+                <span>23</span>
+            </div>
+        </div>
+    </div>
+    
 	<div data-role="footer">
         <div data-role="navbar">			
-            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right">Share</a>
+            <a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right"><i class="fa fa-facebook"></i>Share</a>
 		</div>
         <a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
 	</div>

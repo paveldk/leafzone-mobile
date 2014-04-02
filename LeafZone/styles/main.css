@@ -11,6 +11,19 @@ body {
     background-color: #fff;
 }
 
+/* flex styles*/
+.km-stretched-view {
+    width: 100%;
+    height: 100%;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;  
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+.km-stretched-view > * {
+    height: 100%;
+}
+
 /* scrollbar styles */
 .km-ios7 .km-touch-scrollbar { background-color: #81c342; }
 
@@ -27,18 +40,20 @@ body {
 .km-view .km-content h3, 
 .km-view .km-content h4, 
 .km-view .km-content h5, 
-.km-view .km-content h6,
+.km-view .km-content h6 {
+    margin: 0;
+}
 .km-view .km-content p {
     margin-left: 0;
     margin-right: 0;
     text-align: left;
 }
-.km-view .km-content h1 { font-size: 1.3em; }
-.km-view .km-content h2 { font-size: 1.2em; }
-.km-view .km-content h3 { font-size: 1.1em; }
-.km-view .km-content h4 { font-size: 1em; }
-.km-view .km-content h5 { font-size: 0.95em; }
-.km-view .km-content h6 { font-size: 0.9em; }
+.km-view .km-content h1 { font-size: 1.3em; }     /* 19px */
+.km-view .km-content h2 { font-size: 1.2em; }     /* 18px */
+.km-view .km-content h3 { font-size: 1.1em; }     /* 16px */
+.km-view .km-content h4 { font-size: 1em; }       /* 15px */
+.km-view .km-content h5 { font-size: 0.95em; }    /* 14px */
+.km-view .km-content h6 { font-size: 0.9em; }     /* 13px */
 .km-view .km-content p {
     font-size: 0.85em;
     color: #888;
@@ -102,16 +117,19 @@ body {
     -webkit-border-radius: 2em;
     border-radius: 2em;
 }
-.km-view .km-button.lz-button.lz-button-wide {
-    padding: 0.6em 3em;
-}
-
 .km-view .km-button.lz-button.km-state-active { background-color: #6aa92d; }
 .km-view .km-button.lz-button.km-state-disabled { background-color: #81c342; }
 
 .km-view .km-button.lz-button.lz-button-alternate { background-color: #274c65; }
 .km-view .km-button.lz-button.lz-button-alternate.km-state-active { background-color: #1b3a50; }
 .km-view .km-button.lz-button.lz-button-alternate.km-state-disabled { background-color: #93a5b2; }
+
+.km-view .km-button.lz-button.lz-button-wide {
+    padding: 0.6em 3em;
+}
+.km-view .km-button.lz-button.lz-button-icon .fa {
+    margin-right: 0.5em;
+}
 
 /* circle button styles */
 .km-view .km-button.lz-button.lz-button-circle {
@@ -295,11 +313,11 @@ body {
 /* login view styles */
 
 /* leafs view styles */
-.leaf-item-wrapper {
+.leaf-item-template {
     padding: 0.8em 0 0.8em 5.5em;
     position: relative;
 }
-.leaf-item-wrapper > .leaf-item-image {
+.leaf-item-template > .leaf-item-image {
     width: 72px;
     height: 72px;
     border: 3px solid #e6e4e4;
@@ -311,7 +329,7 @@ body {
     left: 0;
     margin-top: -36px;
 }
-.leaf-item-wrapper > .leaf-item-badge {
+.leaf-item-template > .leaf-item-badge {
     width: 0px;
 	height: 0px;
 	border-style: solid;
@@ -322,19 +340,61 @@ body {
     right: -1.2em;
     color: #fff;
 }
-.leaf-item-wrapper > .leaf-item-badge > .fa {
+.leaf-item-template > .leaf-item-badge > .fa {
    position: relative;
 	top: -2px;
 	left: 18px;
     font-size: 0.7em;
 }
-.leaf-item-wrapper > h3 {
+.leaf-item-template > h3 {
     color: #555;
     font-weight: bold;
     margin: 0;
 }
-.leaf-item-wrapper > p {
+.leaf-item-template > p {
     color: #555;
     margin-top: 0.6em;
     margin-bottom: 0;
+}
+
+.leaf-details-container {
+    border-top: 1px solid #dadada;
+    padding: 1em 1.4em;
+}
+.leaf-details-container > div {
+    position: relative;
+    height: 100%;
+}
+.leaf-details-container > div:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.4em;
+    width: 2px;
+    height: 100%;
+    background: #dadada;
+}
+.leaf-details-container h2,
+.leaf-details-container h6 {
+    text-align: right;
+    color: #888;
+}
+.leaf-details-container h2 {
+    color: #274c65;
+}
+.leaf-details-container .leaf-damage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border: 5px solid #274c65;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+}
+.leaf-details-container .leaf-damage > span {
+    font-size: 1.45em;
+    color: #274c65;
 }
