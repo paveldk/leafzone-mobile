@@ -4,16 +4,16 @@
         app = global.app = global.app || {};
     
     LeafsViewModel = kendo.data.ObservableObject.extend({
-        allPlantsDataSource: null,
-        userPlantsDataSource: null,
+        appUserPlantsDataSource: null,
+        myPlantsDataSource: null,
         myPlantsSelected: true,
 				
         init: function () {
             var that = this;
 		    
 			that.myPlantsSelected = true;			
-			that.allPlantsDataSource = new kendo.data.DataSource();
-			that.userPlantsDataSource = new kendo.data.DataSource();			            
+			that.appUserPlantsDataSource = new kendo.data.DataSource();
+			that.myPlantsDataSource = new kendo.data.DataSource();			            
             kendo.data.ObservableObject.fn.init.apply(that, that);
         },
 		
@@ -36,26 +36,26 @@
 			that.initModule = $.proxy(that.initData, that);
         },
 		
-		setAllPlantsData: function() {
-			var allPlantsDataSource = new kendo.data.DataSource({
+		setAllUserPlantsData: function() {
+			var appUserPlantsDataSource = new kendo.data.DataSource({
 					type: "everlive",
 				    transport: {
-				        typeName: "Plants"
+				        typeName: "UserPlants"
 				    },
 				    schema: {
-				        model: { 
+						model: { 
 							id: Everlive.idField ,
 							fields: {
 								name: {
-									field: "Name",
+									field: "DiscoveredPlant",
 									defaultValue: ""
 								},
 								details: {
-									field: "BotanicalName",
+									field: "DiscoveredDisease",
 									defaultValue: ""
 								},
 								imageId: {
-									field: "MainImage",
+									field: "Image",
 									defaultValue: ""
 								}			               
 							},
@@ -65,14 +65,14 @@
 						}
 				    },
 				    serverPaging: true,			    
-				    pageSize: 10
+				    pageSize: 20
 	            });	
 			
-			this.viewModel.set("allPlantsDataSource", allPlantsDataSource);
+			this.viewModel.set("appUserPlantsDataSource", appUserPlantsDataSource);
         },
 		
 		setMyPlantsData: function() {
-			var userPlantsDataSource = new kendo.data.DataSource({
+			var myPlantsDataSource = new kendo.data.DataSource({
 					type: "everlive",
 				    transport: {
 				        typeName: "UserPlants"
@@ -101,16 +101,16 @@
 				    },
 					filter: { field: "Owner", operator: "eq", value: app.currentUser.Id },
 				    serverPaging: true,			    
-				    pageSize: 10
+				    pageSize: 20
 	            });
 			
-			this.viewModel.set("userPlantsDataSource", userPlantsDataSource);
+			this.viewModel.set("myPlantsDataSource", myPlantsDataSource);
         },		
 		
 		initData: function() {
 			var that = this;
 			
-			that.setAllPlantsData();
+			that.setAllUserPlantsData();
 			that.setMyPlantsData();
 		}
     });
