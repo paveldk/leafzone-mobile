@@ -15,13 +15,13 @@
     
     <ul data-role="listview"
 		data-pull-to-refresh="true"
-		data-bind="source: userPlantsDataSource, visible: myPlantsSelected"
+		data-bind="source: myPlantsDataSource, visible: myPlantsSelected"
 		data-template="leaf-template">       
     </ul>
 	
 	<ul data-role="listview"
 		data-pull-to-refresh="true"
-		data-bind="source: allPlantsDataSource, invisible: myPlantsSelected"
+		data-bind="source: appUserPlantsDataSource, invisible: myPlantsSelected"
 		data-template="leaf-template">       
     </ul>
     
