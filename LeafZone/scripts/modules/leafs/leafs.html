@@ -1,8 +1,8 @@
 <div id="leafs-view"
      class="leafs-view"
      data-role="view"
-	 data-model="app.leafsService.viewModel"
-     data-layout="drawer-layout">
+     data-layout="drawer-layout"
+	 data-model="app.leafsService.viewModel">
     
 	<div data-role="header">
         <div data-role="navbar">
@@ -24,7 +24,7 @@
 		data-template="leaf-template">       
     </ul>
     
-	<div class="lz-footer" data-role="footer">
+	<div data-role="footer">
         <div data-role="navbar">			
             <a class="lz-button lz-button-footer checked" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, visible: myPlantsSelected">My Leafs</a>
             <a class="lz-button lz-button-footer" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, invisible: myPlantsSelected">My Leafs</a>
@@ -35,11 +35,13 @@
 	</div>
     
     <script id="leaf-template" type="text/x-kendo-tmpl">
-         <div class="leaf-item-wrapper">
-			<img src="#= imageUrl() #" class="leaf-item-image" />		
-			<h3>#: name #</h3>
-			<p>#: details #</p>
-            <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
-		</div>
+    	<a>
+            <div class="leaf-item-wrapper">
+                <img src="#= imageUrl() #" class="leaf-item-image" />		
+                <h3>#: name #</h3>
+                <p>#: details #</p>
+                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
+            </div>
+    	</a>
     </script>
 </div>

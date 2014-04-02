@@ -29,7 +29,7 @@
         <div id="home-view"
              class="home-view"
              data-role="view"
-             data-layout="default"
+             data-layout="drawer-layout"
              data-stretch="true">
             
             <div data-role="header">
@@ -56,10 +56,11 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['leafs-view', 'location-view']">
+        <div id="drawer" data-role="drawer" data-views="['home-view','leafs-view','leaf-details-view','location-view']">
              <ul data-role="listview">
 				<li><a href="#/">Home</a></li>
           		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
+                 <li><a href="scripts/modules/leafs/leaf-details.html">Leaf Details</a></li>
 				<li><a href="scripts/modules/location/location.html">Location</a></li> 
             </ul>
         </div>
