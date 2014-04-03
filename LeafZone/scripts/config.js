@@ -3,8 +3,9 @@
 
 	app.config = {
 		everlive: {
-			//The original api key is woLBIbIHeu9aWBrb, but changed temporarily, becase of acount limitations
-			apiKey: "ltG65jxbc26oEeod",
+			//The original api key is woLBIbIHeu9aWBrb, because of accaunt level does not suppor social login. Use
+            //ltG65jxbc26oEeod for social login test
+			apiKey: "woLBIbIHeu9aWBrb",
 			scheme: "http"
 		},
 		//TODO: create a new id
@@ -28,7 +29,8 @@
 		views: {
 			home: "#home-view",
 			signIn: "scripts/modules/login/signin.html",
-			signUp: "scripts/modules/login/signup.html"
+			signUp: "scripts/modules/login/signup.html",
+            leafs: "scripts/modules/leafs/leafs.html"
 		}
 	};
 })(window);

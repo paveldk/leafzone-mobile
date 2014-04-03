@@ -4,7 +4,9 @@
         <title>Leaf Zone</title>
         <meta charset="utf-8" />
         
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" />
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+        
         <link href="lib/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
         
@@ -18,6 +20,7 @@
         <script src="scripts/common.js"></script>
         <script src="scripts/modules/login/identity-providers.js"></script>
         <script src="scripts/modules/login/login.js"></script>
+        <script src="scripts/modules/leafs/leafs.js"></script>
         <script src="scripts/modules/location/location.js"></script>
         <script src="scripts/app.js"></script>
         
@@ -26,12 +29,16 @@
         <div id="home-view"
              class="home-view"
              data-role="view"
-             data-layout="default">
+             data-layout="default"
+             data-stretch="true">
             
-			<div class="img-large-logo"></div>
+            <div data-role="header">
+                <div class="img-large-logo"></div>
+            </div>
+            
             <div class="img-leaf"></div>
-            
-            <div data-role="footer">
+
+            <div class="lz-footer-transparent" data-role="footer">
                 <div data-role="navbar">
                     <a class="lz-button" data-role="button" data-align="left" href="scripts/modules/login/signup.html">Sign Up</a>
 					<a class="lz-button lz-button-alternate" data-role="button" data-align="right" href="scripts/modules/login/signin.html">Sign In</a>
@@ -49,9 +56,10 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['location-view']">
+        <div id="drawer" data-role="drawer" data-views="['leafs-view', 'location-view']">
              <ul data-role="listview">
 				<li><a href="#/">Home</a></li>
+          		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
 				<li><a href="scripts/modules/location/location.html">Location</a></li> 
             </ul>
         </div>

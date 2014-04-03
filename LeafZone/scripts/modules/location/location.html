@@ -1,13 +1,27 @@
-<!--Location-->
 <div id="location-view"
+     class="location-view"
      data-role="view"
      data-layout="drawer-layout"
      data-stretch="true"
-     data-title="Location"
      data-init="app.locationService.initLocation"
      data-show="app.locationService.show"
      data-hide="app.locationService.hide"
      data-model="app.locationService.viewModel">
     
-    <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>    
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-bars"></i></a>
+		</div>
+        <div class="img-small-logo"></div>
+	</div>
+    
+    <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>
+    
+    <div class="lz-footer" data-role="footer">
+        <div data-role="navbar">
+            <a class="lz-button lz-button-footer" data-role="button" data-align="left">My Leafs</a>
+            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right">All Leafs</a>
+		</div>
+        <a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
+	</div>    
 </div>

@@ -6,23 +6,23 @@
     
     <div data-role="header">
         <div data-role="navbar">
-            <a data-role="backbutton" data-align="left"></a>
-			<div class="img-small-logo"></div>
-            <a data-role="button" data-align="right" href="scripts/modules/login/signup.html">Sign Up</a>
+            <a data-role="backbutton" data-align="left"><i class="fa fa-chevron-left"></i></a>
+            <a data-role="button" data-align="right" href="scripts/modules/login/signup.html"><i class="fa fa-user"></i></a>
 		</div>
+        <div class="img-small-logo"></div>
 	</div>
     
-    <form class="lz-form" data-bind="events: { keyup: checkEnter }">
+    <form class="lz-form top-margin" data-bind="events: { keyup: checkEnter }">
 		<input type="text" data-bind="value: username" placeholder="User Name"/>
 		<input type="password" data-bind="value: password" placeholder="Password"/>
-		<input data-role="button" class="lz-button lz-button-large" type="submit" data-bind="click: onLogin" value="Sign In"/>
+		<input data-role="button" class="lz-button lz-button-default lz-button-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
 	</form>     
     
-    <div data-role="footer">
+    <div class="lz-footer-transparent" data-role="footer">
         <div data-role="navbar">
             <input class="lz-button lz-button-social facebook" type="submit" data-role="button" data-align="left" value="" data-bind="click: onLoginFacebook, invisible: isLoggedIn" />
-			<input class="lz-button lz-button-social google" type="submit" data-role="button" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />
-			<input class="lz-button lz-button-social twitter" type="submit" data-role="button" data-align="right" value="" data-bind="click: onLoginLiveId, invisible: isLoggedIn" />
+			<input class="lz-button lz-button-social google" type="submit" data-role="button" data-align="right" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />
 		</div>
+         <!--<input class="lz-button lz-button-social google" type="submit" data-role="button" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />-->
 	</div>
 </div>

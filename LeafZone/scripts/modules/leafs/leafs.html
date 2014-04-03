@@ -1,0 +1,46 @@
+<div id="leafs-view"
+     class="leafs-view"
+     data-role="view"
+	 data-init="app.leafsService.initModule"
+	 data-model="app.leafsService.viewModel"
+     data-layout="drawer-layout">
+    
+	<div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-bars"></i></a>
+            <a data-role="button" data-align="right" href="scripts/modules/login/signup.html"><i class="fa fa-user"></i></a>
+		</div>
+        <div class="img-small-logo"></div>
+	</div>
+    
+    <ul data-role="listview"
+		data-pull-to-refresh="true"
+		data-bind="source: myPlantsDataSource, visible: myPlantsSelected"
+		data-template="leaf-template">       
+    </ul>
+	
+	<ul data-role="listview"
+		data-pull-to-refresh="true"
+		data-bind="source: appUserPlantsDataSource, invisible: myPlantsSelected"
+		data-template="leaf-template">       
+    </ul>
+    
+	<div class="lz-footer" data-role="footer">
+        <div data-role="navbar">			
+            <a class="lz-button lz-button-footer checked" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, visible: myPlantsSelected">My Leafs</a>
+            <a class="lz-button lz-button-footer" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, invisible: myPlantsSelected">My Leafs</a>
+            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right" data-bind="click: onAllLeafsClick, invisible: myPlantsSelected">All Leafs</a>
+            <a class="lz-button lz-button-footer" data-role="button" data-align="right" data-bind="click: onAllLeafsClick, visible: myPlantsSelected">All Leafs</a>
+		</div>
+        <a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
+	</div>
+    
+    <script id="leaf-template" type="text/x-kendo-tmpl">
+         <div class="leaf-item-wrapper">
+			<img src="#= imageUrl() #" class="leaf-item-image" />		
+			<h3>#: name #</h3>
+			<p>#: details #</p>
+            <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
+		</div>
+    </script>
+</div>
