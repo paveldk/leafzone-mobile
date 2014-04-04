@@ -1,0 +1,59 @@
+<div id="leaf-details-view"
+	 class="leaf-details-view"
+	 data-role="view"
+	 data-layout="drawer-layout"
+	 data-stretch="true"
+	 data-show="app.leafDetailsService.showData"
+	 data-model="app.leafDetailsService.viewModel">
+
+	<div data-role="header">
+		<div data-role="navbar">
+			<a data-role="backbutton" data-align="left">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+			<a data-role="button" data-align="right" href="scripts/modules/login/signup.html">
+				<i class="fa fa-user"></i>
+			</a>
+		</div>
+		<div class="img-small-logo"></div>
+	</div>
+
+	<img class="leaf-image-container" data-bind="attr: {src : imageUrl}" />
+	<div class="leaf-details-container">
+		<div data-template="leaf-deatils-template" data-bind="source: this"></div>
+	</div>
+
+	<script id="leaf-deatils-template" type="text/x-kendo-template">
+		<h2>#: name #</h2>
+		<h6></h6>
+		<div class="leaf-damage">
+			<span>#: percentage #</span>
+		</div>
+		<div class="leaf-info">
+			<div>
+				<span> <i class="fa fa-user"></i> </span>
+				<h6>Submitted by</h6>
+				<h5>#: userName #</h5>
+			</div>
+			<div>
+				<span> <i class="fa fa-location-arrow"></i> </span>
+				<h6>Location</h6>
+				<h5>#: location #</h5>
+			</div>
+			<div>
+				<span> <i class="fa fa-bug"></i> </span>
+				<h6>Disease</h6>
+				<h5>#: disease #</h5>
+			</div>
+		</div>
+	</script>
+
+	<div data-role="footer">
+		<div data-role="navbar">
+			<a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right">
+				<i class="fa fa-facebook"></i>Share
+			</a>
+		</div>
+		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
+	</div>
+</div>
