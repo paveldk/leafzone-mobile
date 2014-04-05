@@ -27,12 +27,12 @@
     
 	<div data-role="footer">
         <div data-role="navbar">			
-            <a class="lz-button lz-button-footer checked" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, visible: myPlantsSelected">My Leafs</a>
-            <a class="lz-button lz-button-footer" data-role="button" data-align="left" data-bind="click: onMyLeafsClick, invisible: myPlantsSelected">My Leafs</a>
-            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right" data-bind="click: onAllLeafsClick, invisible: myPlantsSelected">All Leafs</a>
-            <a class="lz-button lz-button-footer" data-role="button" data-align="right" data-bind="click: onAllLeafsClick, visible: myPlantsSelected">All Leafs</a>
+            <a class="lz-button lz-button-footer checked" data-role="button" data-align="left" data-bind="click: onMyLeafs, visible: myPlantsSelected">My Leafs</a>
+            <a class="lz-button lz-button-footer" data-role="button" data-align="left" data-bind="click: onMyLeafs, invisible: myPlantsSelected">My Leafs</a>
+            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right" data-bind="click: onAllLeafs, invisible: myPlantsSelected">All Leafs</a>
+            <a class="lz-button lz-button-footer" data-role="button" data-align="right" data-bind="click: onAllLeafs, visible: myPlantsSelected">All Leafs</a>
 		</div>
-        <a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
+        <a class="lz-button lz-button-circle add-leaf" data-role="button" data-bind="click: onNewLeaf"></a>
 	</div>
     
     <script id="leaf-template" type="text/x-kendo-tmpl">

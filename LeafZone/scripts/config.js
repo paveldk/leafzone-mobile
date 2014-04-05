@@ -30,7 +30,9 @@
 			home: "#home-view",
 			signIn: "scripts/modules/login/signin.html",
 			signUp: "scripts/modules/login/signup.html",
-            leafs: "scripts/modules/leafs/leafs.html"
+            leafs: "scripts/modules/leafs/leafs.html",
+            leafDetails: "scripts/modules/leafs/leaf-details.html",
+            analizeLeaf: "scripts/modules/leafs/analyze-leaf.html"			
 		}
 	};
 })(window);
