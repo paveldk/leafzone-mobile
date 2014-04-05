@@ -42,6 +42,9 @@
 				.then(function(userData) {
 					that.setData(plantData.result, userData.result);
 					app.common.hideLoading();
+                })
+				.then(null, function(userData) {					
+					app.common.hideLoading();
                 });				
             });			
 		},
@@ -50,7 +53,7 @@
 			var that = this;
 			
 			that.viewModel.set("name", plantData.DiscoveredPlant);
-			that.viewModel.set("disease", plantData.DiscoveredDisease);
+			that.viewModel.set("disease", plantData.DiscoveredDisease || "No diseases");
 			that.viewModel.set("percentage", plantData.OzonePercent || 0);
 			that.viewModel.set("imageId", plantData.Image);
 			that.viewModel.set("userName", userData.DisplayName);
@@ -59,19 +62,45 @@
 		
 		setLocation: function (plantData) {
 			var that = this,
-				geocoder = new google.maps.Geocoder();
-				latlng = new google.maps.LatLng(plantData.Location.latitude, plantData.Location.longitude);
+				geocoder = new google.maps.Geocoder(),
+				latlng;				
 			
-			geocoder.geocode({'latLng': latlng}, function(results, status) {				
+			if(!plantData.Location || !plantData.Location.latitude || !plantData.Location.longitude){
+				that.setNoLocation();
+				return;
+            }
+			
+			latlng = new google.maps.LatLng(plantData.Location.latitude, plantData.Location.longitude);
+			
+			geocoder.geocode({'latLng': latlng}, function(results, status) {
+				var locationInfo;
+				
 				if (status === google.maps.GeocoderStatus.OK) {
-					if (results[0]) {
-						that.viewModel.set("location", results[0].formatted_address);
-						return;
-				  }
-				}
-					
-				that.viewModel.set("location", "No location info");
+					locationInfo = that.getLocationInfo(results);
+					that.viewModel.set("location", locationInfo);
+				} else {					
+					that.setNoLocation();	
+                }				
 			});
+        },
+
+		setNoLocation: function() {
+			this.viewModel.set("location", "No location info");
+        },
+		
+		getLocationInfo: function(locationsList) {
+			var locationInfo,
+				result = locationsList[0].formatted_address;
+			
+			for(var i = 0; i < locationsList.length; i++){
+				locationInfo = locationsList[i];
+				
+				if(locationInfo.types.indexOf("locality") >= 0) {
+					result = locationInfo.formatted_address;
+                }
+			}	
+			
+			return result;
         }
     });
     
