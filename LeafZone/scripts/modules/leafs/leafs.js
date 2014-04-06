@@ -2,6 +2,8 @@
     var LeafsViewModel,
         LeafsService,
         app = global.app = global.app || {};
+	
+	app.newLeafData = app.newLeafData || {};
 
     LeafsViewModel = kendo.data.ObservableObject.extend({
         appUserPlantsDataSource: null,
@@ -29,24 +31,21 @@
             var that = this;
 
             navigator.camera.getPicture(
-                $.proxy(that.onGetPicruteSuccess, that),
-                $.proxy(that.onGetPicruteError, that)), {
+			$.proxy(that.onGetPicruteSuccess, that),
+	        $.proxy(that.onGetPicruteError, that), 
+			{
                 quality: 49,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG
-            };
+	            destinationType: Camera.DestinationType.DATA_URL              
+            });
         },
 
-        onGetPicruteSuccess: function (fileUrl) {
-            var parameter = "?fileUrl=" + fileUrl;
-
-            app.common.navigateToView(app.config.views.analizeLeaf + parameter);
+        onGetPicruteSuccess: function (imageData) {
+			app.newLeafData.originalImageData = imageData;
+            app.common.navigateToView(app.config.views.submitLeaf);
         },
 
-        onGetPicruteError: function () {
-
+        onGetPicruteError: function (e) {
+			app.common.notification("Error", e.message);
         },
     });
 

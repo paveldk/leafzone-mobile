@@ -448,3 +448,7 @@ body {
     display: inline-block;
     text-align: left;
 }
+
+.leaf-image-container {
+	width: 100%;
+}

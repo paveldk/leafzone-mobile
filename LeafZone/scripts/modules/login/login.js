@@ -45,8 +45,8 @@
 
 	SignInViewModel = LoginBase.extend({
 		isLoggedIn: false,
-		username: "",
-		password: "",
+		username: "svt",
+		password: "svt",
 		consts: {
 			MESSAGE_TITLE_SIGN_IN_ERROR: "Sign In Error",
 			MESSAGE_EMPTY_FIELD: "Both fields are required"

@@ -4,12 +4,13 @@
         app = global.app = global.app || {};
 
     AnalyzeLeafViewModel = kendo.data.ObservableObject.extend({
-        imageUrl: "",
+        imageData: "",
+		isSubmitted: false,
         events: {
             reanalyze: "reanalyze",
             done: "done"
         },
-
+		
         onReanalyze: function () {
             var that = this;
 
@@ -25,6 +26,7 @@
 
     AnalyzeLeafService = kendo.Class.extend({
         viewModel: null,
+		imageUrl: "",
         analyzesCount: 0,
 
         init: function () {
@@ -38,42 +40,65 @@
         },
 
         initData: function (e) {
-            var that = this,
-                fileUrl = e.view.params.fileUrl;
-
-
-            that.viewModel.set("imageUrl", fileUrl);
-            this.analyze();
+            this.viewModel.set("imageData", app.newLeafData.analyzedlImageData);
         },
 
         analyze: function () {
             var that = this;
 
-            //call to the image recognition server
+            that.analyzeImage()
+            .then($.proxy(that.onSuccess, that))
+            .then(null, $.proxy(that.onError, that));
+        },
+		
+		analyzeImage: function () {
+            return new RSVP.Promise(function (resolve, reject) {
+
+                setTimeout(function () {
+                    resolve(app.newLeafData.originalImageData);
+                }, 1000);
+            });
         },
 
         done: function () {
             var that = this;
-
-            //callo to image recognition server for final analysis
-            //.then($.proxy(that.createEverliveRecord, that))
-            //.then(null, $.proxy(that.onError, that))
+			
+			app.common.showLoading();
+						
+			that.fakeServerCall()
+			.then($.proxy(that.createEverliveRecord, that))
+			.then($.proxy(that.onLeafCreated, that))
+			.then(null, $.proxy(that.onError, that));
+        },
+		
+		fakeServerCall: function() {
+			return new RSVP.Promise(function(resolve, reject) {
+			  
+				setTimeout(function(){
+					 resolve();
+                }, 1000);
+			});
         },
 
         createEverliveRecord: function (leafData) {
-            app.everlive.data("UserPlants")
-                .create({})
-                .then($.proxy(that.onEonLeafCreatedrror, that))
-                .then(null, $.proxy(that.onError, that));
+            return app.everlive.data("UserPlants")
+                .create({
+					"DiscoveredPlant": "DiscoveredPlant" + new Date().toString(),
+					"DiscoveredDisease": "DiscoveredDisease" + new Date().toString(),
+					"OzonePercent": 100 * Math.random(),
+					"Location": new Everlive.GeoPoint(50 * Math.random(), 50 * Math.random())
+                });
         },
 
         onLeafCreated: function (leafData) {
 			var parameter = "?dataId=" + leafData.result.Id;
 
+			app.common.hideLoading();
             app.common.navigateToView(app.config.views.leafDetails + parameter);
         },
-
+		
         onError: function (e) {
+			app.common.hideLoading();
             app.common.notification("Error", e.message);
         }
     });
