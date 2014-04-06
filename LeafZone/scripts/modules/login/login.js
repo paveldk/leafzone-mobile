@@ -38,8 +38,9 @@
             });
 		},
 
-		_onError: function (provider) {
-			app.common.hideLoading();			
+		_onError: function (provider, e) {
+			app.common.hideLoading();
+			app.common.notification(this.consts.MESSAGE_TITLE_SIGN_IN_ERROR, e.message);
 		}
 	});
 
