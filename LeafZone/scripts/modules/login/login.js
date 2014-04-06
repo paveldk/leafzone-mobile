@@ -32,21 +32,21 @@
 		_onSuccess: function (provider) {
 			app.common.hideLoading();
 			app.everlive.Users.currentUser()
-			.then(function(data) {
+			.then(function (data) {
 				app.currentUser = data.result;
 				app.common.navigateToView(app.config.views.leafs);
-            });
+			});
 		},
 
 		_onError: function (provider) {
-			app.common.hideLoading();			
+			app.common.hideLoading();
 		}
 	});
 
 	SignInViewModel = LoginBase.extend({
 		isLoggedIn: false,
-		username: "svt",
-		password: "svt",
+		username: "",
+		password: "",
 		consts: {
 			MESSAGE_TITLE_SIGN_IN_ERROR: "Sign In Error",
 			MESSAGE_EMPTY_FIELD: "Both fields are required"
@@ -63,7 +63,7 @@
 			}
 
 			that._onStart(that.consts.PROVIDER_DEFAULT);
-			
+
 			return app.everlive.Users.login(username, password)
 			.then($.proxy(that._onSuccess, that, that.consts.PROVIDER_DEFAULT))
 			.then(null, $.proxy(that._onError, that, that.consts.PROVIDER_DEFAULT));
