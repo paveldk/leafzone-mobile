@@ -29,15 +29,6 @@
 			app.common.hideLoading();
 		},
 
-		_onSuccess: function (provider) {
-			app.common.hideLoading();
-			app.everlive.Users.currentUser()
-			.then(function(data) {
-				app.currentUser = data.result;
-				app.common.navigateToView(app.config.views.leafs);
-            });
-		},
-
 		_onError: function (provider, e) {
 			app.common.hideLoading();
 			app.common.notification(this.consts.MESSAGE_TITLE_SIGN_IN_ERROR, e.message);
@@ -158,7 +149,16 @@
 				.then($.proxy(that._onSuccess, that, that.consts.PROVIDER_LIVE_ID))
 				.then(null, $.proxy(that._onError, that, that.consts.PROVIDER_LIVE_ID));
 			});
-		}
+		},
+
+		_onSuccess: function (provider) {
+			app.common.hideLoading();
+			app.everlive.Users.currentUser()
+			.then(function(data) {
+				app.currentUser = data.result;
+				app.common.navigateToView(app.config.views.leafs);
+            });
+		},
 	});
 
 	SignUpViewModel = LoginBase.extend({
@@ -215,7 +215,13 @@
 			}
 
 			return true;
-		}
+		},
+		
+		_onSuccess: function (provider, data) {
+			app.common.hideLoading();			
+			app.currentUser = data.result;
+			app.common.navigateToView(app.config.views.leafs);
+		},
 	});
 
 	app.loginService = {
