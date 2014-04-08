@@ -1,15 +1,14 @@
 (function (global) {
-	var AnalyzeLeafViewModel,
-		AnalyzeLeafService,
+	var LeafAnalyzeViewModel,
+		LeafAnalyzeService,
 		app = global.app = global.app || {};
 
 	app.newLeafData = app.newLeafData || {};
 
-	AnalyzeLeafViewModel = kendo.data.ObservableObject.extend({
+	LeafAnalyzeViewModel = kendo.data.ObservableObject.extend({
 		imageData: "",
 		events: {
 			submit: "submit",
-			takeNew: "takeNew",
 			reanalize: "reanalize",
 			done: "done"
 		},
@@ -19,13 +18,7 @@
 
 			that.trigger(that.events.submit, {});
 		},
-
-		onTakeNew: function () {
-			var that = this;
-
-			that.trigger(that.events.takeNew, {});
-		},
-
+		
 		onReanalize: function () {
 			var that = this;
 
@@ -39,7 +32,7 @@
 		}
 	});
 
-	AnalyzeLeafService = kendo.Class.extend({
+	LeafAnalyzeService = kendo.Class.extend({
 		viewModel: null,
 		isSubmitted: false,
 		analizeCount: 0,
@@ -47,14 +40,13 @@
 		init: function () {
 			var that = this;
 
-			that.viewModel = new AnalyzeLeafViewModel();
+			that.viewModel = new LeafAnalyzeViewModel();
 			that.showSubmitData = $.proxy(that.initSubmitData, that);
 			that.showAnalyzeData = $.proxy(that.initAnalyzeData, that);
 
-			that.viewModel.bind(that.viewModel.events.takeNew, $.proxy(that.takePicture, that));
 			that.viewModel.bind(that.viewModel.events.submit, $.proxy(that.submitImage, that));
 			that.viewModel.bind(that.viewModel.events.reanalize, $.proxy(that.analyzeImage, that));
-			that.viewModel.bind(that.viewModel.events.done, $.proxy(that.submitLeaf, that));
+			that.viewModel.bind(that.viewModel.events.done, $.proxy(that.done, that));
 		},
 
 		initSubmitData: function (e) {
@@ -71,102 +63,57 @@
 			that.viewModel.set("imageData", app.newLeafData.analyzedlImageData);
 		},
 
-		takePicture: function () {
-			var that = this;
-
-			navigator.camera.getPicture(
-			$.proxy(that.onGetPicruteSuccess, that),
-			$.proxy(that.onError, that),
-			{
-				quality: 49,
-				destinationType: Camera.DestinationType.DATA_URL
-			});
-		},
-
-		onGetPicruteSuccess: function (imageData) {
-			app.newLeafData.originalImageData = imageData;
-			this.viewModel.set("imageData", imageData);
-		},
-
-		submitImageData: function (submitCount) {
-			return new RSVP.Promise(function (resolve, reject) {
-
-				setTimeout(function () {
-					resolve(app.newLeafData.originalImageData);
-				}, 1000);
-			});
-		},
-
 		submitImage: function () {
 			var that = this;
 
 			app.common.showLoading();
 
-			that.submitImageData(0)
+			return that.submitImageData(that.analizeCount)
 			.then($.proxy(that.onSubmitSuccess, that))
 			.then(null, $.proxy(that.onError, that));
 		},
+		
+		submitImageData: function (submitCount) {
+			return new RSVP.Promise(function (resolve, reject) {
 
-		onSubmitSuccess: function (imageData) {
-			app.newLeafData.analyzedlImageData = imageData;
-			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafAnalyse);
+				setTimeout(function () {
+					resolve({
+						imageData: app.newLeafData.originalImageData,
+						discoveredPlant: "discoveredPlant",
+						discoveredDisease: "discoveredDisease",
+						ozonePercent: 10,						
+						disease: "disease",
+                    });
+				}, 1000);
+			});
 		},
 
-		onError: function (e) {
+		onSubmitSuccess: function (data) {
+			app.newLeafData.analyzedlImageData = data.imageData;
+			app.newLeafData.discoveredPlant = data.discoveredPlant;
+			app.newLeafData.discoveredDisease = data.discoveredDisease;
+			app.newLeafData.ozonePercent = data.ozonePercent;
+			
 			app.common.hideLoading();
-			app.common.notification("Error", e.message);
+			app.common.navigateToView(app.config.views.leafAnalyse);
 		},
 
 		analyzeImage: function () {
 			var that = this;
 
 			that.analizeCount++;
-			that.submitImage(that.analizeCount)
-			.then($.proxy(that.onSubmitSuccess, that))
-			.then(null, $.proxy(that.onError, that));
+			that.submitImage();
 		},
-
-		submitLeaf: function () {
-			var that = this;
-
-			app.common.showLoading();
-
-			that.createImageEntry()
-			.then($.proxy(that.createLeafEntry, that))
-			.then($.proxy(that.onLeafEntryCreated, that))
-			.then(null, $.proxy(that.onError, that));
+		
+		done: function () {
+			app.common.navigateToView(app.config.views.leafAnalyseValidation);
 		},
-
-		createImageEntry: function () {
-			var fileName = app.currentUser.Id + "-" + Date.now();
-
-			return app.everlive.Files
-			.create({
-				Filename: fileName,
-				ContentType: "image/jpeg",
-				base64: app.newLeafData.originalImageData
-			});
-		},
-
-		createLeafEntry: function (imageData) {
-			return app.everlive.data("UserPlants")
-			.create({
-				DiscoveredPlant: "Plant" + Math.round(1000 * Math.random()),
-				DiscoveredDisease: "Disease" + Math.round(10 * Math.random()),
-				OzonePercent: Math.round(100 * Math.random()),
-				Location: new Everlive.GeoPoint(Math.round(100 * Math.random()), Math.round(100 * Math.random())),
-				Image: imageData.result.Id
-			});
-		},
-
-		onLeafEntryCreated: function (leafData) {
-			var parameter = "?dataId=" + leafData.result.Id;
-
+		
+		onError: function (e) {
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafDetails + parameter);
-		},
+			app.common.notification("Error", e.message);
+		}
 	});
 
-	app.analyzeLeafService = new AnalyzeLeafService();
+	app.leafAnalyzeService = new LeafAnalyzeService();
 })(window);

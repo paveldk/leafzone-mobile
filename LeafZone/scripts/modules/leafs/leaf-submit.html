@@ -3,8 +3,8 @@
      data-role="view"
 	 data-layout="drawer-layout"
 	 data-stretch="true"
-	 data-show="app.analyzeLeafService.showSubmitData"
-	 data-model="app.analyzeLeafService.viewModel">
+	 data-show="app.leafAnalyzeService.showSubmitData"
+	 data-model="app.leafAnalyzeService.viewModel">
 
 	<div data-role="header">
 		<div data-role="navbar">
@@ -23,7 +23,8 @@
 	
 	<div class="lz-footer-transparent" data-role="footer">
         <div data-role="navbar">
-			<a class="lz-button lz-button-alternate" data-role="button" data-align="center" data-bind="click: onSubmit">Submit</a>
+			<a class="lz-button" data-role="button" href="scripts/modules/main/main.html" data-align="left">Take New</a>
+			<a class="lz-button lz-button-alternate" data-role="button" data-align="right" data-bind="click: onSubmit">Submit</a>
         </div>                 
 	</div>
 </div>

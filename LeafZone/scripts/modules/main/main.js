@@ -1,8 +1,6 @@
 (function (global) {
 	var NewLeafViewModel,
         NewLeafService,
-		imageWidth = 1440,
-		imageHeight = 1440,
         app = global.app = global.app || {};
 
 	app.newLeafData = app.newLeafData || {};
@@ -31,10 +29,17 @@
         },
 
 		onGetPicruteSuccess: function (imageUrl) {
-			var that = this;
+			var that = this,
+				resizeImagePromise,
+				createTumbnailPromise;
 			
-			 app.common.resizeImage(imageUrl, imageWidth, imageHeight, false)
-			.then($.proxy(that.onPictureReady, that));
+			app.common.showLoading();
+			
+			resizeImagePromise = app.common.resizeImage(imageUrl, app.config.images.imageWidth, app.config.images.ImageHeight, false);
+			createTumbnailPromise = app.common.resizeImage(imageUrl,  app.config.images.tumbnailSize,  app.config.images.tumbnailSize, true);
+			
+			RSVP.all([resizeImagePromise, createTumbnailPromise])
+			.then($.proxy(that.onPictureReady, that), $.proxy(that.onError, that));
 		},
 
 		onGetPicruteError: function (e) {},
@@ -42,8 +47,15 @@
 		onPictureReady: function (imageData) {
 			var prefix = "data:image/jpeg;base64,";
 
-			app.newLeafData.originalImageData = imageData.substr(prefix.length, imageData.length);
+			app.newLeafData.originalImageData = imageData[0].substr(prefix.length, imageData[0].length);
+			app.newLeafData.originalImageTmblData = imageData[1].substr(prefix.length, imageData[1].length);
+			app.common.hideLoading();
 			app.common.navigateToView(app.config.views.leafSubmit);
+        },
+		
+		onError: function (e) {
+			app.common.hideLoading();
+			app.common.notification("Error", e.message);
         }
 	});
 

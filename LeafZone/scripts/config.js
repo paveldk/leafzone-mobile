@@ -26,6 +26,12 @@
             clientId: "000000004C10D1AF",
             redirectUri: "https://login.live.com/oauth20_desktop.srf"
         },
+		images: {
+			tumbnailPrefix: "tmbl-",
+			tumbnailSize: 144,
+			imageWidth: 800,
+			ImageHeight: 800
+        },
         views: {
             init: "#init-view",
             signIn: "scripts/modules/login/signin.html",
@@ -35,6 +41,7 @@
             leafDetails: "scripts/modules/leafs/leaf-details.html",
             leafSubmit: "scripts/modules/leafs/leaf-submit.html",
             leafAnalyse: "scripts/modules/leafs/leaf-analyse.html",
+            leafAnalyseValidation: "scripts/modules/leafs/leaf-analyze-validation.html",
             diseases: "scripts/modules/diseases/diseases.html",
             diseaseDetails: "scripts/modules/diseases/disease-details.html",
             plants: "scripts/modules/plants/plants.html",
