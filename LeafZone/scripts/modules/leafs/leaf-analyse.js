@@ -110,7 +110,7 @@
 		onSubmitSuccess: function (imageData) {
 			app.newLeafData.analyzedlImageData = imageData;
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.analizeLeaf);
+			app.common.navigateToView(app.config.views.leafAnalyse);
 		},
 
 		onError: function (e) {

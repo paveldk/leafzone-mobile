@@ -1,0 +1,25 @@
+<div id="main-view"
+     class="main-view"
+     data-role="view"
+	 data-init="app.leafsService.initModule"
+	 data-model="app.leafsService.viewModel"
+     data-layout="drawer-layout"
+     data-stretch="true">
+    
+	<div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-bars"></i></a>
+		</div>
+        <div class="img-small-logo"></div>
+	</div>
+    <div></div>
+    <a class="lz-button lz-button-option" data-role="button" data-bind="click: onNewLeaf">
+		<i class="fa fa-camera"></i>
+		<span>Take a Photo</span>
+    </a>
+	<a class="lz-button lz-button-option" data-role="button" data-bind="click: onNewLeaf">
+		<i class="fa fa-picture-o"></i>
+		<span>Choose a Photo</span>
+	</a>
+    <div></div>
+</div>

@@ -3,6 +3,7 @@
     
     document.addEventListener("deviceready", function () {
         navigator.splashscreen.hide();     
+        StatusBar.overlaysWebView(false);
         
         new kendo.mobile.Application(document.body, { skin: "ios7" });     
         

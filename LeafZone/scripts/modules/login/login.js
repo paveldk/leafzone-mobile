@@ -156,7 +156,7 @@
 			app.everlive.Users.currentUser()
 			.then(function(data) {
 				app.currentUser = data.result;
-				app.common.navigateToView(app.config.views.leafs);
+				app.common.navigateToView(app.config.views.main);
             });
 		},
 	});
@@ -220,7 +220,7 @@
 		_onSuccess: function (provider, data) {
 			app.common.hideLoading();			
 			app.currentUser = data.result;
-			app.common.navigateToView(app.config.views.leafs);
+			app.common.navigateToView(app.config.views.main);
 		},
 	});
 

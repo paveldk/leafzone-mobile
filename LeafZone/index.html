@@ -25,13 +25,14 @@
         <script src="scripts/modules/leafs/leaf-details.js"></script>
         <script src="scripts/modules/location/location.js"></script>
         <script src="scripts/app.js"></script>
-        
     </head>
+    
     <body>
-        <div id="home-view"
-             class="home-view"
+        <div id="init-view"
+             class="init-view"
              data-role="view"
-             data-layout="drawer-view"
+             data-layout="default"
+             data-transition="overlay:up"
              data-stretch="true">
             
             <div data-role="header">
@@ -58,12 +59,15 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['home-view','leafs-view','leaf-details-view','location-view']">
+        <div id="drawer" data-role="drawer" 
+             data-views="['main-view','leafs-view','leaf-details-view','diseases-view','disease-details-view','plants-view','plant-details-view','location-view']">
              <ul data-role="listview">
-				<li><a href="#/">Home</a></li>
+                <li><a href="scripts/modules/main/main.html">Home</a></li>
           		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
-                 <li><a href="scripts/modules/leafs/leaf-details.html">Leaf Details</a></li>
-				<li><a href="scripts/modules/location/location.html">Location</a></li> 
+                <li><a href="scripts/modules/diseases/diseases.html">Diseases</a></li>
+                <li><a href="scripts/modules/plants/plants.html">Plants</a></li>
+				<li><a href="scripts/modules/location/location.html">Location</a></li>
+                <li><a href="scripts/modules/login/signout.html">Sign Out</a></li> 
             </ul>
         </div>
     </body>

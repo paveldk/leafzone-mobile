@@ -2,6 +2,7 @@
      class="signin-view"
      data-role="view"
      data-layout="default"
+     data-transition="overlay:up"
      data-model="app.loginService.signInViewModel">
     
     <div data-role="header">
@@ -22,6 +23,5 @@
             <input class="lz-button lz-button-social facebook" type="submit" data-role="button" data-align="left" value="" data-bind="click: onLoginFacebook, invisible: isLoggedIn" />
 			<input class="lz-button lz-button-social google" type="submit" data-role="button" data-align="right" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />
 		</div>
-         <!--<input class="lz-button lz-button-social google" type="submit" data-role="button" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />-->
 	</div>
 </div>

@@ -27,13 +27,18 @@
             redirectUri: "https://login.live.com/oauth20_desktop.srf"
         },
         views: {
-            home: "#home-view",
+            init: "#init-view",
             signIn: "scripts/modules/login/signin.html",
             signUp: "scripts/modules/login/signup.html",
+            main: "scripts/modules/main/main.html",
             leafs: "scripts/modules/leafs/leafs.html",
             leafDetails: "scripts/modules/leafs/leaf-details.html",
-            submitLeaf: "scripts/modules/leafs/submit-leaf.html",
-            analizeLeaf: "scripts/modules/leafs/analyze-leaf.html"
+            leafSubmit: "scripts/modules/leafs/leaf-submit.html",
+            leafAnalyse: "scripts/modules/leafs/leaf-analyse.html",
+            diseases: "scripts/modules/diseases/diseases.html",
+            diseaseDetails: "scripts/modules/diseases/disease-details.html",
+            plants: "scripts/modules/plants/plants.html",
+            plantDetails: "scripts/modules/plants/plant-details.html"
         }
     };
 })(window);
