@@ -1,6 +1,8 @@
 (function (global) {
 	var NewLeafViewModel,
         NewLeafService,
+		imageWidth = 1440,
+		imageHeight = 1440,
         app = global.app = global.app || {};
 
 	app.newLeafData = app.newLeafData || {};
@@ -23,16 +25,26 @@
 			{
 				quality: 49,
 				sourceType :sourceType,
-				destinationType: Camera.DestinationType.DATA_URL
+				encodingType: Camera.EncodingType.JPEG,
+				destinationType: Camera.DestinationType.FILE_URI
 			});
         },
 
-		onGetPicruteSuccess: function (imageData) {
-			app.newLeafData.originalImageData = imageData;
-			app.common.navigateToView(app.config.views.leafSubmit);
+		onGetPicruteSuccess: function (imageUrl) {
+			var that = this;
+			
+			 app.common.resizeImage(imageUrl, imageWidth, imageHeight, false)
+			.then($.proxy(that.onPictureReady, that));
 		},
 
-		onGetPicruteError: function (e) {}
+		onGetPicruteError: function (e) {},
+						
+		onPictureReady: function (imageData) {
+			var prefix = "data:image/jpeg;base64,";
+
+			app.newLeafData.originalImageData = imageData.substr(prefix.length, imageData.length);
+			app.common.navigateToView(app.config.views.leafSubmit);
+        }
 	});
 
 	NewLeafService = kendo.Class.extend({

@@ -560,3 +560,7 @@ body {
 /* profil specific styles */
 .profil-view .flex-title-container { height: 16%; border-top-width: 0; }
 .profil-view .flex-info-container { height: 84%; }
+
+.leaf-image-container {
+	width: 100%;
+}

@@ -1,8 +1,8 @@
 <div id="main-view"
      class="main-view"
      data-role="view"
-	 data-init="app.leafsService.initModule"
-	 data-model="app.leafsService.viewModel"
+	 data-init="app.newLeafService.initModule"
+	 data-model="app.newLeafService.viewModel"
      data-layout="drawer-layout"
      data-stretch="true">
     
@@ -13,12 +13,11 @@
         <div class="img-small-logo"></div>
 	</div>
     
-    <div></div>
-    <a class="lz-button lz-button-option" data-role="button" data-bind="click: onNewLeaf">
+    <a class="lz-button lz-button-option" data-role="button" data-bind="click: onGetNewPhoto">
 		<i class="fa fa-camera"></i>
 		<span>Take a Photo</span>
     </a>
-	<a class="lz-button lz-button-option" data-role="button" data-bind="click: onNewLeaf">
+	<a class="lz-button lz-button-option" data-role="button" data-bind="click: onSelectExistingPhoto">
 		<i class="fa fa-picture-o"></i>
 		<span>Choose a Photo</span>
 	</a>
