@@ -39,6 +39,7 @@
 		isLoggedIn: false,
 		username: "s",
 		password: "s",
+        displayName: "",
 		consts: {
 			MESSAGE_TITLE_SIGN_IN_ERROR: "Sign In Error",
 			MESSAGE_EMPTY_FIELD: "Both fields are required"
@@ -150,11 +151,21 @@
 				.then(null, $.proxy(that._onError, that, that.consts.PROVIDER_LIVE_ID));
 			});
 		},
+        
+        logout: function () {
+            var that = this;
+            
+            that.set("isLoggedIn", false);
+            app.common.navigateToView(app.config.views.init);
+        },
 
 		_onSuccess: function (provider) {
+            var that = this;
+            
 			app.common.hideLoading();
 			app.everlive.Users.currentUser()
 			.then(function(data) {
+                that.set("displayName", data.result.DisplayName);
 				app.currentUser = data.result;
 				app.common.navigateToView(app.config.views.main);
             });
