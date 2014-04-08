@@ -62,19 +62,18 @@
         <div id="drawer" class="drawer" data-role="drawer" data-swipe-to-open="false"
              data-views="['main-view','leafs-view','leaf-details-view','diseases-view','disease-details-view','plants-view','plant-details-view','location-view']"
              style="width: 265px">
-            
-             <ul data-role="listview" data-type="group">
-                 <li>
-                     John Doe
-                     <ul class="drawer-list" data-role="listview">
-                        <li><a href="scripts/modules/main/main.html">Record a Leaf</a></li>
-                        <li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
-                        <li><a href="scripts/modules/plants/plants.html">Plants</a></li>
-                        <li><a href="scripts/modules/diseases/diseases.html">Diseases</a></li>
-                        <li><a href="scripts/modules/location/location.html">Location</a></li>
-                    </ul>
-                 </li>
-             </ul>
+             <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title">John Doe</span>
+                </div>
+             </header>
+             <ul class="drawer-list" data-role="listview">
+                <li><a href="scripts/modules/main/main.html">Record a Leaf</a></li>
+                <li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
+                <li><a href="scripts/modules/plants/plants.html">Plants</a></li>
+                <li><a href="scripts/modules/diseases/diseases.html">Diseases</a></li>
+                <li><a href="scripts/modules/location/location.html">Location</a></li>
+            </ul>
 
             <ul class="drawer-list drawer-list-bottom" data-role="listview">
                 <li><a href="scripts/modules/profil/profil.html"><i class="fa fa-cog"></i>My Profile</a></li> 

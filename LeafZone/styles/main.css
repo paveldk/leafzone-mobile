@@ -282,7 +282,14 @@ body {
 }
 
 /* drawer styles */
-.drawer .km-content > .km-scroll-container {
+.km-view.drawer .km-header > .km-navbar {
+    border-color: #274c65;
+}
+.km-view.drawer .km-header > .km-navbar .km-view-title {
+    background-color: #274c65;
+    color: #fff;
+}
+.km-view.drawer .km-content > .km-scroll-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -292,19 +299,6 @@ body {
 }
 
 /* list styles */
-.km-view .km-content .km-listgroup .km-group-title {
-    padding: 0;
-    margin: 0;
-    background: #fff;
-    line-height: 3.2em;
-    border: none;
-    border-bottom: 1px solid #274c65;
-}
-.km-view .km-content .km-listgroup .km-group-title > .km-text {
-    padding: 0em 0.4em;
-    color: #fff;
-    background: #274c65;
-}
 .km-view .km-content .km-list > li {
     background: #f9f9f9;
     border: 1px solid #f9f9f9;
