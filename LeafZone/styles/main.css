@@ -68,10 +68,13 @@ body {
 .km-view .km-header > .km-navbar {
     border-color: #dadada;
 }
-.km-view .km-header > .km-navbar > .km-leftitem > .km-button, 
+.km-view .km-header > .km-navbar > .km-leftitem > .km-button {
+    margin: 0;
+    padding: 0 2em 0 0.8em;
+}
 .km-view .km-header > .km-navbar > .km-rightitem > .km-button {
     margin: 0;
-    padding: 0 0.8em; 
+    padding: 0 0.8em 0 2em;
 }
 .km-view .km-header > .km-navbar > .km-leftitem > .km-back:before,
 .km-view .km-header > .km-navbar > .km-rightitem > .km-back:before {
@@ -173,6 +176,7 @@ body {
     height: 45px;
     background-image: -webkit-image-set(url('../styles/images/icon-new-leaf.png') 1x, url('../styles/images/icon-new-leaf@2x.png') 2x);
 }
+
 /* option button styles */
 .km-view .km-button.lz-button.lz-button-option {
     background-color: #fff;
@@ -183,6 +187,7 @@ body {
     display: block;
     padding: 1em;
     width: 70%;
+    -webkit-text-fill-color: #274c65;
 }
 .km-view .km-button.lz-button.lz-button-option > .fa {
     display: block;
@@ -276,7 +281,30 @@ body {
     border-color: #81c342;
 }
 
+/* drawer styles */
+.drawer .km-content > .km-scroll-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 /* list styles */
+.km-view .km-content .km-listgroup .km-group-title {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    line-height: 3.2em;
+    border: none;
+    border-bottom: 1px solid #274c65;
+}
+.km-view .km-content .km-listgroup .km-group-title > .km-text {
+    padding: 0em 0.4em;
+    color: #fff;
+    background: #274c65;
+}
 .km-view .km-content .km-list > li {
     background: #f9f9f9;
     border: 1px solid #f9f9f9;
@@ -285,13 +313,44 @@ body {
     border-image: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    padding: 0.8em 1.2em;
+    padding: 0;
 }
-.km-view .km-content .km-list > li > a {
+.km-view .km-content .km-list > li > .km-listview-link {
     text-decoration: none;
     margin: 0;
-    padding: 0;
+    padding: 0.8em 1.2em;
     font-size: inherit;
+}
+
+/* drawer list styles */
+.km-view .km-content .km-list.km-list.drawer-list > li {
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid #ededed;
+}
+.km-view .km-content .km-list.km-list.drawer-list > li > .km-listview-link {
+    color: #555;
+}
+.km-view .km-content .km-list.km-list.drawer-list > li > .km-listview-link:after {
+    display: none;
+}
+.km-view .km-content .km-list.km-list.drawer-list > li > .km-listview-link .fa {
+    margin-right: 0.5em;
+}
+
+.km-view .km-content .km-list.km-list.drawer-list.drawer-list-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.km-view .km-content .km-list.km-list.drawer-list.drawer-list-bottom > li {
+    background-color: #f9f9f9;
+    border: none;
+    border-top: 1px solid #e9e9e9;
+}
+.km-view .km-content .km-list.km-list.drawer-list.drawer-list-bottom > li > .km-listview-link {
+    color: #989898;
 }
 
 /* form styles */
@@ -385,36 +444,31 @@ body {
     margin-bottom: 0;
 }
 
-/* leafs details specific styles */
-.leaf-details-container {
-    border-top: 1px solid #dadada;
-    padding: 1em 1.4em;
+/* flex container styles */
+.flex-image-container {
+	width: 100%;
 }
-.leaf-details-container > div {
+.flex-title-container {
+    padding: 1.4em;
+    margin: 0;
+    border: 1px solid #dadada;
+    border-left-width: 0;
+    border-right-width: 0;
     position: relative;
-    height: 100%;
 }
-.leaf-details-container > div:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 1.4em;
-    width: 2px;
-    height: 100%;
-    background: #dadada;
-}
-.leaf-details-container h2,
-.leaf-details-container h6 {
+.flex-title-container > h2 {
     text-align: right;
-    color: #888;
-}
-.leaf-details-container h2 {
     color: #274c65;
 }
-.leaf-details-container .leaf-damage {
+.flex-title-container > h6 {
+    text-align: right;
+    color: #888;
+    font-weight: normal;
+}
+.flex-title-container > .flex-number {
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: -1.4em;
+	left: 1.4em;
     width: 3em;
     height: 3em;
     background: #fff;
@@ -422,36 +476,55 @@ body {
     -webkit-border-radius: 50%;
     border-radius: 50%;
     text-align: center;
+    z-index: 100;
 }
-.leaf-details-container .leaf-damage:after {
-    content: "%";
-    font-size: 1.2em;
-    font-weight: bold;
+.flex-title-container > .flex-number > span.digit {
+    font-size: 1.5em;
     color: #274c65;
-    position: relative;
-    left: 1.65em;
-    top: -0.75em;
-}
-.leaf-details-container .leaf-damage > span {
-    font-size: 1.45em;
-    color: #274c65;
-    margin: 0.15em auto;
+    margin: 0.10em auto;
 	display: block;
 }
-.leaf-details-container .leaf-info {
+.flex-title-container > .flex-number > span.desc {
+    content: "% affected by ozone";
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #274c65;
     position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 3.5em;
+    bottom: -0.8em;
+	left: 2em;
+    width: 200px;
+    text-align: left;
 }
-.leaf-details-container .leaf-info > div {
+
+.flex-info-container {
+    position: relative;
+    padding: 0 1.4em;
+    overflow-y: auto;
+}
+.flex-info-container:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 2.8em;
+    height: 100%;
+    width: 2px;
+    background: #dadada;
+}
+.flex-info-container > div {
     display: block;
     margin-bottom: 15px;
     position: relative;
     width: 100%;
-    padding-left: 0.7em;
+    padding: 0 0.7em;
 }
-.leaf-details-container .leaf-info > div > span {
+.flex-info-container > div:first-of-type {
+    margin-top: 3em;
+}
+.flex-info-container > div:last-of-type {
+    margin-bottom: 3em;
+}
+.flex-info-container > div > span {
     width: 1.6em;
     height: 1.6em;
     -webkit-border-radius: 50%;
@@ -460,24 +533,36 @@ body {
     background: #fff;
     display: inline-block;
     text-align: center;
+    vertical-align: top;
 }
-.leaf-details-container .leaf-info > div > span > .fa:before {
+.flex-info-container > div > span > .fa:before {
     font-size: 0.85em;
 }
-.leaf-details-container .leaf-info > div > h6 {
-    font-size: 0.85em;
+.flex-info-container > div > h6 {
+    font-size: 0.8em;
     color: #a2a2a2;
     width: 90px;
     display: inline-block;
     text-align: left;
-    margin-left: 15px;
+    margin-left: 8px;
+    font-weight: normal;
+    vertical-align: top;
+    line-height: 1.6em;
 }
-.leaf-details-container .leaf-info > div > h5 {
-    color: #555;
+.flex-info-container > div > h5 {
+    color: #888;
     display: inline-block;
     text-align: left;
+    vertical-align: top;
+    line-height: 1.6em;
+    max-width: 50%;
 }
 
-.leaf-image-container {
-	width: 100%;
-}
+/* leaf details specific styles */
+.leaf-details-view .flex-image-container { height: 34%; }
+.leaf-details-view .flex-title-container { height: 16%; }
+.leaf-details-view .flex-info-container { height: 50%; }
+
+/* profil specific styles */
+.profil-view .flex-title-container { height: 16%; border-top-width: 0; }
+.profil-view .flex-info-container { height: 84%; }

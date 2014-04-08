@@ -41,7 +41,7 @@
 
 		onGetPicruteSuccess: function (imageData) {
 			app.newLeafData.originalImageData = imageData;
-			app.common.navigateToView(app.config.views.submitLeaf);
+			app.common.navigateToView(app.config.views.leafSubmit);
 		},
 
 		onGetPicruteError: function (e) {

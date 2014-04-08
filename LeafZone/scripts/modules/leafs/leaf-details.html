@@ -15,35 +15,9 @@
 		<div class="img-small-logo"></div>
 	</div>
 
-	<img class="leaf-image-container" data-bind="attr: {src : imageUrl}" />
-	<div class="leaf-details-container">
-		<div data-template="leaf-deatils-template" data-bind="source: this"></div>
-	</div>
-
-	<script id="leaf-deatils-template" type="text/x-kendo-template">
-		<h2>#: name #</h2>
-		<h6></h6>
-		<div class="leaf-damage">
-			<span>#: percentage #</span>
-		</div>
-		<div class="leaf-info">
-			<div>
-				<span> <i class="fa fa-user"></i> </span>
-				<h6>Submitted by</h6>
-				<h5>#: userName #</h5>
-			</div>
-			<div>
-				<span> <i class="fa fa-location-arrow"></i> </span>
-				<h6>Location</h6>
-				<h5>#: location #</h5>
-			</div>
-			<div>
-				<span> <i class="fa fa-bug"></i> </span>
-				<h6>Disease</h6>
-				<h5>#: disease #</h5>
-			</div>
-		</div>
-	</script>
+	<img class="flex-image-container" data-bind="attr: {src : imageUrl}" border="0" style="border-style: none"/>
+    <div class="flex-title-container" data-template="leaf-title-template" data-bind="source: this"></div>
+	<div class="flex-info-container" data-template="leaf-info-template" data-bind="source: this"></div>
 
 	<div data-role="footer">
 		<div data-role="navbar">
@@ -53,4 +27,35 @@
 		</div>
 		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
 	</div>
+    
+    <script id="leaf-title-template" type="text/x-kendo-template">
+    	<div class="flex-number">
+			<span class="digit">#: percentage #</span>
+            <span class="desc">% affected by ozone</>
+		</div>
+		<h2>#: name #</h2>
+        <h6>&nbsp;</h6>
+    </script>
+    <script id="leaf-info-template" type="text/x-kendo-template">
+		<div>
+			<span><i class="fa fa-user"></i></span>
+			<h6>Submitted by</h6>
+			<h5>#: userName #</h5>
+		</div>
+		<div>
+			<span><i class="fa fa-location-arrow"></i></span>
+			<h6>Location</h6>
+			<h5>#: location #</h5>
+		</div>
+		<div>
+			<span><i class="fa fa-bug"></i></span>
+			<h6>Disease</h6>
+			<h5>#: disease #</h5>
+		</div>
+		<div>
+			<span><i class="fa fa-leaf"></i></span>
+			<h6>Plant</h6>
+			<h5>#: disease #</h5>
+		</div>
+	</script>
 </div>
