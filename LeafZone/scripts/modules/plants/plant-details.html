@@ -1,5 +1,5 @@
 <div id="plant-details-view"
-	 class="leaf-details-view"
+	 class="details-view"
 	 data-role="view"
 	 data-layout="drawer-layout"
 	 data-show="app.plantDetailsService.showData"
@@ -10,9 +10,6 @@
 			<a data-role="backbutton" data-align="left">
 				<i class="fa fa-chevron-left"></i>
 			</a>
-            <a data-role="button" data-align="right" href="scripts/modules/main/main.html">
-				<i class="fa fa-home"></i>
-			</a>
 		</div>
 		<div class="img-small-logo"></div>
 	</div>
@@ -21,10 +18,11 @@
 
 	<div data-role="footer">
 		<div data-role="navbar">
-			<a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right">
+        	<a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right">
+				<i class="fa fa-facebook"></i>Share
 			</a>
-		</div>
-		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
+        </div>
+		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
 	</div>
     
     <script id="plant-details-template" type="text/x-kendo-template">
@@ -52,7 +50,5 @@
 		<h3>Cultivars:</h3>
 		<span>#= cultivars #:</span>
 		<h6>&nbsp;</h6>
-		
-		
 	</script>
 </div>
