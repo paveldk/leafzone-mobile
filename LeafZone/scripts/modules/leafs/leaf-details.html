@@ -15,7 +15,7 @@
 		<div class="img-small-logo"></div>
 	</div>
 
-	<img class="flex-image-container" data-bind="attr: {src : imageUrl}" border="0" style="border-style: none"/>
+	<div class="flex-image-container" data-template="leaf-image-template" data-bind="source: this"></div>
     <div class="flex-title-container" data-template="leaf-title-template" data-bind="source: this"></div>
 	<div class="flex-info-container" data-template="leaf-info-template" data-bind="source: this"></div>
 
@@ -28,6 +28,9 @@
 		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
 	</div>
     
+    <script id="leaf-image-template" type="text/x-kendo-template">
+		<img data-bind="attr: {src : imageUrl}" border="0" style="border-style: none"/>
+	</script>
     <script id="leaf-title-template" type="text/x-kendo-template">
     	<div class="flex-number">
 			<span class="digit">#: percentage #</span>

@@ -14,17 +14,21 @@
 		</div>
 		<div class="img-small-logo"></div>
 	</div>
-
-	<div data-template="leaf-image-template" data-bind="source: this"></div>
 	
-	<script id="leaf-image-template" type="text/x-kendo-template">
-		<img class="leaf-image-container" src="data:data:image/jpeg;base64,#: imageData #" />
-	</script>
-	
-	<div class="lz-footer-transparent" data-role="footer">
+    <div class="flex-image-container" 
+         data-template="leaf-image-template" 
+         data-bind="source: this">
+    </div>
+    
+	<div data-role="footer">
         <div data-role="navbar">
-            <a class="lz-button" data-role="button" data-align="left" data-bind="click: onReanalize">Reanalyze</a>
-			<a class="lz-button lz-button-alternate" data-role="button" data-align="right" data-bind="click: onDone">Next</a>
+            
         </div>                 
 	</div>
+    
+    <script id="leaf-image-template" type="text/x-kendo-template">
+		<img src="data:data:image/jpeg;base64,#: imageData #" border="0" style="border-style: none"/>
+        <a class="lz-button" data-role="button" data-align="left" data-bind="click: onReanalize">Reanalyze</a>
+		<a class="lz-button lz-button-alternate" data-role="button" data-align="right" data-bind="click: onDone">Next</a>
+	</script>
 </div>
