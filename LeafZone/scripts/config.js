@@ -45,7 +45,8 @@
             diseases: "scripts/modules/diseases/diseases.html",
             diseaseDetails: "scripts/modules/diseases/disease-details.html",
             plants: "scripts/modules/plants/plants.html",
-            plantDetails: "scripts/modules/plants/plant-details.html"
+            plantDetails: "scripts/modules/plants/plant-details.html",
+            profile: "scripts/modules/profile/profile.html"
         }
     };
 })(window);
