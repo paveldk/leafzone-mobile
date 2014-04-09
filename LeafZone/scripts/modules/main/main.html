@@ -1,0 +1,54 @@
+<div id="main-view"
+     class="main-view"
+     data-role="view"
+	 data-init="app.newLeafService.initModule"
+	 data-model="app.newLeafService.viewModel"
+     data-layout="drawer-layout"
+     data-stretch="true">
+    
+	<div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-th-list"></i></a>
+			<a data-role="button" data-align="right" href="scripts/modules/profil/profil.html">
+				<i class="fa fa-cog"></i>
+			</a>
+        </div>
+        <div class="img-small-logo"></div>
+	</div>
+	
+	<a class="lz-button lz-button-option big" data-role="button" data-bind="click: onGetNewPhoto">
+		<i class="fa fa-camera"></i>
+		<span>Take a Photo</span>
+	</a>
+    
+    <div class="separator">
+        <span>or</span>
+    </div>
+    
+    <a class="lz-button lz-button-option" data-role="button" data-bind="click: onSelectExistingPhoto">
+		<i class="fa fa-picture-o"></i>
+		<span>Choose a Photo</span>
+	</a>
+    
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul class="lz-listview-steps">
+                <li class="current-step">
+                    <div>
+                        <span>1</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>2</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>3</span>
+                    </div>
+                </li>
+            </ul> 
+        </div>              
+	</div>
+</div>

@@ -20,17 +20,21 @@
         <script src="scripts/common.js"></script>
         <script src="scripts/modules/login/identity-providers.js"></script>
         <script src="scripts/modules/login/login.js"></script>
+        <script src="scripts/modules/main/main.js"></script>
         <script src="scripts/modules/leafs/leafs.js"></script>
+        <script src="scripts/modules/leafs/leaf-analyse.js"></script>
+        <script src="scripts/modules/leafs/leaf-analyze-validation.js"></script>
         <script src="scripts/modules/leafs/leaf-details.js"></script>
         <script src="scripts/modules/location/location.js"></script>
         <script src="scripts/app.js"></script>
-        
     </head>
+	
     <body>
-        <div id="home-view"
-             class="home-view"
+        <div id="init-view"
+             class="init-view"
              data-role="view"
-             data-layout="drawer-view"
+             data-layout="default"
+             data-transition="overlay:up"
              data-stretch="true">
             
             <div data-role="header">
@@ -57,12 +61,27 @@
         </div>
 
         <!--Drawer-->
-        <div id="drawer" data-role="drawer" data-views="['home-view','leafs-view','leaf-details-view','location-view']">
-             <ul data-role="listview">
-				<li><a href="#/">Home</a></li>
-          		<li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
-                 <li><a href="scripts/modules/leafs/leaf-details.html">Leaf Details</a></li>
-				<li><a href="scripts/modules/location/location.html">Location</a></li> 
+        <div id="drawer" class="drawer" data-role="drawer" data-swipe-to-open="false"
+             data-model="app.loginService.signInViewModel"
+             data-views="['main-view','leafs-view','leaf-details-view','diseases-view','disease-details-view','plants-view','plant-details-view','location-view', 'profil-view']"
+             style="width: 265px">
+             <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title" data-bind="text: displayName">John Doe</span>
+                </div>
+             </header>
+             <ul class="drawer-list" data-role="listview">
+                <li><a href="scripts/modules/main/main.html">Record a Leaf</a></li>
+                <li><a href="scripts/modules/leafs/leafs.html">Leafs</a></li>
+                <li><a href="scripts/modules/plants/plants.html">Plants</a></li>
+                <li><a href="scripts/modules/diseases/diseases.html">Diseases</a></li>
+                <li><a href="scripts/modules/location/location.html">Location</a></li>
+            </ul>
+
+            <ul class="drawer-list drawer-list-bottom" data-role="listview">
+                <li><a href="scripts/modules/profil/profil.html"><i class="fa fa-cog"></i>My Profile</a></li> 
+                <li><a data-bind="click: logout"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+                <li><a></a></li>
             </ul>
         </div>
     </body>

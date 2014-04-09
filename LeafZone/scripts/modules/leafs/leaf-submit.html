@@ -1,0 +1,51 @@
+<div id="leaf-submit-view"
+	 class="leaf-submit-view"
+     data-role="view"
+	 data-layout="default"
+	 data-stretch="true"
+	 data-show="app.leafAnalyzeService.showSubmitData"
+	 data-model="app.leafAnalyzeService.viewModel">
+
+	<div data-role="header">
+		<div data-role="navbar">
+			<a data-role="backbutton" data-align="left">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+		</div>
+		<div class="img-small-logo"></div>
+	</div>
+    
+    <div class="flex-image-container">
+        <div data-template="leaf-image-template" data-bind="source: this"></div>
+        <div class="absolute-button-group">
+            <a data-role="button" class="lz-button"href="scripts/modules/main/main.html">Take New</a>
+            <a data-role="button" class="lz-button lz-button-alternate" data-bind="click: onSubmit">Submit</a>
+        </div>
+    </div>
+	
+	<div data-role="footer">
+        <div data-role="navbar">
+            <ul class="lz-listview-steps">
+                <li class="last-step">
+                    <div>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </li>
+                <li class="current-step">
+                    <div>
+                        <span>2</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>3</span>
+                    </div>
+                </li>
+            </ul> 
+        </div>              
+	</div>
+    
+    <script id="leaf-image-template" type="text/x-kendo-template">
+		<img src="data:data:image/jpeg;base64,#: imageData #" />
+	</script>
+</div>

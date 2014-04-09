@@ -11,18 +11,12 @@
     <div data-role="header">
         <div data-role="navbar">
             <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-bars"></i></a>
-            <a data-role="button" data-align="right" href="scripts/modules/login/signup.html"><i class="fa fa-user"></i></a>
+            <a data-role="button" data-align="right" href="scripts/modules/main/main.html">
+				<i class="fa fa-home"></i>
+			</a>
 		</div>
         <div class="img-small-logo"></div>
 	</div>
     
-    <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>
-    
-    <div class="lz-footer" data-role="footer">
-        <div data-role="navbar">
-            <a class="lz-button lz-button-footer" data-role="button" data-align="left">My Leafs</a>
-            <a class="lz-button lz-button-footer checked" data-role="button" data-align="right">All Leafs</a>
-		</div>
-        <a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
-	</div>    
+    <div id="map-canvas" data-bind="visible: isGoogleMapsInitialized"></div>   
 </div>

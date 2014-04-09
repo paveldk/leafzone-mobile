@@ -29,15 +29,6 @@
 			app.common.hideLoading();
 		},
 
-		_onSuccess: function (provider) {
-			app.common.hideLoading();
-			app.everlive.Users.currentUser()
-			.then(function(data) {
-				app.currentUser = data.result;
-				app.common.navigateToView(app.config.views.leafs);
-            });
-		},
-
 		_onError: function (provider, e) {
 			app.common.hideLoading();
 			app.common.notification(this.consts.MESSAGE_TITLE_SIGN_IN_ERROR, e.message);
@@ -46,8 +37,9 @@
 
 	SignInViewModel = LoginBase.extend({
 		isLoggedIn: false,
-		username: "",
-		password: "",
+		username: "s",
+		password: "s",
+        displayName: "",
 		consts: {
 			MESSAGE_TITLE_SIGN_IN_ERROR: "Sign In Error",
 			MESSAGE_EMPTY_FIELD: "Both fields are required"
@@ -158,7 +150,26 @@
 				.then($.proxy(that._onSuccess, that, that.consts.PROVIDER_LIVE_ID))
 				.then(null, $.proxy(that._onError, that, that.consts.PROVIDER_LIVE_ID));
 			});
-		}
+		},
+        
+        logout: function () {
+            var that = this;
+            
+            that.set("isLoggedIn", false);
+            app.common.navigateToView(app.config.views.init);
+        },
+
+		_onSuccess: function (provider) {
+            var that = this;
+            
+			app.common.hideLoading();
+			app.everlive.Users.currentUser()
+			.then(function(data) {
+                that.set("displayName", data.result.DisplayName);
+				app.currentUser = data.result;
+				app.common.navigateToView(app.config.views.main);
+            });
+		},
 	});
 
 	SignUpViewModel = LoginBase.extend({
@@ -215,7 +226,13 @@
 			}
 
 			return true;
-		}
+		},
+		
+		_onSuccess: function (provider, data) {
+			app.common.hideLoading();			
+			app.currentUser = data.result;
+			app.common.navigateToView(app.config.views.main);
+		},
 	});
 
 	app.loginService = {
