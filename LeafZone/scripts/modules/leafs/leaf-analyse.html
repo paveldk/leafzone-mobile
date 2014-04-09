@@ -1,7 +1,7 @@
 <div id="leaf-analyse-view"
      class="leaf-analyse-view"
      data-role="view"
-	 data-layout="drawer-layout"
+	 data-layout="default"
 	 data-stretch="true"
 	 data-show="app.analyzeLeafService.showAnalyzeData"
 	 data-model="app.analyzeLeafService.viewModel">
@@ -22,13 +22,29 @@
     
 	<div data-role="footer">
         <div data-role="navbar">
-            
-        </div>                 
+            <ul class="lz-listview-steps">
+                <li class="last-step">
+                    <div>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </li>
+                <li class="last-step">
+                    <div>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </li>
+                <li class="current-step">
+                    <div>
+                        <span>3</span>
+                    </div>
+                </li>
+            </ul> 
+        </div>            
 	</div>
     
     <script id="leaf-image-template" type="text/x-kendo-template">
-		<img src="data:data:image/jpeg;base64,#: imageData #" border="0" style="border-style: none"/>
-        <a class="lz-button" data-role="button" data-align="left" data-bind="click: onReanalize">Reanalyze</a>
-		<a class="lz-button lz-button-alternate" data-role="button" data-align="right" data-bind="click: onDone">Next</a>
+		<img src="data:data:image/jpeg;base64,#: imageData #" />
+        <button data-role="button" class="lz-button" data-bind="click: onReanalize">Reanalyze</button>
+		<button data-role="button" class="lz-button lz-button-alternate" data-bind="click: onDone">Next</button>
 	</script>
 </div>

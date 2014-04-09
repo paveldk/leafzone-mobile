@@ -7,7 +7,10 @@
     
     <div data-role="header">
         <div data-role="navbar">
-            <a data-role="backbutton" data-align="left"><i class="fa fa-chevron-left"></i></a>
+            <a data-role="backbutton" data-align="left"><i class="fa fa-times"></i></a>
+             <a data-role="button" data-align="right" href="scripts/modules/login/signup.html">
+				<i class="fa fa-user"></i>
+			</a>
 		</div>
         <div class="img-small-logo"></div>
 	</div>
@@ -15,7 +18,7 @@
     <form class="lz-form top-margin" data-bind="events: { keyup: checkEnter }">
 		<input type="text" data-bind="value: username" placeholder="User Name"/>
 		<input type="password" data-bind="value: password" placeholder="Password"/>
-		<input data-role="button" class="lz-button lz-button-default lz-button-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
+		<input data-role="button" class="lz-button lz-button-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
 	</form>     
     
     <div class="lz-footer-transparent" data-role="footer">
