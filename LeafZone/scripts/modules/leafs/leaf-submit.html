@@ -15,11 +15,14 @@
 		<div class="img-small-logo"></div>
 	</div>
     
-	<div class="flex-image-container" 
-         data-template="leaf-image-template" 
-         data-bind="source: this">
+    <div class="flex-image-container">
+        <div data-template="leaf-image-template" data-bind="source: this"></div>
+        <div class="absolute-button-group">
+            <a data-role="button" class="lz-button" data-bind="click: onTakeNew">Take New</a>
+            <a data-role="button" class="lz-button lz-button-alternate" data-bind="click: onSubmit">Submit</a>
+        </div>
     </div>
-
+	
 	<div data-role="footer">
         <div data-role="navbar">
             <ul class="lz-listview-steps">
@@ -44,7 +47,5 @@
     
     <script id="leaf-image-template" type="text/x-kendo-template">
 		<img src="data:data:image/jpeg;base64,#: imageData #" />
-		<a data-role="button" class="lz-button" href="scripts/modules/main/main.html" data-bind="click: onTakeNew">Take New</button>
-		<a data-role="button" class="lz-button lz-button-alternate" data-bind="click: onSubmit">Submit</button>
 	</script>
 </div>

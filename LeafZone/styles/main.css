@@ -127,6 +127,7 @@ body {
 .km-view .km-button.lz-button.km-state-disabled { background-color: #81c342; }
 
 .km-view .km-button.lz-button.lz-button-alternate { background-color: #274c65; }
+
 .km-view .km-button.lz-button.lz-button-alternate.km-state-active { background-color: #1b3a50; }
 .km-view .km-button.lz-button.lz-button-alternate.km-state-disabled { background-color: #93a5b2; }
 
@@ -481,12 +482,31 @@ body {
     margin: auto;
 }
 
+/* absolute buttons */
+.absolute-button-group {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 1.4em 2.5em 1.4em;
+}
+.absolute-button-group:after { clear:both; }
+.absolute-button-group .km-button:first-of-type { 
+    float: left; 
+    min-width: 100px; 
+    text-align: center; 
+}
+.absolute-button-group .km-button:last-of-type { 
+    float: right; 
+    min-width: 100px; 
+    text-align: center; 
+}
 /* flex container styles */
 .flex-image-container {
 	width: 100%;
     position: relative;
 }
-.flex-image-container > img {
+.flex-image-container img {
     border: none;
     width: 100%;
     height: 100%;
