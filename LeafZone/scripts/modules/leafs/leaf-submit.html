@@ -1,7 +1,7 @@
 <div id="leaf-submit-view"
 	 class="leaf-submit-view"
      data-role="view"
-	 data-layout="drawer-layout"
+	 data-layout="default"
 	 data-stretch="true"
 	 data-show="app.leafAnalyzeService.showSubmitData"
 	 data-model="app.leafAnalyzeService.viewModel">
@@ -14,17 +14,37 @@
 		</div>
 		<div class="img-small-logo"></div>
 	</div>
+    
+	<div class="flex-image-container" 
+         data-template="leaf-image-template" 
+         data-bind="source: this">
+    </div>
 
-	<div data-template="leaf-image-template" data-bind="source: this"></div>
-	
-	<script id="leaf-image-template" type="text/x-kendo-template">
-		<img class="leaf-image-container" src="data:image/jpeg;base64,#: imageData #" />
-	</script>
-	
-	<div class="lz-footer-transparent" data-role="footer">
+	<div data-role="footer">
         <div data-role="navbar">
-			<a class="lz-button" data-role="button" href="scripts/modules/main/main.html" data-align="left">Take New</a>
-			<a class="lz-button lz-button-alternate" data-role="button" data-align="right" data-bind="click: onSubmit">Submit</a>
-        </div>                 
+            <ul class="lz-listview-steps">
+                <li class="last-step">
+                    <div>
+                        <i class="fa fa-check"></i>
+                    </div>
+                </li>
+                <li class="current-step">
+                    <div>
+                        <span>2</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>3</span>
+                    </div>
+                </li>
+            </ul> 
+        </div>              
 	</div>
+    
+    <script id="leaf-image-template" type="text/x-kendo-template">
+		<img src="data:data:image/jpeg;base64,#: imageData #" />
+		<a data-role="button" class="lz-button" href="scripts/modules/main/main.html" data-bind="click: onTakeNew">Take New</button>
+		<a data-role="button" class="lz-button lz-button-alternate" data-bind="click: onSubmit">Submit</button>
+	</script>
 </div>
