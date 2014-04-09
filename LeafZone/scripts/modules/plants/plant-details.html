@@ -1,9 +1,58 @@
-<!DOCTYPE html>
+<div id="plant-details-view"
+	 class="leaf-details-view"
+	 data-role="view"
+	 data-layout="drawer-layout"
+	 data-show="app.plantDetailsService.showData"
+	 data-model="app.plantDetailsService.viewModel">
 
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-    </body>
-</html>
+	<div data-role="header">
+		<div data-role="navbar">
+			<a data-role="backbutton" data-align="left">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+            <a data-role="button" data-align="right" href="scripts/modules/main/main.html">
+				<i class="fa fa-home"></i>
+			</a>
+		</div>
+		<div class="img-small-logo"></div>
+	</div>
+
+	<div data-template="plant-details-template" data-bind="source: this"></div>
+
+	<div data-role="footer">
+		<div data-role="navbar">
+			<a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right">
+			</a>
+		</div>
+		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
+	</div>
+    
+    <script id="plant-details-template" type="text/x-kendo-template">
+		<img src="#= imageUrl() #" />
+		<h2>#: name #</h2>
+		<h4>#: botanicalName #</h4>
+        <h6>&nbsp;</h6>
+		
+		# for(var i = 0, len = images.length; i < len; i++) { #
+			<img src="#= getImageUrl(images[i]) #" />
+		# } #
+		
+		<h3>Ornamental Characteristics:</h3>
+		<span>#= ornamentalCharacteristics #:</span>
+		<h6>&nbsp;</h6>
+		
+		<h3>Environmental Characteristics:</h3>
+		<span>#= environmentalCharacteristics #:</span>
+		<h6>&nbsp;</h6>
+		
+		<h3>Insect/Disease Characteristics:</h3>
+		<span>#= insectDiseaseCharacteristics #:</span>
+		<h6>&nbsp;</h6>
+		
+		<h3>Cultivars:</h3>
+		<span>#= cultivars #:</span>
+		<h6>&nbsp;</h6>
+		
+		
+	</script>
+</div>
