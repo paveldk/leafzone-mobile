@@ -18,10 +18,10 @@
     <ul data-role="listview"
 		data-pull-to-refresh="true"
 		data-bind="source: plantsDataSource"
-		data-template="leaf-template">       
+		data-template="plant-template">       
     </ul>
  
-    <script id="leaf-template" type="text/x-kendo-tmpl">
+    <script id="plant-template" type="text/x-kendo-tmpl">
     	<a href="scripts/modules/plants/plant-details.html?dataId=#: id #">
             <div class="leaf-item-template">
                 <img src="#= imageUrl() #" class="leaf-item-image" />		
