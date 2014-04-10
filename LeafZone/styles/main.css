@@ -104,7 +104,7 @@ body {
 
 .km-view .km-footer.lz-footer-transparent {
     padding: 0 1.4em 2.5em 1.4em;
-    background-color: transparent;
+    background-color: #fff;
 }
 .km-view .km-footer.lz-footer-transparent > .km-navbar {
     border-width: 0;
@@ -630,11 +630,11 @@ body {
 }
 
 /* leafs view specific styles */
-.leaf-item-template {
+.list-item-template {
     padding: 0.8em 0 0.8em 5.5em;
     position: relative;
 }
-.leaf-item-template > .leaf-item-image {
+.list-item-template > .leaf-item-image {
     width: 72px;
     height: 72px;
     border: 3px solid #e6e4e4;
@@ -646,7 +646,7 @@ body {
     left: 0;
     margin-top: -36px;
 }
-.leaf-item-template > .leaf-item-badge {
+.list-item-template > .leaf-item-badge {
     width: 0px;
 	height: 0px;
 	border-style: solid;
@@ -657,21 +657,72 @@ body {
     right: -1.2em;
     color: #fff;
 }
-.leaf-item-template > .leaf-item-badge > .fa {
+.list-item-template > .leaf-item-badge > .fa {
    position: relative;
 	top: -2px;
 	left: 18px;
     font-size: 0.7em;
 }
-.leaf-item-template > h3 {
+.list-item-template > h3 {
     color: #555;
     font-weight: bold;
     margin: 0;
 }
-.leaf-item-template > p {
+.list-item-template > p {
     color: #555;
     margin-top: 0.6em;
     margin-bottom: 0;
+}
+
+.list-details-item-template {
+    overflow-x: hidden;
+}
+.list-details-item-template > .info-section {
+	margin: 1.4em;
+	border-bottom: 1px solid #ececec;
+}
+.list-details-item-template > .info-section.info-image {
+    margin: 0;
+    border: none;
+    height: 11.5em;
+}
+.list-details-item-template > .info-section.info-image > img {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.list-details-item-template > .info-section.info-header {
+    margin: 0;
+    padding: 1.4em;
+    border-top: 1px solid #ececec;
+}
+.list-details-item-template > .info-section.info-header > h2 {
+    text-align: right;
+    font-weight: bold;
+}
+.list-details-item-template > .info-section.info-header > h6 {
+    text-align: right;
+    font-weight: normal;
+    color: #888;
+}
+.list-details-item-template > .info-section.info-gallery {
+    padding: 1.4em 0;
+    margin: 0;
+    text-align: center;
+}
+.list-details-item-template > .info-section.info-gallery > img {
+    width: 130px;
+	height: 95px;
+    margin: 10px;
+    padding: 3px;
+    border: 1px solid #ececec;
+}
+.list-details-item-template > .info-section > h2 {
+    color: #274c65;
+}
+.list-details-item-template > .info-section > p {
+    font-size: 0.95em;
 }
 
 /* main specific styles */
@@ -704,7 +755,7 @@ body {
     background: #fff;
 }
 
-/* leaf, plant details specific styles */
+/* details specific styles */
 .details-view .flex-image-container { height: 34%; }
 .details-view .flex-title-container { height: 16%; }
 .details-view .flex-info-container { height: 50%; }
