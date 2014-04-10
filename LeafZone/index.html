@@ -25,6 +25,11 @@
         <script src="scripts/modules/leafs/leaf-analyse.js"></script>
         <script src="scripts/modules/leafs/leaf-analyze-validation.js"></script>
         <script src="scripts/modules/leafs/leaf-details.js"></script>
+        <script src="scripts/modules/plants/plants.js"></script>
+        <script src="scripts/modules/plants/plant-details.js"></script>
+		<script src="scripts/modules/diseases/diseases.js"></script>
+        <script src="scripts/modules/diseases/disease-details.js"></script>
+        <script src="scripts/modules/profile/profile.js"></script>
         <script src="scripts/modules/location/location.js"></script>
         <script src="scripts/app.js"></script>
     </head>
@@ -63,7 +68,7 @@
         <!--Drawer-->
         <div id="drawer" class="drawer" data-role="drawer" data-swipe-to-open="false"
              data-model="app.loginService.signInViewModel"
-             data-views="['main-view','leafs-view','leaf-details-view','diseases-view','disease-details-view','plants-view','plant-details-view','location-view', 'profil-view']"
+             data-views="['init-view', 'main-view','leafs-view','leaf-details-view','diseases-view','disease-details-view','plants-view','plant-details-view','location-view', 'profil-view']"
              style="width: 265px">
              <header data-role="header">
                 <div data-role="navbar">
@@ -79,7 +84,7 @@
             </ul>
 
             <ul class="drawer-list drawer-list-bottom" data-role="listview">
-                <li><a href="scripts/modules/profil/profil.html"><i class="fa fa-cog"></i>My Profile</a></li> 
+                <li><a href="scripts/modules/profile/profile.html"><i class="fa fa-cog"></i>My Profile</a></li> 
                 <li><a data-bind="click: logout"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                 <li><a></a></li>
             </ul>

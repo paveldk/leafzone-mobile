@@ -104,7 +104,7 @@ body {
 
 .km-view .km-footer.lz-footer-transparent {
     padding: 0 1.4em 2.5em 1.4em;
-    background-color: transparent;
+    background-color: #fff;
 }
 .km-view .km-footer.lz-footer-transparent > .km-navbar {
     border-width: 0;
@@ -393,6 +393,8 @@ body {
     margin-top: -1px;
     width: 28px;
 }
+.lz-listview-steps > li:first-of-type { padding-left: 0; }
+.lz-listview-steps > li:last-of-type { padding-right: 0; }
 .lz-listview-steps > li:first-of-type:before,
 .lz-listview-steps > li:last-of-type:after {
     display: none;
@@ -420,7 +422,7 @@ body {
     left: 50%;
     margin-top: -1px;
     margin-left: -4px;
-    font-size 1.1em;
+    font-size: 1.1em;
     font-weight: 800;
 }
 
@@ -488,7 +490,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 0 1.4em 2.5em 1.4em;
+    padding: 0 1.35em 3em 1.35em;
 }
 .absolute-button-group:after { clear:both; }
 .absolute-button-group .km-button:first-of-type { 
@@ -547,7 +549,7 @@ body {
 .flex-title-container > .flex-number > span.digit {
     font-size: 1.5em;
     color: #274c65;
-    margin: 0.10em auto;
+    margin: 0.2em auto;
 	display: block;
 }
 .flex-title-container > .flex-number > span.desc {
@@ -586,9 +588,6 @@ body {
 }
 .flex-info-container > div:first-of-type {
     margin-top: 3em;
-}
-.flex-info-container > div:last-of-type {
-    margin-bottom: 3em;
 }
 .flex-info-container > div > span {
     width: 1.6em;
@@ -631,11 +630,11 @@ body {
 }
 
 /* leafs view specific styles */
-.leaf-item-template {
+.list-item-template {
     padding: 0.8em 0 0.8em 5.5em;
     position: relative;
 }
-.leaf-item-template > .leaf-item-image {
+.list-item-template > img {
     width: 72px;
     height: 72px;
     border: 3px solid #e6e4e4;
@@ -647,7 +646,7 @@ body {
     left: 0;
     margin-top: -36px;
 }
-.leaf-item-template > .leaf-item-badge {
+.list-item-template > .list-badge {
     width: 0px;
 	height: 0px;
 	border-style: solid;
@@ -658,21 +657,74 @@ body {
     right: -1.2em;
     color: #fff;
 }
-.leaf-item-template > .leaf-item-badge > .fa {
+.list-item-template > .list-badge > .fa {
    position: relative;
 	top: -2px;
 	left: 18px;
     font-size: 0.7em;
 }
-.leaf-item-template > h3 {
+.list-item-template > h3 {
     color: #555;
     font-weight: bold;
     margin: 0;
 }
-.leaf-item-template > p {
+.list-item-template > p {
     color: #555;
     margin-top: 0.6em;
     margin-bottom: 0;
+}
+
+.list-details-item-template {
+    overflow-x: hidden;
+}
+.list-details-item-template > .info-section {
+	margin: 1.4em;
+	border-bottom: 1px solid #ececec;
+}
+.list-details-item-template > .info-section:last-of-type {
+    border-bottom-width: 0;
+}
+.list-details-item-template > .info-section.info-image {
+    margin: 0;
+    border: none;
+    height: 11.5em;
+}
+.list-details-item-template > .info-section.info-image > img {
+    width: 100%;
+    height: 100%;
+}
+
+.list-details-item-template > .info-section.info-header {
+    margin: 0;
+    padding: 1.4em;
+    border-top: 1px solid #ececec;
+}
+.list-details-item-template > .info-section.info-header > h2 {
+    text-align: right;
+    font-weight: bold;
+}
+.list-details-item-template > .info-section.info-header > h6 {
+    text-align: right;
+    font-weight: normal;
+    color: #888;
+}
+.list-details-item-template > .info-section.info-gallery {
+    padding: 1.4em 0;
+    margin: 0;
+    text-align: center;
+}
+.list-details-item-template > .info-section.info-gallery > img {
+    width: 130px;
+	height: 95px;
+    margin: 10px;
+    padding: 3px;
+    border: 1px solid #ececec;
+}
+.list-details-item-template > .info-section > h2 {
+    color: #274c65;
+}
+.list-details-item-template > .info-section > p {
+    font-size: 0.95em;
 }
 
 /* main specific styles */
@@ -705,10 +757,10 @@ body {
     background: #fff;
 }
 
-/* leaf details specific styles */
-.leaf-details-view .flex-image-container { height: 34%; }
-.leaf-details-view .flex-title-container { height: 16%; }
-.leaf-details-view .flex-info-container { height: 50%; }
+/* details specific styles */
+.details-view .flex-image-container { height: 34%; }
+.details-view .flex-title-container { height: 16%; }
+.details-view .flex-info-container { height: 50%; }
 
 /* profil specific styles */
 .profil-view .flex-title-container { 

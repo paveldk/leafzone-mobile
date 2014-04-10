@@ -1,9 +1,40 @@
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-    </body>
-</html>
+<div id="diseases-view"
+     class="leafs-view"
+     data-role="view"
+	 data-init="app.diseasesService.initModule"
+	 data-model="app.diseasesService.viewModel"
+     data-layout="drawer-layout">
+    
+	<div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-th-list"></i></a>
+            <a data-role="button" data-align="right" href="scripts/modules/main/main.html">
+				<i class="fa fa-home"></i>
+			</a>
+		</div>
+        <div class="img-small-logo"></div>
+	</div>
+    
+    <ul data-role="listview"
+		data-pull-to-refresh="true"
+		data-bind="source: diseasesDataSource"
+		data-template="disease-template">       
+    </ul>
+ 	
+    <div data-role="footer">
+        <div data-role="navbar">			
+			<div class="km-view-title">&nbsp;</div>
+		</div>
+        <a class="lz-button lz-button-circle add-leaf" data-role="button" data-bind="click: onNewLeaf"></a>
+	</div>
+    
+    <script id="disease-template" type="text/x-kendo-tmpl">
+        <a href="scripts/modules/diseases/disease-details.html?dataId=#: id #">
+            <div class="list-item-template">
+                <img src="#= imageUrl() #" />		
+                <h3>#: name #</h3>
+                <p>&nbsp;</p>
+            </div>
+    	</a>
+    </script>
+</div>

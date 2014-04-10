@@ -7,7 +7,7 @@
     
 	<div data-role="header">
         <div data-role="navbar">
-            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-bars"></i></a>
+            <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-th-list"></i></a>
             <a data-role="button" data-align="right" href="scripts/modules/main/main.html">
 				<i class="fa fa-home"></i>
 			</a>
@@ -39,11 +39,11 @@
     
     <script id="leaf-template" type="text/x-kendo-tmpl">
     	<a href="scripts/modules/leafs/leaf-details.html?dataId=#: id #">
-            <div class="leaf-item-template">
-                <img src="#= imageUrl() #" class="leaf-item-image" />		
+            <div class="list-item-template">
+                <img src="#= imageUrl() #" />		
                 <h3>#: name #</h3>
                 <p>#: details #</p>
-                <div class="leaf-item-badge"><i class="fa fa-star"></i></div>
+                <div class="list-badge"><i class="fa fa-star"></i></div>
             </div>
     	</a>
     </script>

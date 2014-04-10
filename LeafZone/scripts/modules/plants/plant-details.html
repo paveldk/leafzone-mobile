@@ -1,9 +1,64 @@
-<!DOCTYPE html>
+<div id="plant-details-view"
+	 class="details-view"
+	 data-role="view"
+	 data-layout="drawer-layout"
+	 data-show="app.plantDetailsService.showData"
+	 data-model="app.plantDetailsService.viewModel">
 
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-    </body>
-</html>
+	<div data-role="header">
+		<div data-role="navbar">
+			<a data-role="backbutton" data-align="left">
+				<i class="fa fa-chevron-left"></i>
+			</a>
+		</div>
+		<div class="img-small-logo"></div>
+	</div>
+
+	<div data-template="plant-item-template" data-bind="source: this"></div>
+
+	<div data-role="footer">
+		<div data-role="navbar">
+        	<div class="km-view-title">&nbsp;</div>
+        </div>
+		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
+	</div>
+    
+    <script id="plant-item-template" type="text/x-kendo-template">
+    	<div class="list-details-item-template">
+            <div class="info-section info-image">
+            	<img src="#= imageUrl() #" />
+    		</div>
+            
+            <div class="info-section info-header">
+                <h2>#: name #</h2>
+                <h6>#: botanicalName #</h6>
+            </div>
+            
+            <div class="info-section info-gallery">
+                # for(var i = 0, len = images.length; i < len; i++) { #
+                    <img src="#= getImageUrl(images[i]) #" />
+                # } #
+            </div>
+        
+            <div class="info-section">
+                <h2>Ornamental Characteristics</h2>
+                <p>#= ornamentalCharacteristics #</p>
+            </div>
+            
+            <div class="info-section">
+                <h2>Environmental Characteristics</h2>
+                <p>#= environmentalCharacteristics #</p>
+            </div>
+            
+            <div class="info-section">
+                <h2>Insect/Disease Characteristics</h2>
+                <p>#= insectDiseaseCharacteristics #:</p>
+            </div>
+            
+            <div class="info-section">
+                <h2>Cultivars</h2>
+                <p>#= cultivars #</p>
+            </div>
+    	</div>
+	</script>
+</div>
