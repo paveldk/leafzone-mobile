@@ -634,7 +634,7 @@ body {
     padding: 0.8em 0 0.8em 5.5em;
     position: relative;
 }
-.list-item-template > .leaf-item-image {
+.list-item-template > img {
     width: 72px;
     height: 72px;
     border: 3px solid #e6e4e4;
@@ -646,7 +646,7 @@ body {
     left: 0;
     margin-top: -36px;
 }
-.list-item-template > .leaf-item-badge {
+.list-item-template > .list-badge {
     width: 0px;
 	height: 0px;
 	border-style: solid;
@@ -657,7 +657,7 @@ body {
     right: -1.2em;
     color: #fff;
 }
-.list-item-template > .leaf-item-badge > .fa {
+.list-item-template > .list-badge > .fa {
    position: relative;
 	top: -2px;
 	left: 18px;
@@ -681,6 +681,9 @@ body {
 	margin: 1.4em;
 	border-bottom: 1px solid #ececec;
 }
+.list-details-item-template > .info-section:last-of-type {
+    border-bottom-width: 0;
+}
 .list-details-item-template > .info-section.info-image {
     margin: 0;
     border: none;
@@ -689,7 +692,6 @@ body {
 .list-details-item-template > .info-section.info-image > img {
     width: 100%;
     height: 100%;
-    
 }
 
 .list-details-item-template > .info-section.info-header {
