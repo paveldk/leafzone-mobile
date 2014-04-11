@@ -14,7 +14,9 @@
 		<div class="img-small-logo"></div>
 	</div>
 	
-    <div data-template="leaf-details-template" data-bind="source: this"></div>
+    <div class="lz-details-item-template lz-line" 
+         data-template="leaf-details-template" data-bind="source: this">
+    </div>
     
 	<div data-role="footer">
 		<div data-role="navbar">
@@ -24,38 +26,45 @@
 	</div>
         
     <script id="leaf-details-template" type="text/x-kendo-template">
-    	<div class="list-details-item-template">
-            <div class="info-section info-image">
-            	<img data-bind="attr: {src : imageUrl}" />
-    		</div>
+    	<div class="lz-section info-image">
+			<img data-bind="attr: {src : imageUrl}" />
+		</div>
             
-            <div class="info-section info-header">
-                <h2>#: name #</h2>
-                <h6>&nbsp;</h6>
-            </div>
+		<div class="lz-section info-header">
+			<h2>#: name #</h2>
+			<h6>&nbsp;</h6>
+			<div class="info-number">
+				<span>#: percentage #</span>
+				<span>% affected by ozone</span>
+			</div>
+		</div>
             
-            <div class="info-section">
-                <div>
-                    <span><i class="fa fa-user"></i></span>
-                    <h6>Submitted by</h6>
-                    <h5>#: userName #</h5>
-                </div>
-                <div>
-                    <span><i class="fa fa-location-arrow"></i></span>
-                    <h6>Location</h6>
-                    <h5>#: location #</h5>
-                </div>
-                <div>
-                    <span><i class="fa fa-bug"></i></span>
-                    <h6>Disease</h6>
-                    <h5>#: disease #</h5>
-                </div>
-                <div>
-                    <span><i class="fa fa-leaf"></i></span>
-                    <h6>Plant</h6>
-                    <h5>#: disease #</h5>
-                </div>
-            </div>
-    	</div>
+		<div class="lz-section info-item">
+			<h2>&nbsp;</h2>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Submitted by</h2>
+			<p>#: userName #</p>
+			<span><i class="fa fa-user"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Location</h2>
+			<p>#: location #</p>
+			<span><i class="fa fa-location-arrow"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Disease</h2>
+			<p>#: disease #</p>
+			<span><i class="fa fa-bug"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Plant</h2>
+			<p>#: disease #</p>
+			<span><i class="fa fa-leaf"></i></span>
+		</div>
 	</script>
 </div>
