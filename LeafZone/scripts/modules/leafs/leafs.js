@@ -83,7 +83,9 @@
 							}
 						},
 						imageUrl: function () {
-							return app.everlive.Files.getDownloadUrl(this.get("imageId"));
+							var imageId = app.common.getTumbnailIdByImageId(this.get("imageId"));
+							
+							return app.everlive.Files.getDownloadUrl(imageId);
 						}
 					}
 				},
@@ -118,7 +120,9 @@
 							}
 						},
 						imageUrl: function () {
-							return app.everlive.Files.getDownloadUrl(this.get("imageId"));
+							var imageId = app.common.getTumbnailIdByImageId(this.get("imageId"));
+							
+							return app.everlive.Files.getDownloadUrl(imageId);
 						}
 					}
 				},
@@ -133,8 +137,15 @@
 
 			this.viewModel.set("myPlantsDataSource", myPlantsDataSource);
 		},
-
+		
 		initData: function () {
+			var that = this;
+
+			app.common.updateFilesInfo()
+			.then($.proxy(that.setLeafsData, that));
+		},
+
+		setLeafsData: function () {
 			var that = this;
 
 			that.setAllUserPlantsData();

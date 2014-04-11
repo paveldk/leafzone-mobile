@@ -30,7 +30,8 @@
 		initData: function () {
 			var that = this;
 
-			that.setPlantsData();
+			app.common.updateFilesInfo()
+			.then($.proxy(that.setPlantsData, that));
 		},
 		
 		setPlantsData: function () {
@@ -53,7 +54,9 @@
 							}
 						},
 						imageUrl: function () {
-							return app.everlive.Files.getDownloadUrl(this.get("imageId"));
+							var imageId = app.common.getTumbnailIdByImageId(this.get("imageId"));
+							
+							return app.everlive.Files.getDownloadUrl(imageId);
 						}
 					}
 				},
