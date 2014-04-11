@@ -629,7 +629,7 @@ body {
     text-align: center;
 }
 
-/* leafs view specific styles */
+/* list item template */
 .list-item-template {
     padding: 0.8em 0 0.8em 5.5em;
     position: relative;
