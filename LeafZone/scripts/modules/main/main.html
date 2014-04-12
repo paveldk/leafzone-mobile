@@ -9,27 +9,40 @@
 	<div data-role="header">
         <div data-role="navbar">
             <a data-role="button" data-rel="drawer" href="#drawer" data-align="left"><i class="fa fa-th-list"></i></a>
-			<a data-role="button" data-align="right" href="scripts/modules/profile/profile.html">
+			<div class="km-view-title">&nbsp;</div>
+            <div class="img-small-logo"></div>
+            <a data-role="button" data-align="right" href="scripts/modules/profile/profile.html">
 				<i class="fa fa-cog"></i>
 			</a>
         </div>
-        <div class="img-small-logo"></div>
 	</div>
 	
-	<a class="lz-button lz-button-option big" data-role="button" data-bind="click: onGetNewPhoto">
-		<i class="fa fa-camera"></i>
-		<span>Take a Photo</span>
-	</a>
+    <div class="title">
+        <p>
+            Please follow the wizard steps to analyze a leaf. For best results please take the photo of the leaf on a <strong>clear background</strong> - white sheet, the sky, etc.    
+        </p>  
+    </div>
     
+    <div class="option">
+        <a class="lz-button lz-button-option" data-role="button" 
+        data-bind="click: onGetNewPhoto">
+            <i class="fa fa-camera"></i>
+            <span>Take a Photo</span>
+        </a>
+    </div>
+      
     <div class="separator">
         <span>or</span>
     </div>
     
-    <a class="lz-button lz-button-option" data-role="button" data-bind="click: onSelectExistingPhoto">
-		<i class="fa fa-picture-o"></i>
-		<span>Choose a Photo</span>
-	</a>
-    
+    <div class="option">
+        <a class="lz-button lz-button-option" data-role="button" 
+        data-bind="click: onSelectExistingPhoto">
+            <i class="fa fa-picture-o"></i>
+            <span>Choose a Photo</span>
+        </a> 
+    </div>
+       
     <div data-role="footer">
         <div data-role="navbar">
             <ul class="lz-listview-steps">
@@ -46,6 +59,11 @@
                 <li>
                     <div>
                         <span>3</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>4</span>
                     </div>
                 </li>
             </ul> 

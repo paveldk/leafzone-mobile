@@ -11,6 +11,20 @@ body {
     background-color: #fff;
 }
 
+.km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-leftitem, 
+.km-on-ios.km-black-translucent-status-bar.km-app .km-header .km-rightitem,
+.km-on-android.km-black-translucent-status-bar.km-app .km-header .km-leftitem, 
+.km-on-android.km-black-translucent-status-bar.km-app .km-header .km-rightitem {
+    height: auto;
+    line-height: 3.2em;
+}
+.km-on-ios.km-black-translucent-status-bar.km-app .km-footer .km-leftitem, 
+.km-on-ios.km-black-translucent-status-bar.km-app .km-footer .km-rightitem, 
+.km-on-android.km-black-translucent-status-bar.km-app .km-footer .km-leftitem, 
+.km-on-android.km-black-translucent-status-bar.km-app .km-footer .km-rightitem {
+    height: 100%;
+}
+
 /* flex styles*/
 .km-stretched-view {
     width: 100%;
@@ -70,11 +84,11 @@ body {
 }
 .km-view .km-header > .km-navbar > .km-leftitem > .km-button {
     margin: 0;
-    padding: 0 2em 0 0.8em;
+    padding: 0 4em 0 0.8em;
 }
 .km-view .km-header > .km-navbar > .km-rightitem > .km-button {
     margin: 0;
-    padding: 0 0.8em 0 2em;
+    padding: 0 0.8em 0 4em;
 }
 .km-view .km-header > .km-navbar > .km-leftitem > .km-back:before,
 .km-view .km-header > .km-navbar > .km-rightitem > .km-back:before {
@@ -176,9 +190,8 @@ body {
     text-align: center;
     margin: 0 auto;
     display: block;
-    padding: 2em;
+    padding: 1em 2em;
     width: 100%;
-    height: 40%;
     -webkit-text-fill-color: #81c342;
 }
 .km-view .km-button.lz-button.lz-button-option > .fa {
@@ -193,16 +206,6 @@ body {
 .km-view .km-button.lz-button.lz-button-option.km-state-active,
 .km-view .km-button.lz-button.lz-button-option.km-state-disabled {
     opacity: .4;
-}
-.km-view .km-button.lz-button.lz-button-option.big {
-    height: 55%;
-}
-.km-view .km-button.lz-button.lz-button-option.big > .fa {
-	font-size: 8em;	    
-}
-.km-view .km-button.lz-button.lz-button-option.big > span {
-    font-size: 1.7em;
-    font-weight: normal;
 }
 
 /* footer button styles */
@@ -356,7 +359,7 @@ body {
 }
 .lz-listview-steps > li {
     display: inline-block;
-    padding: 0 28px;
+    padding: 0 20px;
     margin: 0 -3px;
     text-align: center;
     position: relative;
@@ -370,7 +373,7 @@ body {
     top: 50%;
     left: 0;
     margin-top: -1px;
-    width: 28px;
+    width: 20px;
 }
 .lz-listview-steps > li:after {
     content: "";
@@ -381,7 +384,7 @@ body {
     top: 50%;
     right: 0;
     margin-top: -1px;
-    width: 28px;
+    width: 20px;
 }
 .lz-listview-steps > li:first-of-type { padding-left: 0; }
 .lz-listview-steps > li:last-of-type { padding-right: 0; }
@@ -636,6 +639,14 @@ body {
     text-align: left;
 }
 
+/* list details item template - info footer */
+.lz-details-item-template > .lz-section.info-footer {
+    margin: 0;
+    padding: 1.4em;
+    border-top: 1px solid #ececec;
+    background: #fff;
+}
+
 /* list details item template - info gallery */
 .lz-details-item-template > .lz-section.info-gallery {
     padding: 1.4em 0;
@@ -675,8 +686,24 @@ body {
 }
 
 /* main specific styles */
-.main-view.km-view .km-button.lz-button.lz-button-option {
+.main-view.km-view .title {
+    border-bottom: 1px solid #dadada;
+    height: 85px;
+}
+.main-view.km-view .title > p {
+    font-size: 0.8em;
+    margin: 1em;
+}
+.main-view.km-view .option {
+    position: relative;
+    height: 40%;
+}
+.main-view.km-view .option > .km-button.lz-button.lz-button-option {
     margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -60px;
 }
 .main-view .separator {
     height: 5%;
