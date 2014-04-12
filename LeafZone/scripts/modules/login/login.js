@@ -156,7 +156,9 @@
             var that = this;
             
             that.set("isLoggedIn", false);
-            app.common.navigateToView(app.config.views.init);
+            app.everlive.Users.logout()
+			.then($.proxy(app.common.navigateToView, app.common, app.config.views.init))
+            .then(null, $.proxy(that._onError, that));
         },
 
 		_onSuccess: function (provider) {
