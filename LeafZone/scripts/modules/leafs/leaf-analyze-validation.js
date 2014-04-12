@@ -41,7 +41,7 @@
 			
 			that.setData();
 
-			that.getCurrentLocation()
+			app.common.getCurrentLocation()
 			.then($.proxy(that.updateCoordinates, that))
 			.then($.proxy(that.setLocation, that))
 			.then(null, $.proxy(that.setNoLocation, that))
@@ -58,57 +58,26 @@
 			that.viewModel.set("userName", app.currentUser.DisplayName);
 		},
 		
-		getCurrentLocation: function () {
-			return new RSVP.Promise(function (resolve, reject) {
-				navigator.geolocation.getCurrentPosition(
-                function (position) { resolve(position); },
-                function (error) { reject(error); },
-                { timeout: 30000, enableHighAccuracy: true });
-            });			
-        },
-		
 		updateCoordinates: function (position) {
 			var that = this;
 			
 			that.lat = position.coords.latitude;
 			that.long = position.coords.longitude;
         },
-				
-		setLocation: function () {
-			var that = this,
-				geocoder = new google.maps.Geocoder(),
-				latlng = new google.maps.LatLng(that.lat, that.long);
 
-			geocoder.geocode({ "latLng": latlng }, 
-			function (results, status) {
-				var locationInfo;
+		setLocation: function (plantData) {
+			var that = this;
 
-				if (status === google.maps.GeocoderStatus.OK) {
-					locationInfo = that.getLocationInfo(results);
-					that.viewModel.set("location", locationInfo);
-				} else {
-					that.setNoLocation();
-				}
-			});
+            app.common.getLocationName(that.lat, that.long)
+            .then($.proxy(that.setLocationName, that), $.proxy(that.setNoLocation, that));
 		},
-
+        
+		setLocationName: function (locationName) {
+			this.viewModel.set("location", locationName);
+		},
+        
 		setNoLocation: function () {
 			this.viewModel.set("location", "No location info");
-		},
-
-		getLocationInfo: function (locationsList) {
-			var locationInfo,
-				result = locationsList[0].formatted_address;
-
-			for (var i = 0; i < locationsList.length; i++) {
-				locationInfo = locationsList[i];
-
-				if (locationInfo.types.indexOf("locality") >= 0) {
-					result = locationInfo.formatted_address;
-				}
-			}
-
-			return result;
 		},
 		
 		onValidate: function () {

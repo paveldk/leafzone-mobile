@@ -61,46 +61,23 @@
 		},
 
 		setLocation: function (plantData) {
-			var that = this,
-				geocoder = new google.maps.Geocoder(),
-				latlng;
+			var that = this;
 
 			if (!plantData.Location || !plantData.Location.latitude || !plantData.Location.longitude) {
 				that.setNoLocation();
 				return;
 			}
-
-			latlng = new google.maps.LatLng(plantData.Location.latitude, plantData.Location.longitude);
-
-			geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-				var locationInfo;
-
-				if (status === google.maps.GeocoderStatus.OK) {
-					locationInfo = that.getLocationInfo(results);
-					that.viewModel.set("location", locationInfo);
-				} else {
-					that.setNoLocation();
-				}
-			});
+            
+            app.common.getLocationName(plantData.Location.latitude, plantData.Location.longitude)
+            .then($.proxy(that.setLocationName, that), $.proxy(that.setNoLocation, that));
 		},
-
+        
+		setLocationName: function (locationName) {
+			this.viewModel.set("location", locationName);
+		},
+        
 		setNoLocation: function () {
 			this.viewModel.set("location", "No location info");
-		},
-
-		getLocationInfo: function (locationsList) {
-			var locationInfo,
-				result = locationsList[0].formatted_address;
-
-			for (var i = 0; i < locationsList.length; i++) {
-				locationInfo = locationsList[i];
-
-				if (locationInfo.types.indexOf("locality") >= 0) {
-					result = locationInfo.formatted_address;
-				}
-			}
-
-			return result;
 		}
 	});
 

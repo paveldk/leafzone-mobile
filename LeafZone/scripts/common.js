@@ -141,6 +141,56 @@
         };        
     }
     
+    function getCurrentLocation () {
+        return new RSVP.Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) { resolve(position); },
+                function (error) { reject(error); },
+                { timeout: 30000, enableHighAccuracy: true });
+        });			
+    }
+    
+    function getLocationInfo (locationsList) {
+        var locationInfo,
+            result = locationsList[0].formatted_address;
+        
+        for (var i = 0; i < locationsList.length; i++) {
+            locationInfo = locationsList[i];
+            
+            if (locationInfo.types.indexOf("locality") >= 0) {
+                result = locationInfo.formatted_address;
+            }
+        }
+        
+        return result;
+    }
+    
+    function getLocationName (latitude, longitude) {
+        return new RSVP.Promise(function (resolve, reject) {
+            var that = this,
+                geocoder = new google.maps.Geocoder(),
+                latlng;
+            
+            if (!latitude || !longitude) {
+                reject();
+                return;
+            }
+            
+            latlng = new google.maps.LatLng(latitude, longitude);
+            
+            geocoder.geocode({ "latLng": latlng }, function (results, status) {
+                var locationInfo;
+                
+                if (status === google.maps.GeocoderStatus.OK) {
+                    locationInfo = getLocationInfo(results);
+                    resolve(locationInfo);
+                } else {
+                    reject();
+                }
+            });
+        });
+    }
+    
     app.common = {
         notification: notification,
         showLoading: showLoading,
@@ -151,6 +201,8 @@
         getImageDataForBinding: getImageDataForBinding,
         updateFilesInfo: updateFilesInfo,
         getTumbnailIdByImageId: getTumbnailIdByImageId,
-        getUploadFileNames: getUploadFileNames
+        getUploadFileNames: getUploadFileNames,
+        getLocationName: getLocationName,
+        getCurrentLocation: getCurrentLocation
     };
 })(window);
