@@ -1,10 +1,8 @@
-<div id="profil-view"
-	 class="profil-view"
+<div id="around-me-view"
+	 class="around-me-view"
 	 data-role="view"
      data-layout="drawer-layout"
-     data-stretch="true"
-	 data-show="app.profileService.showData"
-	 data-model="app.profileService.viewModel">
+     data-stretch="true">
 
 	<div data-role="header">
 		<div data-role="navbar">
@@ -18,7 +16,7 @@
 	</div>
 	
     <div class="lz-details-item-template lz-line" 
-         data-template="profile-template" data-bind="source: this">
+         data-template="around-template" data-bind="source: this">
     </div>
     
 	<div data-role="footer">
@@ -28,13 +26,13 @@
 		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
 	</div>
     
-    <script id="profile-template" type="text/x-kendo-template">
+    <script id="around-template" type="text/x-kendo-template">
 		<div class="lz-section info-header">
-			<h2>#: displayName #</h2>
-			<h6>&nbsp;</h6>
+			<h2>Top diseases</h2>
+			<h6>around me</h6>
 			<div class="info-number">
-				<span>#: recorededLeafs #</span>
-				<span>recorded leafs</span>
+				<span>75</span>
+				<span>ozone affected</span>
 			</div>
 		</div>
             
@@ -43,15 +41,21 @@
 		</div>
             
 		<div class="lz-section info-item">
-			<h2>Username</h2>
-			<p>#: username #</p>
-			<span><i class="fa fa-user"></i></span>
+			<h2>Disease 1</h2>
+			<p></p>
+			<span><i class="fa fa-leaf"></i></span>
 		</div>
-            
-		<div class="lz-section info-item">
-			<h2>Email</h2>
-			<p>#: email #</p>
-			<span><i class="fa fa-envelope"></i></span>
+        
+        <div class="lz-section info-item">
+			<h2>Disease 2</h2>
+			<p></p>
+			<span><i class="fa fa-leaf"></i></span>
 		</div>
+        
+        <div class="lz-section info-item">
+			<h2>Disease 3</h2>
+			<p></p>
+			<span><i class="fa fa-leaf"></i></span>
+		</div> 
 	</script>
 </div>

@@ -58,6 +58,7 @@
             diseaseDetails: "scripts/modules/diseases/disease-details.html",
             plants: "scripts/modules/plants/plants.html",
             plantDetails: "scripts/modules/plants/plant-details.html",
+            aroundMe: "scripts/modules/profile/around-me.html",
             profile: "scripts/modules/profile/profile.html"
         }
     };
