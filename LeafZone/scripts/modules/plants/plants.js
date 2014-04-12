@@ -30,6 +30,7 @@
 		initData: function () {
 			var that = this;
 
+            app.common.showLoading();
 			app.common.updateFilesInfo()
 			.then($.proxy(that.setPlantsData, that));
 		},
@@ -64,6 +65,12 @@
 						}
 					}
 				},
+                requestStart: function(e) {
+                    app.common.showLoading();
+                },                
+                requestEnd: function(e) {
+                    app.common.hideLoading();
+                },
 				serverPaging: true,
 				pageSize: app.config.lists.plants.pageSize
 			});
