@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>f7727b63-a4f2-496d-8ca9-352b4538f997</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.telerik.LeafZone</AppIdentifier>
+    <AppIdentifier>bg.leafzone.LeafZoneApp</AppIdentifier>
     <ProjectName>LeafZone</ProjectName>
     <IsRunnable>true</IsRunnable>
     <FrameworkVersion>3.2.0</FrameworkVersion>
