@@ -2,6 +2,8 @@
 	 class="around-me-view"
 	 data-role="view"
      data-layout="drawer-layout"
+     data-show="app.aroundMeService.showData"
+	 data-model="app.aroundMeService.viewModel"
      data-stretch="true">
 
 	<div data-role="header">
@@ -31,7 +33,7 @@
 			<h2>Top diseases</h2>
 			<h6>around me</h6>
 			<div class="info-number">
-				<span>75</span>
+				<span>#: ozoneAffected #</span>
 				<span>ozone affected</span>
 			</div>
 		</div>
@@ -40,22 +42,24 @@
 			<h2>&nbsp;</h2>
 		</div>
             
-		<div class="lz-section info-item">
-			<h2>Disease 1</h2>
-			<p></p>
-			<span><i class="fa fa-leaf"></i></span>
+         # for (var i = 0; i < topPlantsList.length; i++) { #            
+            <div class="lz-section info-item">
+                <h2> #: topPlantsList[i] #</h2>
+                <p></p>
+                <span><i class="fa fa-leaf"></i></span>
+    		</div>
+         # } #     
+         
+         <div class="lz-section info-item">
+			<h2>&nbsp;</h2>
 		</div>
-        
-        <div class="lz-section info-item">
-			<h2>Disease 2</h2>
-			<p></p>
-			<span><i class="fa fa-leaf"></i></span>
-		</div>
-        
-        <div class="lz-section info-item">
-			<h2>Disease 3</h2>
-			<p></p>
-			<span><i class="fa fa-leaf"></i></span>
-		</div> 
+            
+         # for (var i = 0; i < topDiseasesList.length; i++) { #            
+            <div class="lz-section info-item">
+                <h2> #: topDiseasesList[i] #</h2>
+                <p></p>
+                <span><i class="fa fa-leaf"></i></span>
+    		</div>
+         # } #     
 	</script>
 </div>

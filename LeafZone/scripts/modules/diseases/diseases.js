@@ -11,7 +11,7 @@
 		init: function () {
 			var that = this;
 
-            that.diseasesDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.diseases.pageSize });
+            that.diseasesDataSource = new kendo.data.DataSource({ pageSize: app.config.data.diseases.pageSize });
 			kendo.data.ObservableObject.fn.init.apply(that, that);
 		}
 	});
@@ -67,7 +67,7 @@
                     app.common.hideLoading();
                 },
 				serverPaging: true,
-				pageSize: app.config.lists.diseases.pageSize 
+				pageSize: app.config.data.diseases.pageSize 
 			});
 
 			this.viewModel.set("diseasesDataSource", diseasesDataSource);

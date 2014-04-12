@@ -14,8 +14,8 @@
             var that = this;
             
             that.myPlantsSelected = true;
-            that.allUserPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.leafs.pageSize });
-            that.myPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.leafs.pageSize });
+            that.allUserPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.data.leafs.pageSize });
+            that.myPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.data.leafs.pageSize });
             kendo.data.ObservableObject.fn.init.apply(that, that);
         },
         
@@ -97,7 +97,7 @@
                     app.common.hideLoading();
                 },
                 serverPaging: true,
-                pageSize: app.config.lists.leafs.pageSize
+                pageSize: app.config.data.leafs.pageSize
             });
             
             this.viewModel.set("allUserPlantsDataSource", allUserPlantsDataSource);
@@ -145,7 +145,7 @@
                     app.common.hideLoading();
                 },
                 serverPaging: true,
-                pageSize: app.config.lists.leafs.pageSize
+                pageSize: app.config.data.leafs.pageSize
             });
             
             this.viewModel.set("myPlantsDataSource", myPlantsDataSource);
