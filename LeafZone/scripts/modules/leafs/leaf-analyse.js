@@ -94,12 +94,16 @@
             app.newLeafData.discoveredDisease = data.DiseaseName;
             app.newLeafData.ozonePercent = data.OzoneAffected;
             
-            app.common.getResizedImage(data.ImageUrl)
-            .then(function (analyzedlImageData) {
-                app.newLeafData.analyzedlImageData = analyzedlImageData;
+           // app.common.getResizedImage(data.ImageUrl)
+            //.then(function (analyzedlImageData) {
+             //   app.newLeafData.analyzedlImageData = analyzedlImageData;
+              //  app.common.hideLoading();
+               // app.common.navigateToView(app.config.views.leafAnalyse);
+            //});
+            
+              app.newLeafData.analyzedlImageData = app.newLeafData.originalImageData;
                 app.common.hideLoading();
                 app.common.navigateToView(app.config.views.leafAnalyse);
-            });
         },
         
         analyzeImage: function () {
