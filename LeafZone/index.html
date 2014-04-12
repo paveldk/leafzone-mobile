@@ -4,9 +4,9 @@
         <title>Leaf Zone</title>
         <meta charset="utf-8" />
         
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" />
-        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:light&v1' rel='stylesheet' type='text/css'>
         
+        <link href="lib/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" />
         <link href="lib/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
         
@@ -39,20 +39,18 @@
              class="init-view"
              data-role="view"
              data-layout="default"
-             data-transition="overlay:up"
-             data-stretch="true">
+             data-stretch="true"
+             data-transition="overlay:up">
             
-            <div data-role="header">
+            <div class="absolute-group top">
                 <div class="img-large-logo"></div>
-            </div>
+            </div>    
             
             <div class="img-leaf"></div>
-
-            <div class="lz-footer-transparent" data-role="footer">
-                <div data-role="navbar">
-                    <a class="lz-button" data-role="button" data-align="left" href="scripts/modules/login/signup.html">Sign Up</a>
-					<a class="lz-button lz-button-alternate" data-role="button" data-align="right" href="scripts/modules/login/signin.html">Sign In</a>
-                </div>                 
+            
+			<div class="absolute-group">
+				<a data-role="button" class="lz-button" href="scripts/modules/login/signup.html">Sign Up</a>
+				<a data-role="button" class="lz-button lz-button-alternate" href="scripts/modules/login/signin.html">Sign In</a>
 			</div>
         </div>         
         
@@ -60,7 +58,7 @@
         <div data-role="layout" data-id="drawer-layout">
             <div data-role="header">
 				<div data-role="navbar">
-					<span data-role="view-title"></span>
+					<span data-role="view-title">&nbsp;</span>
 				</div>
 			</div>
         </div>

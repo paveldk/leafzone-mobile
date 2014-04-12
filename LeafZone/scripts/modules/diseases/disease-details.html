@@ -1,5 +1,5 @@
 <div id="disease-details-view"
-	 class="leaf-details-view"
+	 class="details-view"
 	 data-role="view"
 	 data-layout="drawer-layout"
 	 data-show="app.diseaseDetailsService.showData"
@@ -14,7 +14,9 @@
 		<div class="img-small-logo"></div>
 	</div>
 
-	<div data-template="disease-item-template" data-bind="source: this"></div>
+	<div class="lz-details-item-template" 
+         data-template="disease-details-template" data-bind="source: this">
+    </div>
 
 	<div data-role="footer">
 		<div data-role="navbar">
@@ -23,32 +25,30 @@
 		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
 	</div>
     
-    <script id="disease-item-template" type="text/x-kendo-template">
-    	<div class="list-details-item-template">
-        	<div class="info-section info-image">
-            	<img src="#= imageUrl() #" />
-    		</div>
+    <script id="disease-details-template" type="text/x-kendo-template">
+		<div class="lz-section info-image">
+			<img src="#= imageUrl() #" />
+		</div>
             
-            <div class="info-section info-header">
-                <h2>#: name #</h2>
-                <h6>&nbsp;</h6>
-            </div>
+		<div class="lz-section info-header">
+			<h2>#: name #</h2>
+			<h6>&nbsp;</h6>
+		</div>
             
-            <div class="info-section info-gallery">
-                # for(var i = 0, len = images.length; i < len; i++) { #
-					<img src="#= getImageUrl(images[i]) #" />
-				# } #
-            </div>
+		<div class="lz-section info-gallery">
+			# for(var i = 0, len = images.length; i < len; i++) { #
+				<img src="#= getImageUrl(images[i]) #" />
+			# } #
+		</div>
             
-        	<div class="info-section">
-                <h2>Symptoms</h2>
-                <p>#= symptoms #</p>
-			</div>
+		<div class="lz-section">
+			<h2>Symptoms</h2>
+			<p>#= symptoms #</p>
+		</div>
         
-            <div class="info-section">
-                <h2>Control</h2>
-                <p>#= control #</p>
-            </div>
-    	</div>
+		<div class="lz-section">
+			<h2>Control</h2>
+			<p>#= control #</p>
+		</div>
 	</script>
 </div>
