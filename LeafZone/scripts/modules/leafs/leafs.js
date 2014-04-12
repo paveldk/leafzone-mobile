@@ -89,6 +89,12 @@
                         }
                     }
                 },
+                requestStart: function(e) {
+                    app.common.showLoading();
+                },                
+                requestEnd: function(e) {
+                    app.common.hideLoading();
+                },
                 serverPaging: true,
                 pageSize: app.config.lists.leafs.pageSize
             });
@@ -131,6 +137,12 @@
                     operator: "eq",
                     value: app.currentUser.Id
                 },
+                requestStart: function(e) {
+                    app.common.showLoading();
+                },                
+                requestEnd: function(e) {
+                    app.common.hideLoading();
+                },
                 serverPaging: true,
                 pageSize: app.config.lists.leafs.pageSize
             });
@@ -141,6 +153,7 @@
         initData: function () {
             var that = this;
             
+            app.common.showLoading();
             app.common.updateFilesInfo()
             .then($.proxy(that.setLeafsData, that));
         },
