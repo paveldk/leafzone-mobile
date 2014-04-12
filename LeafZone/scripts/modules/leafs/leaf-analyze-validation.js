@@ -153,7 +153,7 @@
 
 		onLeafEntryCreated: function () {			
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafs + "?refresh=true");
+			app.common.navigateToView(app.config.views.leafsMine + "?refresh=true");
 		},
 		
 		onError: function (e) {
