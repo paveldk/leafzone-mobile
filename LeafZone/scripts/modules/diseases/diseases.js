@@ -11,11 +11,10 @@
 		init: function () {
 			var that = this;
 
-			that.diseasesDataSource = new kendo.data.DataSource();
+            that.diseasesDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.diseases.pageSize });
 			kendo.data.ObservableObject.fn.init.apply(that, that);
 		}
 	});
-
 
 	DiseasesService = kendo.Class.extend({
 		viewModel: null,
@@ -30,6 +29,7 @@
 		initData: function () {
 			var that = this;
 
+            app.common.showLoading();
 			app.common.updateFilesInfo()
 			.then($.proxy(that.setPlantsData, that));
 		},
@@ -60,8 +60,14 @@
 						}
 					}
 				},
+                requestStart: function(e) {
+                    app.common.showLoading();
+                },                
+                requestEnd: function(e) {
+                    app.common.hideLoading();
+                },
 				serverPaging: true,
-				pageSize: 20
+				pageSize: app.config.lists.diseases.pageSize 
 			});
 
 			this.viewModel.set("diseasesDataSource", diseasesDataSource);

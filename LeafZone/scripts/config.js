@@ -1,6 +1,6 @@
 (function (global) {
     var app = global.app = global.app || {};
-
+    
     app.config = {
         everlive: {
             //The original api key is woLBIbIHeu9aWBrb, because of accaunt level does not suppor social login. Use
@@ -26,11 +26,22 @@
             clientId: "000000004C10D1AF",
             redirectUri: "https://login.live.com/oauth20_desktop.srf"
         },
-		images: {
-			tumbnailPrefix: "tmbl-",
-			tumbnailSize: 144,
-			imageWidth: 800,
-			ImageHeight: 800
+        images: {
+            tumbnailPrefix: "tmbl-",
+            tumbnailSize: 72,
+            imageWidth: 800,
+            ImageHeight: 600
+        },
+        lists: {
+            plants: {
+                pageSize: 40
+            },
+            diseases: {
+                pageSize: 40
+            },
+            leafs: {
+                pageSize: 40
+            }            
         },
         views: {
             init: "#init-view",
