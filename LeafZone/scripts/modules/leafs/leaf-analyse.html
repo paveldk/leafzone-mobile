@@ -15,12 +15,13 @@
 		<div class="img-small-logo"></div>
 	</div>
 	
-    <div class="flex-image-container">
-        <div data-template="leaf-image-template" data-bind="source: this"></div>
-        <div class="absolute-button-group">
-            <a data-role="button" data-align="left" class="lz-button" data-bind="click: onReanalize">Reanalyze</a>
-            <a data-role="button" data-align="right" class="lz-button lz-button-alternate" data-bind="click: onDone">Save</a>
-        </div>
+	<div data-template="analyse-image-template" 
+        data-bind="source: this">
+    </div>
+    
+    <div class="absolute-group">
+        <a data-role="button" class="lz-button" data-bind="click: onReanalize">Reanalyze</a>
+        <a data-role="button" class="lz-button lz-button-alternate" data-bind="click: onDone">Save</a>
     </div>
     
 	<div data-role="footer">
@@ -45,7 +46,7 @@
         </div>            
 	</div>
     
-    <script id="leaf-image-template" type="text/x-kendo-template">
-		<img src="data:data:image/jpeg;base64,#: imageData #" />
+    <script id="analyse-image-template" type="text/x-kendo-template">
+		<img class="full-size-image" src="data:data:image/jpeg;base64,#: imageData #" />
 	</script>
 </div>

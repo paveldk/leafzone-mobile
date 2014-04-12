@@ -1,10 +1,10 @@
 <div id="profil-view"
 	 class="profil-view"
 	 data-role="view"
+     data-layout="drawer-layout"
+     data-stretch="true"
 	 data-show="app.profileService.showData"
-	 data-model="app.profileService.viewModel"
-	 data-layout="drawer-layout"
-	 data-stretch="true">
+	 data-model="app.profileService.viewModel">
 
 	<div data-role="header">
 		<div data-role="navbar">
@@ -15,37 +15,42 @@
 		</div>
 		<div class="img-small-logo"></div>
 	</div>
-
-	<div class="flex-title-container" data-template="profil-title-template" data-bind="source: this"></div>
-	<div class="flex-info-container" data-template="profil-info-template" data-bind="source: this"></div>
+	
+    <div class="lz-details-item-template lz-line" 
+         data-template="details-template" data-bind="source: this">
+    </div>
     
 	<div data-role="footer">
 		<div data-role="navbar">
-			<a class="lz-button lz-button-footer lz-button-icon" data-role="button" data-align="right">
-				<i class="fa fa-pencil-square-o"></i>Edit Profile
-			</a>
+			<div class="km-view-title">&nbsp;</div>
 		</div>
-		<a class="lz-button lz-button-circle circle-left-position add-leaf" data-role="button"></a>
+		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
 	</div>
     
-    <script id="profil-title-template" type="text/x-kendo-template">
-    	<div class="flex-number">
-            <span class="digit">#: recorededLeafs #</span>
-            <span class="desc">recorded leafs</span>
+    <script id="details-template" type="text/x-kendo-template">
+		<div class="lz-section info-header">
+			<h2>#: displayName #</h2>
+			<h6>&nbsp;</h6>
+			<div class="info-number">
+				<span>#: recorededLeafs #</span>
+				<span>recorded leafs</span>
+			</div>
 		</div>
-		<h2>#: displayName #</h2>
-        <h6>&nbsp;</h6>
-    </script>
-    <script id="profil-info-template" type="text/x-kendo-template">
-		<div>
+            
+		<div class="lz-section info-item">
+			<h2>&nbsp;</h2>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Username</h2>
+			<p>#: username #</p>
 			<span><i class="fa fa-user"></i></span>
-			<h6>Username</h6>
-			<h5>#: username #</h5>
 		</div>
-		<div>
+            
+		<div class="lz-section info-item">
+			<h2>Email</h2>
+			<p>#: email #</p>
 			<span><i class="fa fa-envelope"></i></span>
-			<h6>Email</h6>
-			<h5>#: email #</h5>
 		</div>
 	</script>
 </div>

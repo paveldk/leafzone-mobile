@@ -2,6 +2,7 @@
      class="signin-view"
      data-role="view"
      data-layout="default"
+     data-stretch="true"
      data-transition="overlay:up"
      data-model="app.loginService.signInViewModel">
     
@@ -15,16 +16,15 @@
         <div class="img-small-logo"></div>
 	</div>
     
-    <form class="lz-form top-margin" data-bind="events: { keyup: checkEnter }">
-		<input type="text" data-bind="value: username" placeholder="User Name"/>
-		<input type="password" data-bind="value: password" placeholder="Password"/>
-		<input data-role="button" class="lz-button lz-button-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
-	</form>     
-    
-    <div class="lz-footer-transparent" data-role="footer">
-        <div data-role="navbar">
+    <div>
+        <form class="lz-form top-margin" data-bind="events: { keyup: checkEnter }">
+            <input type="text" data-bind="value: username" placeholder="User Name"/>
+            <input type="password" data-bind="value: password" placeholder="Password"/>
+            <input data-role="button" class="lz-button lz-button-wide" type="submit" data-bind="click: onLogin" value="Sign In"/>
+	    </form>  
+        <div class="absolute-group">
             <input class="lz-button lz-button-social facebook" type="submit" data-role="button" data-align="left" value="" data-bind="click: onLoginFacebook, invisible: isLoggedIn" />
 			<input class="lz-button lz-button-social google" type="submit" data-role="button" data-align="right" value="" data-bind="click: onLoginGoogle, invisible: isLoggedIn" />
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
