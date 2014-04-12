@@ -33,10 +33,9 @@
 				resizeImagePromise,
 				createTumbnailPromise;
 			
-			app.common.showLoading();
-			
-			resizeImagePromise = app.common.resizeImage(imageUrl, app.config.images.imageWidth, app.config.images.ImageHeight, false);
-			createTumbnailPromise = app.common.resizeImage(imageUrl,  app.config.images.tumbnailSize,  app.config.images.tumbnailSize, true);
+			app.common.showLoading();			
+			resizeImagePromise = app.common.getResizedImage(imageUrl);
+			createTumbnailPromise = app.common.getResizedTmbl(imageUrl);
 			
 			RSVP.all([resizeImagePromise, createTumbnailPromise])
 			.then($.proxy(that.onPictureReady, that), $.proxy(that.onError, that));
@@ -45,10 +44,13 @@
 		onGetPicruteError: function (e) {},
 						
 		onPictureReady: function (imageData) {
-			var prefix = "data:image/jpeg;base64,";
-
-			app.newLeafData.originalImageData = imageData[0].substr(prefix.length, imageData[0].length);
-			app.newLeafData.originalImageTmblData = imageData[1].substr(prefix.length, imageData[1].length);
+            var fileNames = app.common.getUploadFileNames();
+            
+			app.newLeafData.originalImageData = imageData[0];
+			app.newLeafData.originalImageTmblData = imageData[1];
+            app.newLeafData.fileName = fileNames.fileName;
+            app.newLeafData.tmblName = fileNames.tmblName;
+            
 			app.common.hideLoading();
 			app.common.navigateToView(app.config.views.leafSubmit);
         },
