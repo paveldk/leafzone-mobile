@@ -11,11 +11,10 @@
 		init: function () {
 			var that = this;
 
-			that.diseasesDataSource = new kendo.data.DataSource();
+            that.diseasesDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.diseases.pageSize });
 			kendo.data.ObservableObject.fn.init.apply(that, that);
 		}
 	});
-
 
 	DiseasesService = kendo.Class.extend({
 		viewModel: null,
@@ -61,7 +60,7 @@
 					}
 				},
 				serverPaging: true,
-				pageSize: 20
+				pageSize: app.config.lists.diseases.pageSize 
 			});
 
 			this.viewModel.set("diseasesDataSource", diseasesDataSource);
