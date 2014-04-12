@@ -127,6 +127,9 @@ body {
     -webkit-border-radius: 2em;
     border-radius: 2em;
 }
+.km-view .km-content .km-button.lz-button {
+    min-width: 120px;
+}
 .km-view .km-button.lz-button.km-state-active { background-color: #6aa92d; }
 .km-view .km-button.lz-button.km-state-disabled { background-color: #81c342; }
 
@@ -500,7 +503,9 @@ body {
     bottom: initial;
     padding: 2.35em 1.35em 0 1.35em;
 }
+
 .absolute-group:after { clear:both; }
+
 .absolute-group > .km-button:first-of-type { 
     float: left; 
     min-width: 100px; 
@@ -624,8 +629,8 @@ body {
 .lz-details-item-template > .lz-section.info-header > .info-number > span:first-of-type {
     font-size: 1.5em;
     color: #274c65;
-    margin: 0.1em auto;
-	display: block;
+    margin-top: 0.3em;
+    display: block;
 }
 .lz-details-item-template > .lz-section.info-header > .info-number > span:last-of-type {
     content: "% affected by ozone";
@@ -642,9 +647,20 @@ body {
 /* list details item template - info footer */
 .lz-details-item-template > .lz-section.info-footer {
     margin: 0;
-    padding: 1.4em;
+    padding: 0;
     border-top: 1px solid #ececec;
     background: #fff;
+}
+.lz-details-item-template > .lz-section.info-footer:after {
+    clear: both;
+}
+.lz-details-item-template > .lz-section.info-footer > .km-button:first-of-type {
+    float: left;
+    margin: 1.5em 1.35em;
+}
+.lz-details-item-template > .lz-section.info-footer > .km-button:last-of-type {
+    float: right;
+    margin: 1.5em 1.35em;
 }
 
 /* list details item template - info gallery */
@@ -677,12 +693,13 @@ body {
     border: 2px solid #dadada;
     background: #fff;
     position: absolute;
-    top: 0.15em;
+    top: 0;
 	left: 0.6em;
     text-align: center;
 }
 .lz-details-item-template > .lz-section.info-item > span > .fa {
-	font-size: 0.8em;    
+	font-size: 0.8em;
+    color: #274c65;
 }
 
 /* main specific styles */

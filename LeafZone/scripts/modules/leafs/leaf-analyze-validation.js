@@ -54,7 +54,7 @@
 			that.viewModel.set("name", app.newLeafData.discoveredPlant);
 			that.viewModel.set("disease", app.newLeafData.discoveredDisease || "No diseases");
 			that.viewModel.set("percentage", app.newLeafData.ozonePercent || 0);
-			that.viewModel.set("imageData", app.newLeafData.originalImageData);			
+			that.viewModel.set("imageData", app.common.getImageDataForBinding(app.newLeafData.originalImageData));			
 			that.viewModel.set("userName", app.currentUser.DisplayName);
 		},
 		

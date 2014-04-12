@@ -15,9 +15,52 @@
 		</div>
 	</div>
 	
-    <div class="lz-details-item-template lz-line" 
-         data-template="leaf-details-analyse-template" 
-         data-bind="source: this">
+    <div class="lz-details-item-template lz-line">
+        <div class="lz-section info-image">
+            <img data-bind="attr:{ src: imageData}" />
+		</div>
+            
+		<div class="lz-section info-header">
+			<h2 data-bind="text: name"></h2>
+			<h6>&nbsp;</h6>
+			<div class="info-number">
+				<span data-bind="text: percentage"></span>
+				<span>% affected by ozone</span>
+			</div>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>&nbsp;</h2>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Submitted by</h2>
+			<p data-bind="text: userName"></p>
+			<span><i class="fa fa-user"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Location</h2>
+			<p data-bind="text: location"></p>
+			<span><i class="fa fa-location-arrow"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Disease</h2>
+			<p data-bind="text: disease"></p>
+			<span><i class="fa fa-bug"></i></span>
+		</div>
+            
+		<div class="lz-section info-item">
+			<h2>Plant</h2>
+			<p data-bind="text: disease"></p>
+			<span><i class="fa fa-leaf"></i></span>
+		</div>
+        
+        <div class="lz-section info-footer">
+            <a data-role="button" class="lz-button lz-button-alternate">Cancel</a>
+            <a data-role="button" class="lz-button">Save</a>
+		</div>
     </div>
     
 	<div data-role="footer">
@@ -48,50 +91,6 @@
 	</div>
     
     <script id="leaf-details-analyse-template" type="text/x-kendo-template">
-    	<div class="lz-section info-image">
-			<img src="data:image/jpeg;base64,#: imageData #" />
-		</div>
-            
-		<div class="lz-section info-header">
-			<h2>#: name #</h2>
-			<h6>&nbsp;</h6>
-			<div class="info-number">
-				<span>#: percentage #</span>
-				<span>% affected by ozone</span>
-			</div>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>&nbsp;</h2>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>Submitted by</h2>
-			<p>#: userName #</p>
-			<span><i class="fa fa-user"></i></span>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>Location</h2>
-			<p>#: location #</p>
-			<span><i class="fa fa-location-arrow"></i></span>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>Disease</h2>
-			<p>#: disease #</p>
-			<span><i class="fa fa-bug"></i></span>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>Plant</h2>
-			<p>#: disease #</p>
-			<span><i class="fa fa-leaf"></i></span>
-		</div>
-        
-        <div class="lz-section info-footer">
-			<a data-role="button" class="lz-button lz-button-alternate">Cancel</a>
-        	<a data-role="button" class="lz-button">Save</a>
-		</div>
+    	
 	</script>
 </div>
