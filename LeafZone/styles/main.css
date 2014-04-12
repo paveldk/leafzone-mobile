@@ -129,6 +129,7 @@ body {
 }
 .km-view .km-content .km-button.lz-button {
     min-width: 120px;
+    text-align: center;
 }
 .km-view .km-button.lz-button.km-state-active { background-color: #6aa92d; }
 .km-view .km-button.lz-button.km-state-disabled { background-color: #81c342; }

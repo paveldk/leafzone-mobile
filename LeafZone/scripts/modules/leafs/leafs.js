@@ -6,7 +6,7 @@
     app.newLeafData = app.newLeafData || {};
     
     LeafsViewModel = kendo.data.ObservableObject.extend({
-        appUserPlantsDataSource: null,
+        allUserPlantsDataSource: null,
         myPlantsDataSource: null,
         myPlantsSelected: true,
         
@@ -14,7 +14,7 @@
             var that = this;
             
             that.myPlantsSelected = true;
-            that.appUserPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.leafs.pageSize });
+            that.allUserPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.leafs.pageSize });
             that.myPlantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.leafs.pageSize });
             kendo.data.ObservableObject.fn.init.apply(that, that);
         },
@@ -56,11 +56,12 @@
             var that = this;
             
             that.viewModel = new LeafsViewModel();
-            that.initModule = $.proxy(that.initData, that);
+            that.initLeafsMineModule = $.proxy(that.initMyLeafsData, that);
+            that.initLeafsAllModule = $.proxy(that.initAllLeafsData, that);
         },
         
         setAllUserPlantsData: function () {
-            var appUserPlantsDataSource = new kendo.data.DataSource({
+            var allUserPlantsDataSource = new kendo.data.DataSource({
                 type: "everlive",
                 transport: {
                     typeName: "UserPlants"
@@ -99,7 +100,7 @@
                 pageSize: app.config.lists.leafs.pageSize
             });
             
-            this.viewModel.set("appUserPlantsDataSource", appUserPlantsDataSource);
+            this.viewModel.set("allUserPlantsDataSource", allUserPlantsDataSource);
         },
         
         setMyPlantsData: function () {
@@ -150,19 +151,20 @@
             this.viewModel.set("myPlantsDataSource", myPlantsDataSource);
         },
         
-        initData: function () {
+        initMyLeafsData: function () {
             var that = this;
             
             app.common.showLoading();
             app.common.updateFilesInfo()
-            .then($.proxy(that.setLeafsData, that));
+            .then($.proxy(that.setMyPlantsData, that));
         },
         
-        setLeafsData: function () {
+         initAllLeafsData: function () {
             var that = this;
             
-            that.setAllUserPlantsData();
-            that.setMyPlantsData();
+            app.common.showLoading();
+            app.common.updateFilesInfo()
+            .then($.proxy(that.setAllUserPlantsData, that));
         }
     });
     

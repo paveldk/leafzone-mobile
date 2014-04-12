@@ -122,19 +122,17 @@
 			.then(null, $.proxy(that.onError, that));
         },
 
-		uploadFiles: function () {
-			var fileName = app.currentUser.Id + "-" + Date.now();
-			
+		uploadFiles: function () {						
 			app.everlive.Files
 			.create({
-				Filename: app.config.images.tumbnailPrefix + fileName,
+				Filename: app.newLeafData.tmblName,
 				ContentType: "image/jpeg",
 				base64: app.newLeafData.originalImageTmblData
 			});
 			
 			return app.everlive.Files
 			.create({
-				Filename: fileName,
+				Filename: app.newLeafData.fileName,
 				ContentType: "image/jpeg",
 				base64: app.newLeafData.originalImageData
 			});
@@ -155,7 +153,7 @@
 
 		onLeafEntryCreated: function () {			
 			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafs + "?refresh=true");
+			app.common.navigateToView(app.config.views.leafsMine + "?refresh=true");
 		},
 		
 		onError: function (e) {
