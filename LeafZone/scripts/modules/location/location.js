@@ -5,7 +5,12 @@
     
     LeafIcon = L.Icon.extend({
         options: {
-            iconSize: [37, 41]
+            iconSize: [37, 41],
+    		iconAnchor:   [22, 94],
+            shadowUrl: 'styles/images/leaf-shadow.png',
+            shadowSize:   [50, 64],
+    		shadowAnchor: [4, 62],
+    		popupAnchor:  [-3, -76]
         }
     });
 
@@ -115,7 +120,7 @@
                         title: currentLocationItem[2], 
                         icon: that.getMarkerClass(currentLocationItem[2]) 
                     });
-                marker.bindPopup(currentLocationItem[2]);
+                //marker.bindPopup(currentLocationItem[2]);
                 markers.addLayer(marker);
             }
             
@@ -128,16 +133,17 @@
             var legend = L.control({position: 'bottomright'});
             
             function getColor(d) {
-                return d > 75 ? '#800026' :
-                d > 50  ? '#BD0026' :
-                d > 25  ? '#E31A1C' :
-                d > 6  ? '#FC4E2A' :
-                '#FFEDA0';
+                return d > 75 ? '#2c0506' :
+                d > 50  ? '#612c30' :
+                d > 25  ? '#c1272d' :
+                d > 6  ? '#f36f21' :
+                d > 1 ? '#ffc20e':
+                	'#81c342';
             }
             
             legend.onAdd = function (map) {                
                 var div = L.DomUtil.create('div', 'info legend'),
-                    grades = [0, 6, 25, 50, 75],
+                    grades = [0, 1, 6, 25, 50, 75],
                     labels = [];
                 
                 // loop through our density intervals and generate a label with a colored square for each interval
