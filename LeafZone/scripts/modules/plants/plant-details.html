@@ -27,10 +27,10 @@
 	</div>
     
     <script id="plant-details-template" type="text/x-kendo-template">
-		<div class="lz-section info-image">
-			<img src="#= imageUrl() #" />
-		</div>
-            
+        <div class="lz-section info-image full-size-image-container" >
+			<div class="full-size-image" style="background-image: url('#: imageUrl() #')"></div>
+		</div> 
+        
 		<div class="lz-section info-header">
 			<h2>#: name #</h2>
 			<h6>#: botanicalName #</h6>
