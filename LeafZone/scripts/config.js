@@ -38,7 +38,7 @@
                 pageSize: 40
             },
             aroundMe: {
-                rangeKM: 5,
+                rangeKM: 50,
                 topPlantsCount: 3,
                 topDiseasesCount: 3
             }

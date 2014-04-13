@@ -40,24 +40,20 @@
 		<div class="lz-section info-item">
 			<h2>&nbsp;</h2>
 		</div>
-            
+
          # for (var i = 0; i < topPlantsList.length; i++) { #            
             <div class="lz-section info-item">
                 <h2>Plant #: i+1 #</h2>
-                <p>#: topPlantsList[i] #</p>
+                <p>#: topPlantsList[i].name #</p>
                 <span><i class="fa fa-leaf"></i></span>
     		</div>
          # } #     
-         
-		<div class="lz-section info-item">
-			<h2>&nbsp;</h2>
-		</div>
-            
+
          # for (var i = 0; i < topDiseasesList.length; i++) { #            
             <div class="lz-section info-item">
                 <h2>Leaf #: i+1 # </h2>
-                <p>#: topDiseasesList[i] #</p>
-                <span><i class="fa fa-leaf"></i></span>
+                <p>#: topDiseasesList[i].name #</p>
+                <span><i class="fa fa-bug"></i></span>
     		</div>
          # } #    
          
