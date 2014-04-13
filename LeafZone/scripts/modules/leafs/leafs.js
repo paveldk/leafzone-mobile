@@ -132,12 +132,7 @@
                             return app.everlive.Files.getDownloadUrl(imageId);
                         }
                     }
-                },
-                filter: {
-                    field: "Owner",
-                    operator: "eq",
-                    value: app.currentUser.Id
-                },
+                },               
                 requestStart: function(e) {
                     app.common.showLoading();
                 },                
