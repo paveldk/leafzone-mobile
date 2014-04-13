@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	
-    <div class="lz-details-item-template" 
+    <div class="lz-details-item-template lz-line" 
          data-template="leaders-board-template" data-bind="source: this">
     </div>
     
@@ -29,15 +29,23 @@
     
     <script id="leaders-board-template" type="text/x-kendo-template">
 		<div class="lz-section info-header">
-			<h2>Leaders Board</h2>
-			<h6>Top 10</h6>
+			<h2>Leaderboard</h2>
+			<h6>Top 5</h6>
+            <div class="info-number">
+				<span>5</span>
+				<span>&nbsp;</span>
+			</div>
 		</div>
-            
+        
+        <div class="lz-section info-item">
+			<h2>&nbsp;</h2>
+		</div> 
+        
          # for (var i = 0; i < leadersList.length; i++) { #            
-            <div class="lz-section">
-                <h2> #: leadersList[i].DisplayName #</h2>
-                 <h2> #: leadersList[i].PlantsCount #</h2>
-                <p>&nbsp;</p>
+            <div class="lz-section info-item">
+				<h2>#: leadersList[i].DisplayName #</h2>
+				<p>Leafs: #: leadersList[i].PlantsCount #</p>
+				<span><i class="fa fa-user"></i></span>
     		</div>
          # } #   
          
