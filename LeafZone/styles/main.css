@@ -480,7 +480,7 @@ body {
 .full-size-image-container > .full-size-image {
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center top;
     width: 100%;
     height: 100%;
 }
@@ -511,6 +511,14 @@ body {
     float: right; 
     min-width: 100px; 
     text-align: center; 
+}
+.absolute-group > span {
+    color: #555;
+    text-align: center;
+    font-size: 0.9em;
+    width: 100%;
+    display: inline-block;
+    padding-top: 0.3em;
 }
 
 /* list item template */
