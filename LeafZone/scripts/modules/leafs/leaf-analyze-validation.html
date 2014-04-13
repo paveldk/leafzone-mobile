@@ -16,10 +16,9 @@
 	</div>
 	
     <div class="lz-details-item-template lz-line">
-        <div class="lz-section info-image">
-            <img data-bind="attr:{ src: imageData}" />
-		</div>
-            
+        <div class="lz-section info-image" data-template="leaf-analyse-validaton-image-template" data-bind="source: this">
+        </div>
+        
 		<div class="lz-section info-header">
 			<h2 data-bind="text: name"></h2>
 			<h6>&nbsp;</h6>
@@ -90,7 +89,7 @@
         </div>
 	</div>
     
-    <script id="leaf-details-analyse-template" type="text/x-kendo-template">
-    	
+    <script id="leaf-analyse-validaton-image-template" type="text/x-kendo-template">
+        <div style="background-image: url('#: imageData #')"></div>
 	</script>
 </div>

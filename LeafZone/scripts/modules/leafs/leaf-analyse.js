@@ -80,13 +80,21 @@
             };
             
             return new RSVP.Promise(function (resolve, reject) {
-                $.ajax({
-                    type: "POST",
-                    url: "http://leafzoneservices.keydown.org/api/analyze",
-                    data: data
-                })
-                .then(function (data) { resolve(data); }, function (err) { reject(err); });                
+                resolve({
+                    PlantName: "PL",
+                    DiseaseName: "DN",
+                    OzoneAffected: 5
+                });
             });
+            
+            //return new RSVP.Promise(function (resolve, reject) {
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "http://leafzoneservices.keydown.org/api/analyze",
+            //        data: data
+            //    })
+            //    .then(function (data) { resolve(data); }, function (err) { reject(err); });                
+            //});
         },
         
         onSubmitSuccess: function (data) {
@@ -94,15 +102,16 @@
             app.newLeafData.discoveredDisease = data.DiseaseName;
             app.newLeafData.ozonePercent = data.OzoneAffected;
             
-            app.common.getResizedImage(data.ImageUrl)
-            .then(function (analyzedlImageData) {
-                app.newLeafData.analyzedlImageData = analyzedlImageData;
-                app.common.hideLoading();
-                app.common.navigateToView(app.config.views.leafAnalyse);
-            });
-              //app.newLeafData.analyzedlImageData = app.newLeafData.originalImageData;
-               // app.common.hideLoading();
-                //app.common.navigateToView(app.config.views.leafAnalyse);
+            //app.common.getResizedImage(data.ImageUrl)
+            //.then(function (analyzedlImageData) {
+            //    app.newLeafData.analyzedlImageData = analyzedlImageData;
+            //    app.common.hideLoading();
+            //    app.common.navigateToView(app.config.views.leafAnalyse);
+            //});
+            
+            app.newLeafData.analyzedlImageData = app.newLeafData.originalImageData;
+            app.common.hideLoading();
+            app.common.navigateToView(app.config.views.leafAnalyse);
         },
         
         analyzeImage: function () {
