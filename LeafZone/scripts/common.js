@@ -80,6 +80,10 @@
         return "data:image/jpeg;base64," + imageData;
     }
     
+    function getImageDataForBacbgroundBinding(imageData) {
+        return "url('data:image/jpeg;base64," + imageData + "'";
+    }
+    
     function getResizedImage(imageUrl) {
         return resizeImage(imageUrl, app.config.images.imageWidth, app.config.images.ImageHeight, false)
         .then($.proxy(extractImageData, this));
