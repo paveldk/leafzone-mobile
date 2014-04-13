@@ -1,10 +1,9 @@
-<div id="around-me-view"
-	 class="around-me-view"
+<div id="leaders-board-view"
+	 class="leaders-board-view"
 	 data-role="view"
      data-layout="drawer-layout"
      data-show="app.leadersBoardService.showData"
-	 data-model="app.leadersBoardService.viewModel"
-     data-stretch="true">
+	 data-model="app.leadersBoardService.viewModel">
 
 	<div data-role="header">
 		<div data-role="navbar">
@@ -18,7 +17,7 @@
 	</div>
 	
     <div class="lz-details-item-template lz-line" 
-         data-template="around-template" data-bind="source: this">
+         data-template="leaders-board-template" data-bind="source: this">
     </div>
     
 	<div data-role="footer">
@@ -28,38 +27,19 @@
 		<a class="lz-button lz-button-circle add-leaf" data-role="button"></a>
 	</div>
     
-    <script id="around-template" type="text/x-kendo-template">
+    <script id="leaders-board-template" type="text/x-kendo-template">
 		<div class="lz-section info-header">
-			<h2>Top diseases</h2>
-			<h6>around me</h6>
-			<div class="info-number">
-				<span>#: ozoneAffected #</span>
-				<span>ozone affected</span>
-			</div>
-		</div>
-            
-		<div class="lz-section info-item">
-			<h2>&nbsp;</h2>
+			<h2>Leaders Board</h2>
+			<h6>Top 10</h6>
 		</div>
             
          # for (var i = 0; i < topPlantsList.length; i++) { #            
-            <div class="lz-section info-item">
+            <div class="lz-section">
                 <h2> #: topPlantsList[i] #</h2>
-                <p></p>
-                <span><i class="fa fa-leaf"></i></span>
+                <p>&nbsp;</p>
     		</div>
-         # } #     
+         # } #   
          
-         <div class="lz-section info-item">
-			<h2>&nbsp;</h2>
-		</div>
-            
-         # for (var i = 0; i < topDiseasesList.length; i++) { #            
-            <div class="lz-section info-item">
-                <h2> #: topDiseasesList[i] #</h2>
-                <p></p>
-                <span><i class="fa fa-leaf"></i></span>
-    		</div>
-         # } #     
+         <div class="lz-section info-footer"></div>
 	</script>
 </div>
