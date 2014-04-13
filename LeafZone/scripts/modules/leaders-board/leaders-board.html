@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	
-    <div class="lz-details-item-template lz-line" 
+    <div class="lz-details-item-template" 
          data-template="leaders-board-template" data-bind="source: this">
     </div>
     
@@ -33,9 +33,10 @@
 			<h6>Top 10</h6>
 		</div>
             
-         # for (var i = 0; i < topPlantsList.length; i++) { #            
+         # for (var i = 0; i < leadersList.length; i++) { #            
             <div class="lz-section">
-                <h2> #: topPlantsList[i] #</h2>
+                <h2> #: leadersList[i].DisplayName #</h2>
+                 <h2> #: leadersList[i].PlantsCount #</h2>
                 <p>&nbsp;</p>
     		</div>
          # } #   
