@@ -5,12 +5,7 @@
     
     LeafIcon = L.Icon.extend({
         options: {
-            shadowUrl: "styles/images/leaf-shadow.png",
-            iconSize:     [38, 95],
-            shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
+            iconSize: [37, 41]
         }
     });
 
@@ -20,12 +15,13 @@
 		init: function () {
 			var that = this;
 
-            that.class1 = new LeafIcon({iconUrl: 'styles/images/class1.png'});
-            that.class2 = new LeafIcon({iconUrl: 'styles/images/class2.png'});
-            that.class3 = new LeafIcon({iconUrl: 'styles/images/class3.png'});
-            that.class4 = new LeafIcon({iconUrl: 'styles/images/class4.png'});
-            that.class5 = new LeafIcon({iconUrl: 'styles/images/class5.png'});
-            that.class6 = new LeafIcon({iconUrl: 'styles/images/class6.png'});
+            that.class1 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-1.png', iconRetinaUrl: 'styles/images/map-pin-class-1@2x.png'});
+            that.class2 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-2.png', iconRetinaUrl: 'styles/images/map-pin-class-2@2x.png'});
+            that.class3 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-3.png', iconRetinaUrl: 'styles/images/map-pin-class-3@2x.png'});
+            that.class4 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-4.png', iconRetinaUrl: 'styles/images/map-pin-class-4@2x.png'});
+            that.class5 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-5.png', iconRetinaUrl: 'styles/images/map-pin-class-5@2x.png'});
+            that.class6 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-6.png', iconRetinaUrl: 'styles/images/map-pin-class-6@2x.png'});
+            
             that.locationData = [];
 			that.initModule = $.proxy(that.initData, that);
 		},
