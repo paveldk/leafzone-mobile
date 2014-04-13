@@ -10,6 +10,7 @@
 		disease: "",
 		imageId: "",
 		location: "",
+        userId: "",
 
 		imageUrl: function () {
 			return app.everlive.Files.getDownloadUrl(this.get("imageId"));
@@ -57,6 +58,7 @@
 			that.viewModel.set("percentage", plantData.OzonePercent || 0);
 			that.viewModel.set("imageId", plantData.Image);
 			that.viewModel.set("userName", userData.DisplayName);
+            that.viewModel.set("userId", userData.Id);
 			that.setLocation(plantData);
 		},
 

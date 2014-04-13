@@ -21,22 +21,34 @@
 		},
 
 		initData: function (e) {
-			var that = this;
+			var that = this,
+                countPromise,
+                userPromise,
+				userId = e.view.params.userId;
+
+			if (!userId) {
+				userId = app.currentUser.Id;
+			}
 			
 			app.common.showLoading();
 
-			app.everlive.data("UserPlants").count({Owner: app.currentUser.Id})
+			countPromise = app.everlive.data("UserPlants").count({Owner: userId});
+            userPromise = app.everlive.data("Users").getById(userId);
+            
+            RSVP.all([userPromise, countPromise])
 			.then($.proxy(that.setData, that))
 			.then(null, $.proxy(that.onError, that));			
 		},
 
-		setData: function (count) {
-			var that = this;
+		setData: function (data) {
+			var that = this,
+                userData = data[0].result,
+                plantsCountData = data[1].result;
 
-			that.viewModel.set("username", app.currentUser.Username);
-			that.viewModel.set("email", app.currentUser.Email);
-			that.viewModel.set("displayName", app.currentUser.DisplayName);
-			that.viewModel.set("recorededLeafs", count.result);			
+			that.viewModel.set("username", userData.Username);
+			that.viewModel.set("email", userData.Email);
+			that.viewModel.set("displayName", userData.DisplayName);
+			that.viewModel.set("recorededLeafs", plantsCountData);			
 			
 			app.common.hideLoading();
 		},
