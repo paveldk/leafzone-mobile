@@ -5,7 +5,12 @@
     
     LeafIcon = L.Icon.extend({
         options: {
-            iconSize: [37, 41]
+            iconSize: [37, 41],
+    		iconAnchor:   [22, 94],
+            shadowUrl: 'styles/images/leaf-shadow.png',
+            shadowSize:   [50, 64],
+    		shadowAnchor: [4, 62],
+    		popupAnchor:  [-3, -76]
         }
     });
 
@@ -103,6 +108,7 @@
 			});
 
 			map = L.map("map", {center: latlng, zoom: 13, layers: [tiles]});
+            that.addLegend(map);
             
             for (var i = 0; i < that.locationData.length; i++) {
                 currentLocationItem =  that.locationData[i];
@@ -114,14 +120,44 @@
                         title: currentLocationItem[2], 
                         icon: that.getMarkerClass(currentLocationItem[2]) 
                     });
-                marker.bindPopup(currentLocationItem[2]);
+                //marker.bindPopup(currentLocationItem[2]);
                 markers.addLayer(marker);
             }
             
 			map.addLayer(markers);
             
             app.common.hideLoading();
-		}
+		},
+        
+        addLegend: function(map) {
+            var legend = L.control({position: 'bottomright'});
+            
+            function getColor(d) {
+                return d > 75 ? '#2c0506' :
+                d > 50  ? '#612c30' :
+                d > 25  ? '#c1272d' :
+                d > 6  ? '#f36f21' :
+                d > 1 ? '#ffc20e':
+                	'#81c342';
+            }
+            
+            legend.onAdd = function (map) {                
+                var div = L.DomUtil.create('div', 'info legend'),
+                    grades = [0, 1, 6, 25, 50, 75],
+                    labels = [];
+                
+                // loop through our density intervals and generate a label with a colored square for each interval
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                }
+                
+                return div;
+            };
+            
+            legend.addTo(map);
+        }
 	});
 
 	app.locationService = new LocationService();
