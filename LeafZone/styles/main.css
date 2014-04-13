@@ -472,13 +472,17 @@ body {
     margin: auto;
 }
 
-.full-size-image {
+/* full-size images */
+.full-size-image-container {
+    max-width: 800px;
+	max-height: 600px;
+}
+.full-size-image-container > .full-size-image {
     background-size: contain;
-    position: absolute;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
     height: 100%;
-    width: 100%;    
 }
 
 /* absolute buttons styles */
