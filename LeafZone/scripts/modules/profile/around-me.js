@@ -148,7 +148,6 @@
             } else if (x.count > y.count) {
                 return -1;
             } else {
-                // a must be equal to b
                 return 0;
             }
         },

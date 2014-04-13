@@ -195,6 +195,23 @@
         });
     }
     
+    function getContent(table, powerField, sort) {
+        $.ajax({
+            url: "http://api.everlive.com/v1/woLBIbIHeu9aWBrb/" + table,
+            type: "GET",
+            headers: {
+                "Authorization": el.buildAuthHeader().Authorization,
+                "X-Everlive-Power-Fields": JSON.stringify(powerField),
+                "X-Everlive-Sort": JSON.stringify(sort),
+            },
+            success: function (data) {
+                
+            },
+            error: function (error) {
+            }
+        })
+    }
+    
     app.common = {
         notification: notification,
         showLoading: showLoading,
