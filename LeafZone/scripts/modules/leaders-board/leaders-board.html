@@ -28,11 +28,12 @@
 	</div>
     
     <script id="leaders-board-template" type="text/x-kendo-template">
+    	# var len = leadersList.length > 5 ? 5 : leadersList.length; #
 		<div class="lz-section info-header">
 			<h2>Leaderboard</h2>
-			<h6>Top 5</h6>
+			<h6>Top #: len #</h6>
             <div class="info-number">
-				<span>5</span>
+				<span>#: len #</span>
 				<span>&nbsp;</span>
 			</div>
 		</div>
@@ -40,8 +41,8 @@
         <div class="lz-section info-item">
 			<h2>&nbsp;</h2>
 		</div> 
-        
-         # for (var i = 0; i < leadersList.length; i++) { #            
+         
+         # for (var i = 0; i < len; i++) { #          
             <div class="lz-section info-item">
 				<h2>#: leadersList[i].DisplayName #</h2>
 				<p>Leafs: #: leadersList[i].PlantsCount #</p>
