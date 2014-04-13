@@ -11,7 +11,7 @@
 		init: function () {
 			var that = this;
 
-            that.plantsDataSource = new kendo.data.DataSource({ pageSize: app.config.lists.plants.pageSize });
+            that.plantsDataSource = new kendo.data.DataSource({ pageSize: app.config.data.plants.pageSize });
 			kendo.data.ObservableObject.fn.init.apply(that, that);
 		}
 	});
@@ -72,7 +72,7 @@
                     app.common.hideLoading();
                 },
 				serverPaging: true,
-				pageSize: app.config.lists.plants.pageSize
+				pageSize: app.config.data.plants.pageSize
 			});
 
 			this.viewModel.set("plantsDataSource", plantsDataSource);
