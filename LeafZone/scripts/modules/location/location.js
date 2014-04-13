@@ -11,6 +11,8 @@
 
 	LocationService = kendo.Class.extend({
         locationData: null,
+        lat: 0,
+        long: 0,
         
 		init: function () {
 			var that = this;
@@ -23,27 +25,48 @@
             that.class6 = new LeafIcon({iconUrl: 'styles/images/map-pin-class-6.png', iconRetinaUrl: 'styles/images/map-pin-class-6@2x.png'});
             
             that.locationData = [];
-			that.initModule = $.proxy(that.initData, that);
+			that.showModule = $.proxy(that.initData, that);
 		},
         
         initData: function () {
             var that = this,
             	q = new Everlive.Query();
         
+            app.common.showLoading();
+            
             q.select("Location", "OzonePercent", "Id");
         
             return app.everlive.data("UserPlants").get(q)
-            .then($.proxy(that.storeLocation, that))            
+            .then($.proxy(that.storeLocationData, that))
+            .then($.proxy(that.getCurrentLocation, that))
             .then($.proxy(that.updateMarkers, that));
         },
         
-        storeLocation: function (data) {
+        storeLocationData: function (data) {
             var currentItem;
             
             for (var i = 0; i < data.result.length; i++) {
                 currentItem = data.result[i];
                 this.locationData.push([currentItem.Location.latitude, currentItem.Location.longitude, currentItem.OzonePercent]);
             }
+        },
+        
+        getCurrentLocation: function () {
+            var that = this;
+            
+            return new RSVP.Promise(function (resolve, reject) {
+                
+                app.common.getCurrentLocation()
+                .then(function (position) {
+                    that.lat = position.coords.latitude;
+            		that.long = position.coords.longitude;
+                    resolve();
+                }, function () {
+                    that.lat = 42.68;
+                    that.long = 23.33;
+                    resolve();
+                }); 
+            });            
         },
         
         getMarkerClass: function (ozonePercent) {
@@ -71,10 +94,8 @@
                 map,
                 marker,
                 currentLocationItem,
-                latlng = L.latLng(-37.82, 175.24),
+                latlng = L.latLng(that.lat, that.long),
                 markers = new L.MarkerClusterGroup();
-            
-            app.common.showLoading();
 			
             tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 				maxZoom: 18,
