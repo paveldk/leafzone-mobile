@@ -11,8 +11,8 @@
         init: function () {
             var that = this;
             
-            that.topPlantsList = ["pl1", "pl2", "pl3"];
-            that.topDiseasesList = ["ds1", "ds2", "ds3"];
+            that.topPlantsList = [{name: ""}, {name: ""}, {name: ""}];
+            that.topDiseasesList = [{name: ""}, {name: ""}, {name: ""}];
             
             kendo.data.ObservableObject.fn.init.apply(that, that);
         },
@@ -55,8 +55,8 @@
 			var that = this;
 
 			that.setAverageOzoneAffection(data);
-            //that.setTopPlants(data);
-            //that.setTopDiseases(data);
+            that.setTopPlants(data);
+            that.setTopDiseases(data);
 			
 			app.common.hideLoading();
 		},
@@ -78,15 +78,80 @@
           var that = this,
               currentItem,
               plantsMap = {},
+              plantsList = [],
+              count = 0,
               leafsList = data.result;
             
             for (var i = 0; i < leafsList.length; i++) {
                 currentItem = leafsList[i]
-                plantsMap[currentItem.DiscoveredDisease] = plantsMap[currentItem.DiscoveredDisease] || 0;
-                plantsMap[currentItem.DiscoveredDisease]++;                
+                plantsMap[currentItem.DiscoveredPlant] = plantsMap[currentItem.DiscoveredPlant] || 0;
+                plantsMap[currentItem.DiscoveredPlant]++;                
             }
+            
+            for (var prop in plantsMap ) {
+                if (!plantsMap.hasOwnProperty(prop)) {
+                    continue;
+                }
+                
+                count++
+                if (count > app.config.data.aroundMe.topPlantsCount) {
+                   break; 
+                }
+                
+                plantsList.push({
+                    name: prop,
+                    count: plantsMap[prop]
+                });
+            }
+            
+            plantsList.sort(that.sort);
+            this.viewModel.set("topPlantsList", plantsList);
         },
         
+         setTopDiseases: function (data) {
+          var that = this,
+              currentItem,
+              diseasesMap = {},
+              diseasesList = [],
+              count = 0,
+              leafsList = data.result;
+            
+            for (var i = 0; i < leafsList.length; i++) {
+                currentItem = leafsList[i]
+                diseasesMap[currentItem.DiscoveredDisease] = diseasesMap[currentItem.DiscoveredDisease] || 0;
+                diseasesMap[currentItem.DiscoveredDisease]++;                
+            }
+            
+            for (var prop in diseasesMap ) {
+                if (!diseasesMap.hasOwnProperty(prop)) {
+                    continue;
+                }
+                
+                count++
+                if (count > app.config.data.aroundMe.topDiseasesCount) {
+                   break; 
+                }
+                
+                diseasesList.push({
+                    name: prop,
+                    count: diseasesMap[prop]
+                });
+            }
+            
+            diseasesList.sort(that.sort);
+            this.viewModel.set("topDiseasesList", diseasesList);
+        },
+        
+        sort: function (x, y) {
+            if (x.count < y.count) {
+                return 1;
+            } else if (x.count > y.count) {
+                return -1;
+            } else {
+                // a must be equal to b
+                return 0;
+            }
+        },
         
 		onError: function (e) {
 			app.common.hideLoading();
