@@ -58,6 +58,8 @@
             that.viewModel = new LeafsViewModel();
             that.initLeafsMineModule = $.proxy(that.initMyLeafsData, that);
             that.initLeafsAllModule = $.proxy(that.initAllLeafsData, that);
+            
+            that.showLeafsMineModule = $.proxy(that.refreshMyLeafsData, that);
         },
         
         setAllUserPlantsData: function () {
@@ -96,7 +98,12 @@
                 requestEnd: function(e) {
                     app.common.hideLoading();
                 },
+                sort: { 
+                    field: "CreatedAt", 
+                    dir: "desc"
+                },
                 serverPaging: true,
+                serverSorting: true,
                 pageSize: app.config.data.leafs.pageSize
             });
             
@@ -131,8 +138,17 @@
                             
                             return app.everlive.Files.getDownloadUrl(imageId);
                         }
-                    }
-                },               
+                    },                    
+                },    
+                filter: {
+                    field: "Owner",
+                    operator: "eq",
+                    value: app.currentUser.Id
+                },
+                sort: { 
+                    field: "CreatedAt", 
+                    dir: "desc"
+                },
                 requestStart: function(e) {
                     app.common.showLoading();
                 },                
@@ -140,10 +156,21 @@
                     app.common.hideLoading();
                 },
                 serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true,    
                 pageSize: app.config.data.leafs.pageSize
             });
             
             this.viewModel.set("myPlantsDataSource", myPlantsDataSource);
+        },
+        
+        refreshMyLeafsData: function (e) {
+            var that = this,
+				refresh = e.view.params.refresh;
+            
+            if(refresh) {
+                that.viewModel.get("myPlantsDataSource").read();
+            }
         },
         
         initMyLeafsData: function () {
@@ -154,7 +181,7 @@
             .then($.proxy(that.setMyPlantsData, that));
         },
         
-         initAllLeafsData: function () {
+        initAllLeafsData: function () {
             var that = this;
             
             app.common.showLoading();
