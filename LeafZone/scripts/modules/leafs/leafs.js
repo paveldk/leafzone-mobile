@@ -51,61 +51,70 @@
     
     LeafsService = kendo.Class.extend({
         viewModel: null,
+        userPlantsNamesList: null,
         
         init: function () {
             var that = this;
             
+            that.allPlantsNamesList = [];
+            
             that.viewModel = new LeafsViewModel();
             that.initLeafsMineModule = $.proxy(that.initMyLeafsData, that);
             that.initLeafsAllModule = $.proxy(that.initAllLeafsData, that);
-            
             that.showLeafsMineModule = $.proxy(that.refreshMyLeafsData, that);
         },
         
         setAllUserPlantsData: function () {
-            var allUserPlantsDataSource = new kendo.data.DataSource({
-                type: "everlive",
-                transport: {
-                    typeName: "UserPlants"
-                },
-                schema: {
-                    model: {
-                        id: Everlive.idField,
-                        fields: {
-                            name: {
-                                field: "DiscoveredPlant",
-                                defaultValue: ""
+            var that = this,
+                allUserPlantsDataSource = new kendo.data.DataSource({
+                    type: "everlive",
+                    transport: {
+                        typeName: "UserPlants"
+                    },
+                    schema: {
+                        model: {
+                            id: Everlive.idField,
+                            fields: {
+                                name: {
+                                    field: "DiscoveredPlant",
+                                    defaultValue: ""
+                                },
+                                details: {
+                                    field: "DiscoveredDisease",
+                                    defaultValue: ""
+                                },
+                                imageId: {
+                                    field: "Image",
+                                    defaultValue: ""
+                                }
                             },
-                            details: {
-                                field: "DiscoveredDisease",
-                                defaultValue: ""
+                            imageUrl: function () {
+                                var imageId = app.common.getTumbnailIdByImageId(this.get("imageId"));
+                                
+                                return app.everlive.Files.getDownloadUrl(imageId);
                             },
-                            imageId: {
-                                field: "Image",
-                                defaultValue: ""
+                            isDiscovered: function () {
+                                var name = this.get("name");
+                                
+                                return that.userPlantsNamesList.indexOf(name) > -1;
                             }
-                        },
-                        imageUrl: function () {
-                            var imageId = app.common.getTumbnailIdByImageId(this.get("imageId"));
-                            
-                            return app.everlive.Files.getDownloadUrl(imageId);
                         }
-                    }
-                },
-                requestStart: function(e) {
-                    app.common.showLoading();
-                },                
-                requestEnd: function(e) {
-                    app.common.hideLoading();
-                },
-                sort: { 
-                    field: "CreatedAt", 
-                    dir: "desc"
-                },
-                serverPaging: true,
-                serverSorting: true,
-                pageSize: app.config.data.leafs.pageSize
-            });
+                    },
+                    requestStart: function(e) {
+                        app.common.showLoading();
+                    },                
+                    requestEnd: function(e) {
+                        app.common.hideLoading();
+                        that.updatePlantsNamesList(e.response.Result || []);
+                    },
+                    sort: { 
+                        field: "CreatedAt", 
+                        dir: "desc"
+                    },
+                    serverPaging: true,
+                    serverSorting: true,
+                    pageSize: app.config.data.leafs.pageSize
+                });
             
             this.viewModel.set("allUserPlantsDataSource", allUserPlantsDataSource);
         },
@@ -166,7 +175,7 @@
         
         refreshMyLeafsData: function (e) {
             var that = this,
-				refresh = e.view.params.refresh;
+                refresh = e.view.params.refresh;
             
             if(refresh) {
                 that.viewModel.get("myPlantsDataSource").read();
@@ -187,6 +196,14 @@
             app.common.showLoading();
             app.common.updateFilesInfo()
             .then($.proxy(that.setAllUserPlantsData, that));
+        },
+        
+        updatePlantsNamesList: function (allPlantsList) {
+            this.userPlantsNamesList = $.map(allPlantsList, function (item) {
+                if(item.Owner === app.currentUser.Id) {
+                    return item.DiscoveredPlant;
+                }
+            });
         }
     });
     
