@@ -299,14 +299,6 @@ body {
     background-color: #274c65;
     color: #fff;
 }
-.km-view.drawer .km-content > .km-scroll-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
 
 /* list styles */
 .km-view .km-content .km-list > li {
@@ -571,6 +563,9 @@ body {
 	margin: 1.4em;
 	border-bottom: 1px solid #ececec;
     position: relative;
+}
+.lz-details-item-template > .lz-section:last-of-type {
+    border-bottom-width: 0;
 }
 .lz-details-item-template.lz-line:before {
     content: "";
