@@ -23,7 +23,7 @@
         },
         images: {
             tumbnailPrefix: "tmbl-",
-            tumbnailSize: 144,
+            tumbnailSize: 72,
             imageWidth: 800,
             ImageHeight: 600
         },
