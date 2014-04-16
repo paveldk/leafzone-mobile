@@ -82,7 +82,7 @@
             return new RSVP.Promise(function (resolve, reject) {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost/api/analyze",
+                    url: "http://leafzone.cloudapp.net/api/analyze",
                     data: data
                 })
                 .then(function (data) { resolve(data); }, function (err) { reject(err); });                
