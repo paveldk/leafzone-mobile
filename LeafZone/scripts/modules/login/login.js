@@ -37,8 +37,8 @@
     
     SignInViewModel = LoginBase.extend({
         isLoggedIn: false,
-        username: "s",
-        password: "s",
+        username: "stoskov",
+        password: "stoskov",
         displayName: "",
         consts: {
             MESSAGE_TITLE_SIGN_IN_ERROR: "Sign In Error",
