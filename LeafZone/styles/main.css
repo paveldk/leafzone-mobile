@@ -280,16 +280,19 @@ body {
 .km-view .km-button.lz-button.lz-button-social.facebook {
     width: 15px;
     height: 25px;
+    background-image: url('../styles/images/icon-facebook.png');
     background-image: -webkit-image-set(url('../styles/images/icon-facebook.png') 1x, url('../styles/images/icon-facebook@2x.png') 2x);
 }
 .km-view .km-button.lz-button.lz-button-social.google {
     width: 25px;
     height: 27px;
+    background-image: url('../styles/images/icon-google.png');
     background-image: -webkit-image-set(url('../styles/images/icon-google.png') 1x, url('../styles/images/icon-google@2x.png') 2x);
 }
 .km-view .km-button.lz-button.lz-button-social.twitter {
     width: 32px;
     height: 25px;
+    background-image: url('../styles/images/icon-twitter.png');
     background-image: -webkit-image-set(url('../styles/images/icon-twitter.png') 1x, url('../styles/images/icon-twitter@2x.png') 2x);
 }
 
@@ -480,6 +483,7 @@ body {
 .img-small-logo {
     width: 101px;
     height: 28px;
+    background-image: url('../styles/images/logo.png');
     background-image: -webkit-image-set(url('../styles/images/logo.png') 1x, url('../styles/images/logo@2x.png') 2x);
     position: absolute;
     top: 50%;
@@ -490,12 +494,14 @@ body {
 .img-large-logo {
     width: 174px;
     height: 48px;
+    background-image: url('../styles/images/logo-large.png');
     background-image: -webkit-image-set(url('../styles/images/logo-large.png') 1x, url('../styles/images/logo-large@2x.png') 2x);
     margin: auto;
 }
 .img-leaf {
     width: 210px;
     height: 219px;
+    background-image: url('../styles/images/leaf.png');
     background-image: -webkit-image-set(url('../styles/images/leaf.png') 1x, url('../styles/images/leaf@2x.png') 2x);
     margin: auto;
 }
