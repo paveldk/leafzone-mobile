@@ -8,9 +8,8 @@
             iconSize: [37, 41],
     		iconAnchor:   [22, 94],
             shadowUrl: 'styles/images/leaf-shadow.png',
-            shadowSize:   [50, 64],
-    		shadowAnchor: [4, 62],
-    		popupAnchor:  [-3, -76]
+            shadowSize:   [0, 0],
+    		shadowAnchor: [0, 0]
         }
     });
 

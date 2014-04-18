@@ -14,18 +14,21 @@
 			this.getPhoto(Camera.PictureSourceType.SAVEDPHOTOALBUM);
 		},
 		
-		getPhoto: function(sourceType) {
-			var that = this;
-
-			navigator.camera.getPicture(
-			$.proxy(that.onGetPicruteSuccess, that),
-			$.proxy(that.onGetPicruteError, that),
-			{
-				quality: 49,
-				sourceType :sourceType,
-				encodingType: Camera.EncodingType.JPEG,
-				destinationType: Camera.DestinationType.FILE_URI
-			});
+        getPhoto: function(sourceType) {
+            var that = this;
+            
+            navigator.camera.getPicture(
+                $.proxy(that.onGetPicruteSuccess, that),
+                $.proxy(that.onGetPicruteError, that),
+                {
+                    quality: 49,
+                    sourceType :sourceType,
+                    correctOrientation: true,
+                    targetWidth: 800,
+                    targetHeight: 600,
+                    encodingType: Camera.EncodingType.JPEG,
+                    destinationType: Camera.DestinationType.FILE_URI
+                });
         },
 
 		onGetPicruteSuccess: function (imageUrl) {

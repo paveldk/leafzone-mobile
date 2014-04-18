@@ -36,10 +36,18 @@
                     heightOffset = 0,
                     canvas = document.createElement("canvas");
                 
-                if (width < height) {
-                    ratio = targetHeight / height;
+                if(crop) {
+                    if (width > height) {
+                        ratio = targetHeight / height;
+                    } else {
+                        ratio = targetWidth / width;
+                    }                    
                 } else {
-                    ratio = targetWidth / width;
+                    if (width < height) {
+                        ratio = targetHeight / height;
+                    } else {
+                        ratio = targetWidth / width;
+                    }
                 }
                 
                 canvas.width = width * ratio;

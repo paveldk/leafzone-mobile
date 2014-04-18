@@ -39,11 +39,11 @@
         getLeaders: function () {
             var that = this,
                 powerField = {
-                    "PlantsCount": {
-                        "contentType": "UserPlants",
-                        "queryType": "count",
-                        "filter": {
-                            "Owner": "${Id}"
+                    PlantsCount: {
+                        contentType: "UserPlants",
+                        queryType: "count",
+                        filter: {
+                            Owner: "${Id}"
                         },
                     }                    
                 };
@@ -60,9 +60,9 @@
         },
         
          sort: function (x, y) {
-            if (x.PowerField < y.PowerField) {
+            if (x.PlantsCount < y.PlantsCount) {
                 return 1;
-            } else if (x.PowerField > y.PowerField) {
+            } else if (x.PlantsCount > y.PlantsCount) {
                 return -1;
             } else {                
                 return 0;
