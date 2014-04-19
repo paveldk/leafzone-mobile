@@ -49,14 +49,14 @@
 			<h2>Disease</h2>
 			<p data-bind="text: disease"></p>
 			<span><i class="fa fa-bug"></i></span>
-            <a data-role="button" class="lz-button">Report Disease</a>
+            <a data-role="button" class="lz-button" data-bind="invisible: isKnownDisease, click: onReportDisease">Report Disease</a>
 		</div>
             
 		<div class="lz-section info-item">
 			<h2>Plant</h2>
 			<p data-bind="text: name"></p>
 			<span><i class="fa fa-leaf"></i></span>
-            <a data-role="button" class="lz-button">Report Plant</a>
+            <a data-role="button" class="lz-button" data-bind="invisible: isKnownPlant, click: onReportPlant">Report Plant</a>
 		</div>
         
         <div class="lz-section info-footer">
@@ -65,12 +65,12 @@
 		</div>
     </div>
     
-    <div class="overlay" style="display: none;">
+    <div class="overlay" data-bind="visible: newPlantCongratVisible">
         <i class="fa fa-star"></i>
         <h1>Congratilations</h1>
         <h3>You just discovered</h3>
-        <h1>Indian Bean Tree</h1>
-        <a data-role="button" class="lz-button lz-button-wide">Ok</a>
+        <h1 data-bind="text: name"></h1>
+        <a data-role="button" class="lz-button lz-button-wide" data-bind="click: hideNewPlantCongrat">Ok</a>
     </div>
     
 	<div data-role="footer">

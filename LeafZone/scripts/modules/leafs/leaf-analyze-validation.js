@@ -10,14 +10,39 @@
 		disease: "",
 		imageData: "",
 		location: "",
+        isKnownPlant: true,
+        isKnownDisease: true,
+        newPlantCongratVisible: false,
 		events: {
-			validate : "validate"
+			validate : "validate",
+            reportPlant: "reportPlant",
+            reportDisease: "reportDisease"
         },
 		
 		onValidate: function () {
 			var that = this;
 			
 			that.trigger(that.events.validate, {});
+        },
+        
+        onReportPlant: function () {
+            var that = this;
+			
+			that.trigger(that.events.reportPlant, {});
+        },
+        
+         onReportDisease: function () {
+            var that = this;
+			
+			that.trigger(that.events.reportDisease, {});
+        },
+        
+        showNewPlantCongrat: function () {
+            this.set("newPlantCongratVisible", true);
+        },
+        
+        hideNewPlantCongrat: function () {
+            this.set("newPlantCongratVisible", false);
         }
 	});
 
@@ -25,6 +50,8 @@
 		viewModel: null,
 		lat: "",
 		long: "",
+        shouldRrportPlant: false,
+        shouldReportDisease: false,
 		
 		init: function () {
 			var that = this;
@@ -32,6 +59,8 @@
 			that.viewModel = new LeafAlayzeValidationViewModel();
 			that.showData = $.proxy(that.initData, that);
 			that.viewModel.bind(that.viewModel.events.validate, $.proxy(that.onValidate, that));
+            that.viewModel.bind(that.viewModel.events.reportPlant, $.proxy(that.onReportPlant, that));
+            that.viewModel.bind(that.viewModel.events.reportDisease, $.proxy(that.onReportDisease, that));
 		},
 
 		initData: function () {
@@ -51,6 +80,9 @@
 		setData: function () {
 			var that = this;
 
+            that.viewModel.set("isKnownPlant", app.newLeafData.discoveredPlant !== app.consts.UNKNOWN_PLANT_NAME);
+            that.viewModel.set("isKnownDisease", app.newLeafData.discoveredDisease !== app.consts.UNKNOWN_DISEASE_NAME);
+            that.viewModel.set("newPlantCongratVisible", app.newLeafData.isNewDiscovery);
 			that.viewModel.set("name", app.newLeafData.discoveredPlant);
 			that.viewModel.set("disease", app.newLeafData.discoveredDisease || "No diseases");
 			that.viewModel.set("percentage", app.newLeafData.ozonePercent || 0);
@@ -79,13 +111,27 @@
 		setNoLocation: function () {
 			this.viewModel.set("location", "No location info");
 		},
+        
+        onLeafEntryCreated: function () {
+			app.common.hideLoading();
+			app.common.navigateToView(app.config.views.leafsMine + "?refresh=true");
+		},
+        
+        onReportPlant: function () {
+            var that = this;
+            
+            that.shouldRrportPlant = true;
+            that.viewModel.set("isKnownPlant", true);
+        },
 		
 		onValidate: function () {
 			var that = this;
 			
-			app.common.showLoading();
-			
+            app.common.showLoading();
+          
 			that.uploadFiles()
+            .then($.proxy(that.reportPlant, that))
+            .then($.proxy(that.reportDisease, that))
 			.then($.proxy(that.createLeafEntry, that))
 			.then($.proxy(that.onLeafEntryCreated, that))
 			.then(null, $.proxy(that.onError, that));
@@ -104,10 +150,13 @@
 				Filename: app.newLeafData.fileName,
 				ContentType: "image/jpeg",
 				base64: app.newLeafData.originalImageData
-			});
+			})
+            .then(function (imageData) {
+               app.newLeafData.fileId = imageData.result.Id;
+            });
         },		
 
-		createLeafEntry: function (imageData) {
+		createLeafEntry: function () {
 			var that = this;
 			
 			return app.everlive.data("UserPlants")
@@ -116,15 +165,41 @@
 				DiscoveredDisease:that.viewModel.get("disease"),
 				OzonePercent: that.viewModel.get("percentage"),
 				Location: new Everlive.GeoPoint(that.long || 0, that.lat || 0),
-				Image: imageData.result.Id
+				Image: app.newLeafData.fileId
 			});
 		},
-
-		onLeafEntryCreated: function () {			
-			app.common.hideLoading();
-			app.common.navigateToView(app.config.views.leafsMine + "?refresh=true");
-		},
 		
+        onReportDisease: function () {
+            var that = this;
+            
+            that.shouldReportDisease = true;
+            that.viewModel.set("isKnownDisease", true);
+        },
+        
+        reportPlant: function () {
+            if (!this.shouldRrportPlant) {
+                return new RSVP.all([true]);
+            }
+            
+            return app.everlive.data("Reports")
+			.create({
+				Type: "Plant",				
+				Image: app.newLeafData.fileId
+			});
+        },
+        
+        reportDisease: function () {
+            if (!this.shouldReportDisease) {
+                return new RSVP.all([true]);
+            }
+            
+           return app.everlive.data("Reports")
+			.create({
+				Type: "Disease",				
+				Image: app.newLeafData.fileId
+			});
+        },
+
 		onError: function (e) {
 			app.common.hideLoading();
 			app.common.notification("Error", e.message);

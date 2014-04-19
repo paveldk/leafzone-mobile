@@ -1,6 +1,11 @@
 (function (global) {
     var app = global.app = global.app || {};
     
+    app.consts = {
+        UNKNOWN_PLANT_NAME: "Unknown" ,
+        UNKNOWN_DISEASE_NAME: "Unknown"
+    };
+    
     app.config = {
         everlive: {
             apiKey: "woLBIbIHeu9aWBrb",
