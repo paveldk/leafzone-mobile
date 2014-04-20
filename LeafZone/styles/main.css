@@ -127,6 +127,7 @@ body {
     text-align: center;
     color: #fff;
     overflow: hidden;
+    z-index: 200;
 }
 .km-view .km-content .overlay > .fa {
     color: #81c342;
