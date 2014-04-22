@@ -90,13 +90,26 @@
         },
         
         onSubmitSuccess: function (data) {
+            var imageRezisePromise,
+                checkNewPlantPromise,
+                filter = new Everlive.Query();
+            
             app.newLeafData.discoveredPlant = data.PlantName;
             app.newLeafData.discoveredDisease = data.DiseaseName;
             app.newLeafData.ozonePercent = data.OzoneAffected;
             
-            app.common.getResizedImage(data.ImageUrl)
-            .then(function (analyzedlImageData) {
-                app.newLeafData.analyzedlImageData = analyzedlImageData;
+            imageRezisePromise = app.common.getResizedImage(data.ImageUrl);
+            
+            filter.where().and()
+            .eq("Owner",  app.currentUser.Id)
+            .eq("DiscoveredPlant",  data.PlantName);
+            
+            checkNewPlantPromise = app.everlive.data("UserPlants").get(filter);
+            
+            RSVP.all([imageRezisePromise, checkNewPlantPromise])            
+            .then(function (data) {
+                app.newLeafData.analyzedlImageData = data[0];                
+                app.newLeafData.isNewDiscovery = data[1].count === 0;
                 app.common.hideLoading();
                 app.common.navigateToView(app.config.views.leafAnalyse);
             });
@@ -115,7 +128,7 @@
         
         onError: function (e) {
             app.common.hideLoading();
-            app.common.notification("Error", e.message);
+            app.common.notification("Error", e.responseText || e.message);
         }
     });
     

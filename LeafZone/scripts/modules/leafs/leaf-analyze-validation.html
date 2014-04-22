@@ -49,18 +49,28 @@
 			<h2>Disease</h2>
 			<p data-bind="text: disease"></p>
 			<span><i class="fa fa-bug"></i></span>
+            <a data-role="button" class="lz-button" data-bind="invisible: isKnownDisease, click: onReportDisease">Report Disease</a>
 		</div>
             
 		<div class="lz-section info-item">
 			<h2>Plant</h2>
 			<p data-bind="text: name"></p>
 			<span><i class="fa fa-leaf"></i></span>
+            <a data-role="button" class="lz-button" data-bind="invisible: isKnownPlant, click: onReportPlant">Report Plant</a>
 		</div>
         
         <div class="lz-section info-footer">
             <a data-role="button" class="lz-button lz-button-alternate" href="scripts/modules/main/main.html">Cancel</a>
             <a data-role="button" class="lz-button" data-bind="click: onValidate">Save</a>
 		</div>
+    </div>
+    
+    <div class="overlay" data-bind="visible: newPlantCongratVisible">
+        <i class="fa fa-star"></i>
+        <h1>Congratilations</h1>
+        <h3>You just discovered</h3>
+        <h1 data-bind="text: name"></h1>
+        <a data-role="button" class="lz-button lz-button-wide" data-bind="click: hideNewPlantCongrat">Ok</a>
     </div>
     
 	<div data-role="footer">
